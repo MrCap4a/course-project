@@ -1,0 +1,40 @@
+package ru.denis.Calculator.Control;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+import ru.denis.Calculator.Entity.User;
+import ru.denis.Calculator.Foundation.UserRepository;
+
+import java.util.List;
+
+@Service
+public class UserDetailsServiceImpl implements UserDetailsService {
+
+    private final UserRepository userRepository;
+
+    public UserDetailsServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+        User user = userRepository.findByLoginWithPermissions(login)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + login));
+
+        List<GrantedAuthority> authorities = user.getRole() != null
+                ? user.getRole().getPermissions().stream()
+                        .map(p -> (GrantedAuthority) new SimpleGrantedAuthority(p.getName()))
+                        .toList()
+                : List.of();
+
+        return new org.springframework.security.core.userdetails.User(
+                user.getLogin(),
+                user.getPassword(),
+                authorities
+        );
+    }
+}

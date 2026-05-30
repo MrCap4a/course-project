@@ -10,14 +10,14 @@
 
 -- Справочник ролей пользователей
 CREATE TABLE IF NOT EXISTS "user_role" (
-    "id"   INTEGER      NOT NULL,
+    "id"   INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     "name" VARCHAR(32)  NOT NULL UNIQUE,
     PRIMARY KEY ("id")
 );
 
 -- Атомарные права доступа
 CREATE TABLE IF NOT EXISTS "permissions" (
-    "id"   INTEGER      NOT NULL,
+    "id"   INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     "name" VARCHAR(64)  NOT NULL UNIQUE,
     PRIMARY KEY ("id")
 );
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS "role_permissions" (
 -- Пользователи системы (role_id опционален — пользователь может быть без роли)
 -- is_super_admin: флаг супер-администратора; защищён триггерами от удаления и сброса
 CREATE TABLE IF NOT EXISTS "user" (
-    "id"             INTEGER       NOT NULL,
+    "id"             INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     "role_id"        INTEGER,
     "login"          VARCHAR(32)   NOT NULL UNIQUE,
     "password"       VARCHAR(255)  NOT NULL,
@@ -52,14 +52,14 @@ CREATE INDEX "user_index_0"
 
 -- Группы материалов
 CREATE TABLE IF NOT EXISTS "material_group" (
-    "id"   INTEGER      NOT NULL,
+    "id"   INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     "name" VARCHAR(64)  NOT NULL UNIQUE,
     PRIMARY KEY ("id")
 );
 
 -- Единицы справочника материалов (units опционален)
 CREATE TABLE IF NOT EXISTS "material" (
-    "id"       INTEGER      NOT NULL,
+    "id"       INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     "group_id" INTEGER      NOT NULL,
     "name"     VARCHAR(32)  NOT NULL UNIQUE,
     "price"    NUMERIC      NOT NULL CHECK ("price" >= 0),
@@ -77,14 +77,14 @@ CREATE INDEX "material_index_0"
 
 -- Группы формул
 CREATE TABLE IF NOT EXISTS "formula_group" (
-    "id"   INTEGER      NOT NULL,
+    "id"   INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     "name" VARCHAR(64)  NOT NULL UNIQUE,
     PRIMARY KEY ("id")
 );
 
 -- Формулы с математическим выражением
 CREATE TABLE IF NOT EXISTS "formula" (
-    "id"         INTEGER       NOT NULL,
+    "id"         INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     "group_id"   INTEGER       NOT NULL,
     "name"       VARCHAR(128)  NOT NULL UNIQUE,
     "expression" TEXT          NOT NULL,
@@ -96,7 +96,7 @@ CREATE INDEX "formula_index_0"
 
 -- Расчёты на основе формул
 CREATE TABLE IF NOT EXISTS "calculation" (
-    "id"         INTEGER      NOT NULL,
+    "id"         INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     "formula_id" INTEGER      NOT NULL,
     "name"       VARCHAR(64)  NOT NULL UNIQUE,
     PRIMARY KEY ("id")
@@ -106,11 +106,12 @@ CREATE INDEX "calculation_index_0"
     ON "calculation" ("formula_id");
 
 -- Позиции расчёта: материал + количество + порядковый номер
+-- material_id NULL: материал может быть удалён — расчёт становится невычислимым
 CREATE TABLE IF NOT EXISTS "calculation_item" (
-    "id"             INTEGER   NOT NULL,
+    "id"             INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     "position"       SMALLINT  NOT NULL,
     "calculation_id" INTEGER   NOT NULL,
-    "material_id"    INTEGER   NOT NULL,
+    "material_id"    INTEGER,
     "quantity"       NUMERIC   NOT NULL CHECK ("quantity" >= 0),
     PRIMARY KEY ("id")
 );
@@ -165,8 +166,8 @@ ALTER TABLE "calculation_item"
     FOREIGN KEY ("calculation_id") REFERENCES "calculation" ("id")
     ON UPDATE CASCADE ON DELETE CASCADE;
 
--- Позиция расчёта → Материал (NO ACTION: материал не удаляется каскадно)
+-- Позиция расчёта → Материал (SET NULL: удаление материала обнуляет ссылку)
 ALTER TABLE "calculation_item"
     ADD CONSTRAINT "fk_calculation_item_material_id_material"
     FOREIGN KEY ("material_id") REFERENCES "material" ("id")
-    ON UPDATE NO ACTION ON DELETE NO ACTION;
+    ON UPDATE NO ACTION ON DELETE SET NULL;

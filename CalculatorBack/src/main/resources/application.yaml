@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: Calculator
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Calculator
+    username: postgres
+    password: 2212
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+security:
+  jwt:
+    secret: super-calculator-jwt-secret-key-change-before-deploy
+    expiration: 86400

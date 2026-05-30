@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"d:\\\\Documents\\\\Урокаки\\\\Программаня инженерия\\\\Calculator\\\\CalculatorBack\" -Recurse -Include \"*.java\")",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Read(//d/Documents/Урокаки/Программаня инженерия/SuperCalculator/docs/02-requirements/**)",
+      "Read(//d/Documents/Урокаки/Программаня инженерия/SuperCalculator/docs/**)",
+      "Read(//d/Documents/Obsidian vaults/Knowledge/Projects/Курсач/**)",
+      "Bash(Get-Content \"d:\\\\Documents\\\\Урокаки\\\\Программаня инженерия\\\\Calculator\\\\CalculatorBack\\\\src\\\\main\\\\java\\\\ru\\\\denis\\\\Calculator\\\\Mediator\\\\Interfaces\\\\IUserService.java\")",
+      "Bash(Get-Content \"d:\\\\Documents\\\\Урокаки\\\\Программаня инженерия\\\\Calculator\\\\CalculatorBack\\\\src\\\\main\\\\java\\\\ru\\\\denis\\\\Calculator\\\\Mediator\\\\Impl\\\\UserServiceImpl.java\")",
+      "Read(//d/Documents/Урокаки/Программаня инженерия/Схехемочки/**)",
+      "Bash(Get-ChildItem -Path \"d:\\\\Documents\\\\Урокаки\\\\Программаня инженерия\\\\Calculator\\\\CalculatorBack\" -Recurse -File)",
+      "Bash(Select-Object FullName)",
+      "Bash(Format-List)",
+      "Bash(./gradlew compileTestJava)",
+      "Bash(./gradlew clean *)",
+      "Bash(./gradlew test *)",
+      "Bash(Select-String -Pattern \"ClassNotFound|Error|error|worker|classpath|FAILED|FormulaEval\")",
+      "Bash(Select-Object -First 40)",
+      "Bash(./gradlew --stop)",
+      "Bash(ls \"C:\\\\Users\\\\calom\\\\.gradle\\\\.tmp\\\\\" 2>/dev/null | head -5)",
+      "Read(//c/Users/calom/.gradle/.tmp\" 2>/dev/**)",
+      "Bash(ls /c/Users/calom/.gradle/.tmp/ 2>/dev/null | head -5)",
+      "Read(//c/Users/calom/.gradle/.tmp//**)",
+      "Bash(find /d/Documents -path \"*/CalculatorBack/build/tmp/test*\" -name \"*.log\" 2>/dev/null | head -10; find /d/Documents -path \"*/CalculatorBack/build/reports/tests*\" -name \"*.xml\" 2>/dev/null | head -5)",
+      "Read(//d/Documents/**)",
+      "Bash(./gradlew --no-daemon test --tests \"ru.denis.Calculator.Mediator.FormulaEvaluatorTest\")",
+      "Bash(./gradlew dependencies *)",
+      "Bash(grep -E \"build/classes|\\\\.jar$\")",
+      "Bash(find /c/Users/calom/.gradle/caches/9.4.1/transforms -name \"FormulaEvaluatorTest.class\" 2>/dev/null | head -5)",
+      "Read(//c/Users/calom/.gradle/caches/9.4.1/transforms/**)",
+      "Bash(xargs grep -l \"tests=\")",
+      "Bash(grep -rh 'tests=' /d/Documents -path \"*/CalculatorBack/build/test-results/test/*.xml\" --include=\"*.xml\")",
+      "Bash(awk '{sum+=$1} END {print \"Total: \" sum \" tests\"}')"
+    ],
+    "additionalDirectories": [
+      "d:\\Documents\\�ப���\\�ணࠬ���� ��������\\Calculator\\CalculatorBack\\src\\main\\java\\ru\\denis\\Calculator",
+      "d:\\Documents\\Урокаки\\Программаня инженерия\\SuperCalculator\\docs\\04-database",
+      "d:\\Documents\\Урокаки\\Программаня инженерия\\Схехемочки"
+    ]
+  }
+}
