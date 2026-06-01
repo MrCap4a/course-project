@@ -17,6 +17,7 @@ import type {
   FormulaRequest,
   FormulaGroupRequest,
   CalculationRequest,
+  SpringPage,
 } from "./types";
 
 const TOKEN_KEY = "auth_token";
@@ -141,11 +142,11 @@ export const permissionsApi = {
 // Materials
 export const materialsApi = {
   getAll: (groupId?: number, search?: string) => {
-    const params = new URLSearchParams();
+    const params = new URLSearchParams({ size: "1000" });
     if (groupId !== undefined) params.set("groupId", String(groupId));
     if (search) params.set("search", search);
-    const qs = params.toString();
-    return request<MaterialDto[]>(qs ? `/materials?${qs}` : "/materials");
+    return request<SpringPage<MaterialDto>>(`/materials?${params.toString()}`)
+      .then((page) => page.content);
   },
   create: (data: MaterialRequest) =>
     request<MaterialDto>("/materials", { method: "POST", body: JSON.stringify(data) }),
@@ -171,7 +172,12 @@ export const materialGroupsApi = {
 
 // Formulas
 export const formulasApi = {
-  getAll: () => request<FormulaDto[]>("/formulas"),
+  getAll: (groupId?: number) => {
+    const params = new URLSearchParams({ size: "1000" });
+    if (groupId !== undefined) params.set("groupId", String(groupId));
+    return request<SpringPage<FormulaDto>>(`/formulas?${params.toString()}`)
+      .then((page) => page.content);
+  },
   create: (data: FormulaRequest) =>
     request<FormulaDto>("/formulas", { method: "POST", body: JSON.stringify(data) }),
   update: (id: number, data: FormulaRequest) =>

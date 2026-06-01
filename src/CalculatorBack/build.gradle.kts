@@ -3,6 +3,7 @@ plugins {
 	id("org.springframework.boot") version "4.0.6"
 	id("io.spring.dependency-management") version "1.1.7"
 	jacoco
+	checkstyle
 }
 
 group = "ru.denis"
@@ -33,6 +34,12 @@ dependencies {
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.8")
 	implementation("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
+}
+
+checkstyle {
+	toolVersion = "10.21.4"
+	configFile = file("config/checkstyle/checkstyle.xml")
+	isIgnoreFailures = true
 }
 
 // Workaround: Gradle 9 + JDK 25 fails to load classes from paths containing

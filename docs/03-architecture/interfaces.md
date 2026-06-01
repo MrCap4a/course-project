@@ -12,7 +12,7 @@
 | IUserService | Control → Mediator | `create()`, `getById()`, `update()`, `delete()` | Контроллеры вызывают методы сервиса пользователей, не зная их реализации |
 | IMaterialRepository | Mediator → Foundation | `save()`, `findById()`, `delete()`, `findAll()` | Сервисы работают с сущностями через репозиторий, без прямого доступа к БД |
 | IUserRepository | Mediator → Foundation | `save()`, `findById()`, `delete()`, `findAll()` | Сервисы работают с сущностями пользователей через репозиторий |
-| REST API | Клиент → Сервер | `POST/GET/PUT/DELETE /api/materials`, `/api/users` | Запросы от Desktop и Web клиентов поверх HTTPS, данные в формате JSON |
+| REST API | Клиент → Сервер | `POST/GET/PUT/DELETE /api/v1/materials`, `/api/v1/users` | Запросы от Desktop и Web клиентов поверх HTTPS, данные в формате JSON |
 | JDBC/JPA | Foundation → БД | SQL-запросы через Hibernate | Репозитории транслируют объектные операции в SQL-запросы к PostgreSQL |
 
 ## Спецификация интерфейсов
@@ -33,32 +33,44 @@
 
 **Протокол:** REST API поверх HTTPS, данные в формате JSON
 
+Версионирование реализовано через `server.servlet.context-path: /api/v1` в `application.yaml` — все эндпоинты доступны с префиксом `/api/v1/` без изменения кода контроллеров.
+
 | Метод | Эндпоинт | Описание |
 |---|---|---|
-| GET | `/api/materials` | Получить список всех материалов |
-| GET | `/api/materials/{id}` | Получить материал по ID |
-| POST | `/api/materials` | Создать новый материал |
-| PUT | `/api/materials/{id}` | Обновить материал |
-| DELETE | `/api/materials/{id}` | Удалить материал |
-| GET | `/api/material-groups` | Получить список групп материалов |
-| GET | `/api/material-groups/{id}` | Получить группу материалов по ID |
-| POST | `/api/material-groups` | Создать группу материалов |
-| PUT | `/api/material-groups/{id}` | Обновить группу материалов |
-| DELETE | `/api/material-groups/{id}` | Удалить группу материалов |
-| GET | `/api/formulas` | Получить список формул |
-| GET | `/api/formulas/{id}` | Получить формулу по ID |
-| POST | `/api/formulas` | Создать формулу |
-| PUT | `/api/formulas/{id}` | Обновить формулу |
-| DELETE | `/api/formulas/{id}` | Удалить формулу |
-| GET | `/api/calculations` | Получить список расчётов |
-| GET | `/api/calculations/{id}` | Получить расчёт по ID |
-| POST | `/api/calculations` | Создать расчёт на основе формулы |
-| POST | `/api/calculations/{id}/recalculate` | Пересчитать расчёт по актуальным ценам |
-| DELETE | `/api/calculations/{id}` | Удалить расчёт |
-| GET | `/api/users` | Получить список пользователей |
-| POST | `/api/users` | Создать пользователя |
-| PUT | `/api/users/{id}` | Обновить пользователя |
-| DELETE | `/api/users/{id}` | Удалить пользователя |
+| POST | `/api/v1/auth/login` | Аутентификация, получение access + refresh токенов |
+| POST | `/api/v1/auth/refresh` | Обновление access-токена по refresh-токену |
+| POST | `/api/v1/auth/logout` | Завершение сессии |
+| GET | `/api/v1/users/me` | Получить текущего пользователя |
+| GET | `/api/v1/users` | Получить список пользователей |
+| POST | `/api/v1/users` | Создать пользователя |
+| PUT | `/api/v1/users/{id}` | Обновить пользователя |
+| DELETE | `/api/v1/users/{id}` | Удалить пользователя |
+| GET | `/api/v1/roles` | Получить список ролей |
+| POST | `/api/v1/roles` | Создать роль |
+| PUT | `/api/v1/roles/{id}` | Обновить роль |
+| DELETE | `/api/v1/roles/{id}` | Удалить роль |
+| GET | `/api/v1/permissions` | Получить список разрешений |
+| GET | `/api/v1/materials` | Получить список материалов (фильтр: `groupId`, `search`) |
+| POST | `/api/v1/materials` | Создать материал |
+| PUT | `/api/v1/materials/{id}` | Обновить материал |
+| DELETE | `/api/v1/materials/{id}` | Удалить материал |
+| GET | `/api/v1/material-groups` | Получить список групп материалов |
+| POST | `/api/v1/material-groups` | Создать группу материалов |
+| PUT | `/api/v1/material-groups/{id}` | Обновить группу материалов |
+| DELETE | `/api/v1/material-groups/{id}` | Удалить группу (стратегия: `CASCADE`, `DEFAULT`, `MOVE`) |
+| GET | `/api/v1/formulas` | Получить список формул |
+| POST | `/api/v1/formulas` | Создать формулу |
+| PUT | `/api/v1/formulas/{id}` | Обновить формулу |
+| DELETE | `/api/v1/formulas/{id}` | Удалить формулу |
+| GET | `/api/v1/formula-groups` | Получить список групп формул |
+| POST | `/api/v1/formula-groups` | Создать группу формул |
+| PUT | `/api/v1/formula-groups/{id}` | Обновить группу формул |
+| DELETE | `/api/v1/formula-groups/{id}` | Удалить группу формул |
+| GET | `/api/v1/calculations` | Получить список расчётов |
+| GET | `/api/v1/calculations/{id}` | Получить расчёт по ID |
+| POST | `/api/v1/calculations` | Создать расчёт на основе формулы |
+| PUT | `/api/v1/calculations/{id}` | Обновить расчёт |
+| DELETE | `/api/v1/calculations/{id}` | Удалить расчёт |
 
 ### 4. Foundation → БД
 

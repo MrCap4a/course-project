@@ -9,14 +9,20 @@
 | Область | Статус | Описание |
 |---|---|---|
 | Слой Control (REST API) | ✅ | Контроллеры для всех сущностей: материалы, формулы, расчёты, пользователи, аутентификация |
+| Пагинация | ✅ | `GET /materials` и `GET /formulas` поддерживают `?page`, `?size`, `?sort`; ответ — `Page<Dto>` |
 | Слой Mediator (сервисы) | ✅ | CRUD-сервисы для всех сущностей с валидацией, паттернами Proxy и Decorator |
-| Слой Entity (JPA) | ✅ | 9 JPA-сущностей: User, UserRole, Permission, Material, MaterialGroup, Formula, FormulaGroup, Calculation, CalculationItem |
+| Слой Entity (JPA) | ✅ | 10 JPA-сущностей: User, UserRole, Permission, Material, MaterialGroup, Formula, FormulaGroup, Calculation, CalculationItem, AuditLog |
 | Слой Foundation (репозитории) | ✅ | Spring Data JPA репозитории для каждой сущности |
 | Аутентификация | ✅ | JWT (access + refresh) через Spring Security OAuth2 Resource Server |
 | OpenAPI / Swagger UI | ✅ | springdoc-openapi 2.8.8; доступен на `/api/v1/swagger-ui/index.html` |
-| CORS | ✅ | Настроен в `SecurityConfig`; разрешены `localhost:5173`, `localhost:4173` |
+| CORS | ✅ | Настроен в `SecurityConfig`; разрешены `localhost:5173`, `localhost:4173`, `localhost` (http + https) |
+| HTTPS / TLS | ✅ | Nginx генерирует самоподписанный сертификат при сборке; HTTP (80) → редирект на HTTPS (443) |
+| Rate limiting | ✅ | `RateLimitFilter` — token bucket 60 req/min per IP, возвращает HTTP 429 при превышении |
+| Audit logging | ✅ | `AuditLoggingInterceptor` пишет в таблицу `audit_logs`: пользователь, действие, endpoint, IP, время, статус |
+| Статический анализ | ✅ | Checkstyle 10.21.4: 69 предупреждений, 0 ошибок, BUILD SUCCESSFUL |
 | Вычислитель формул | ✅ | `FormulaEvaluator` — парсинг и вычисление выражений с подстановкой `{const}` и `{material}` |
 | Тесты | ✅ | 12 тестовых классов, 157 тестов, 0 failures; покрытие 49% (JaCoCo) |
+| CI/CD | ✅ | GitHub Actions pipeline: тесты → JAR → Docker-образ (ghcr.io) + компиляция десктопа |
 
 ## Ключевые технические решения
 
@@ -42,4 +48,12 @@
 |---|---|
 | [code-structure.md](code-structure.md) | Структура пакетов и маппинг на слои PCMEF |
 | [tests.md](tests.md) | Описание тестов, охват, инструкция по запуску |
-| [images/](images/) | Скриншоты отчёта JaCoCo и результатов запуска тестов |
+| [static-analysis.md](static-analysis.md) | Отчёт статического анализа кода |
+| [cicd.md](cicd.md) | Описание CI/CD pipeline (GitHub Actions) |
+| [images/](images/) | Скриншоты отчёта JaCoCo, результатов тестов и статанализа |
+
+## Статический анализ
+
+Результаты анализа описаны в [static-analysis.md](static-analysis.md).
+
+Checkstyle 10.21.4 проверил 47 файлов: **69 предупреждений, 0 ошибок**. Основные категории: отступы табами в `CalculatorApplication.java` (15), отсутствие пустой строки между методами интерфейсов (28), wildcard-импорты в контроллерах (6). HTML-отчёт: `build/reports/checkstyle/main.html`.

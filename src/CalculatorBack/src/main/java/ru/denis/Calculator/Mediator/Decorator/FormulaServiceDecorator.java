@@ -3,13 +3,13 @@ package ru.denis.Calculator.Mediator.Decorator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import ru.denis.Calculator.Dto.FormulaDto;
 import ru.denis.Calculator.Dto.Request.FormulaRequest;
 import ru.denis.Calculator.Mediator.Interfaces.IFormulaService;
-
-import java.util.List;
 
 @Slf4j
 @Service
@@ -24,11 +24,13 @@ public class FormulaServiceDecorator implements IFormulaService {
     }
 
     @Override
-    public List<FormulaDto> getAllFormulas() {
-        log.info("getAllFormulas user={}", currentUser());
+    public Page<FormulaDto> getAllFormulas(Integer groupId, Pageable pageable) {
+        log.info("getAllFormulas groupId={} page={} size={} user={}",
+                groupId, pageable.getPageNumber(), pageable.getPageSize(), currentUser());
         try {
-            List<FormulaDto> result = delegate.getAllFormulas();
-            log.info("getAllFormulas: fetched {} items", result.size());
+            Page<FormulaDto> result = delegate.getAllFormulas(groupId, pageable);
+            log.info("getAllFormulas: page {}/{} totalElements={} user={}",
+                    result.getNumber(), result.getTotalPages(), result.getTotalElements(), currentUser());
             return result;
         } catch (Exception e) {
             log.error("getAllFormulas failed user={}: {}", currentUser(), e.getMessage());

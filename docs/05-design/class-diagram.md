@@ -2,8 +2,7 @@
 
 Уточнённая диаграмма классов проекта **Calculator**. По сравнению с исходной диаграммой: все классы разбиты по слоям PCMEF, добавлены интерфейсы сервисов и репозиториев, добавлены методы на основе анализа диаграмм последовательности, добавлены реализации Impl и Jpa, показаны зависимости между слоями.
 
-[`images/class-diagram-refined.png`](images/class-diagram-refined.png)
-
+![images/class-diagram-refined.png](images/class-diagram-refined.png)
 ---
 
 ## Слои архитектуры PCMEF

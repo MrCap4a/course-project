@@ -1,13 +1,13 @@
 package ru.denis.Calculator.Mediator.Proxy;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ru.denis.Calculator.Dto.MaterialDto;
 import ru.denis.Calculator.Dto.Request.MaterialRequest;
 import ru.denis.Calculator.Mediator.PermissionChecker;
 import ru.denis.Calculator.Mediator.Interfaces.IMaterialService;
-
-import java.util.List;
 
 @Service
 public class MaterialServiceProxy implements IMaterialService {
@@ -23,9 +23,9 @@ public class MaterialServiceProxy implements IMaterialService {
     }
 
     @Override
-    public List<MaterialDto> getAllMaterials(Integer groupId, String search) {
+    public Page<MaterialDto> getAllMaterials(Integer groupId, String search, Pageable pageable) {
         checker.require("materials.view");
-        return delegate.getAllMaterials(groupId, search);
+        return delegate.getAllMaterials(groupId, search, pageable);
     }
 
     @Override

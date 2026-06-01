@@ -120,17 +120,16 @@ public class ApiClient {
     // =========================================================================
 
     public List<MaterialDto> getMaterials(Integer groupId, String search) throws ApiException {
-        StringBuilder url = new StringBuilder("/materials");
-        String sep = "?";
+        StringBuilder url = new StringBuilder("/materials?size=1000");
         if (groupId != null) {
-            url.append(sep).append("groupId=").append(groupId);
-            sep = "&";
+            url.append("&groupId=").append(groupId);
         }
         if (search != null && !search.isBlank()) {
-            url.append(sep).append("search=")
+            url.append("&search=")
                .append(URLEncoder.encode(search, StandardCharsets.UTF_8));
         }
-        return get(url.toString(), new TypeReference<>() {});
+        PageDto<MaterialDto> page = get(url.toString(), new TypeReference<PageDto<MaterialDto>>() {});
+        return page.getContent();
     }
 
     public MaterialDto createMaterial(String name, BigDecimal price, String units, Integer groupId) throws ApiException {
@@ -184,7 +183,8 @@ public class ApiClient {
     // =========================================================================
 
     public List<FormulaDto> getFormulas() throws ApiException {
-        return get("/formulas", new TypeReference<>() {});
+        PageDto<FormulaDto> page = get("/formulas?size=1000", new TypeReference<PageDto<FormulaDto>>() {});
+        return page.getContent();
     }
 
     public FormulaDto createFormula(String name, String expression, Integer groupId) throws ApiException {

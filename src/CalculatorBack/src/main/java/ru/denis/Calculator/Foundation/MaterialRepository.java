@@ -1,5 +1,7 @@
 package ru.denis.Calculator.Foundation;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ru.denis.Calculator.Entity.Material;
@@ -12,7 +14,9 @@ public interface MaterialRepository extends JpaRepository<Material, Integer> {
 
     List<Material> findByGroup(MaterialGroup group);
 
-    List<Material> findByNameContainingIgnoreCase(String name);
+    Page<Material> findByGroup(MaterialGroup group, Pageable pageable);
 
-    List<Material> findByGroupAndNameContainingIgnoreCase(MaterialGroup group, String name);
+    Page<Material> findByNameContainingIgnoreCase(String name, Pageable pageable);
+
+    Page<Material> findByGroupAndNameContainingIgnoreCase(MaterialGroup group, String name, Pageable pageable);
 }

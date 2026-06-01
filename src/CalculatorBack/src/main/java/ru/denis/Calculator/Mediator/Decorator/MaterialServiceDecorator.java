@@ -3,13 +3,13 @@ package ru.denis.Calculator.Mediator.Decorator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import ru.denis.Calculator.Dto.MaterialDto;
 import ru.denis.Calculator.Dto.Request.MaterialRequest;
 import ru.denis.Calculator.Mediator.Interfaces.IMaterialService;
-
-import java.util.List;
 
 @Slf4j
 @Service
@@ -24,11 +24,13 @@ public class MaterialServiceDecorator implements IMaterialService {
     }
 
     @Override
-    public List<MaterialDto> getAllMaterials(Integer groupId, String search) {
-        log.info("getAllMaterials groupId={} search={} user={}", groupId, search, currentUser());
+    public Page<MaterialDto> getAllMaterials(Integer groupId, String search, Pageable pageable) {
+        log.info("getAllMaterials groupId={} search={} page={} size={} user={}",
+                groupId, search, pageable.getPageNumber(), pageable.getPageSize(), currentUser());
         try {
-            List<MaterialDto> result = delegate.getAllMaterials(groupId, search);
-            log.info("getAllMaterials: fetched {} items", result.size());
+            Page<MaterialDto> result = delegate.getAllMaterials(groupId, search, pageable);
+            log.info("getAllMaterials: page {}/{} totalElements={} user={}",
+                    result.getNumber(), result.getTotalPages(), result.getTotalElements(), currentUser());
             return result;
         } catch (Exception e) {
             log.error("getAllMaterials failed user={}: {}", currentUser(), e.getMessage());

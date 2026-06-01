@@ -1,5 +1,7 @@
 package ru.denis.Calculator.Mediator.Impl;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ru.denis.Calculator.Config.DataInitializer;
 import ru.denis.Calculator.Dto.FormulaDto;
@@ -9,8 +11,6 @@ import ru.denis.Calculator.Entity.FormulaGroup;
 import ru.denis.Calculator.Foundation.FormulaGroupRepository;
 import ru.denis.Calculator.Foundation.FormulaRepository;
 import ru.denis.Calculator.Mediator.Interfaces.IFormulaService;
-
-import java.util.List;
 
 @Service
 public class FormulaServiceImpl implements IFormulaService {
@@ -25,10 +25,13 @@ public class FormulaServiceImpl implements IFormulaService {
     }
 
     @Override
-    public List<FormulaDto> getAllFormulas() {
-        return formulaRepository.findAll().stream()
-                .map(this::toDto)
-                .toList();
+    public Page<FormulaDto> getAllFormulas(Integer groupId, Pageable pageable) {
+        if (groupId != null) {
+            FormulaGroup group = formulaGroupRepository.findById(groupId)
+                    .orElseThrow(() -> new RuntimeException("FormulaGroup not found: " + groupId));
+            return formulaRepository.findByGroup(group, pageable).map(this::toDto);
+        }
+        return formulaRepository.findAll(pageable).map(this::toDto);
     }
 
     @Override
@@ -40,12 +43,10 @@ public class FormulaServiceImpl implements IFormulaService {
     @Override
     public FormulaDto createFormula(FormulaRequest request) {
         FormulaGroup group = resolveGroup(request.groupId());
-
         Formula formula = new Formula();
         formula.setName(request.name());
         formula.setExpression(request.expression());
         formula.setGroup(group);
-
         return toDto(formulaRepository.save(formula));
     }
 
@@ -54,12 +55,17 @@ public class FormulaServiceImpl implements IFormulaService {
         Formula formula = formulaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Formula not found: " + id));
         FormulaGroup group = resolveGroup(request.groupId());
-
         formula.setName(request.name());
         formula.setExpression(request.expression());
         formula.setGroup(group);
-
         return toDto(formulaRepository.save(formula));
+    }
+
+    @Override
+    public void deleteFormula(Integer id) {
+        formulaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Formula not found: " + id));
+        formulaRepository.deleteById(id);
     }
 
     private FormulaGroup resolveGroup(Integer groupId) {
@@ -73,13 +79,6 @@ public class FormulaServiceImpl implements IFormulaService {
                     def.setName(DataInitializer.DEFAULT_GROUP_NAME);
                     return formulaGroupRepository.save(def);
                 });
-    }
-
-    @Override
-    public void deleteFormula(Integer id) {
-        formulaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Formula not found: " + id));
-        formulaRepository.deleteById(id);
     }
 
     private FormulaDto toDto(Formula formula) {

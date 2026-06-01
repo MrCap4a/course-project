@@ -1,13 +1,13 @@
 package ru.denis.Calculator.Mediator.Proxy;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ru.denis.Calculator.Dto.FormulaDto;
 import ru.denis.Calculator.Dto.Request.FormulaRequest;
 import ru.denis.Calculator.Mediator.PermissionChecker;
 import ru.denis.Calculator.Mediator.Interfaces.IFormulaService;
-
-import java.util.List;
 
 @Service
 public class FormulaServiceProxy implements IFormulaService {
@@ -23,9 +23,9 @@ public class FormulaServiceProxy implements IFormulaService {
     }
 
     @Override
-    public List<FormulaDto> getAllFormulas() {
+    public Page<FormulaDto> getAllFormulas(Integer groupId, Pageable pageable) {
         checker.require("formulas.view");
-        return delegate.getAllFormulas();
+        return delegate.getAllFormulas(groupId, pageable);
     }
 
     @Override
