@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ru.denis.calculatordesktop.controller.FormulaDialogController"
+      styleClass="dialog-root" prefWidth="720">
+
+    <VBox styleClass="dialog-header">
+        <Label fx:id="dialogTitle" text="Добавить формулу" styleClass="dialog-title"/>
+    </VBox>
+
+    <HBox styleClass="dialog-body" spacing="16" alignment="TOP_LEFT">
+        <!-- Left: form fields -->
+        <VBox spacing="14" HBox.hgrow="ALWAYS">
+            <VBox spacing="6">
+                <HBox spacing="3" alignment="CENTER_LEFT">
+                    <Label text="Название" styleClass="form-label"/>
+                    <Label text="*" styleClass="required-mark"/>
+                </HBox>
+                <TextField fx:id="nameField" promptText="Введите название формулы"/>
+            </VBox>
+            <VBox spacing="6">
+                <HBox spacing="3" alignment="CENTER_LEFT">
+                    <Label text="Выражение" styleClass="form-label"/>
+                    <Label text="*" styleClass="required-mark"/>
+                </HBox>
+                <TextField fx:id="expressionField" promptText="({дерево} + {клей}) * {const}"/>
+                <Label text="Используйте {название_группы} для выбора материала из группы и {const} для произвольного числа."
+                       styleClass="hint-label"/>
+            </VBox>
+            <VBox spacing="6">
+                <Label text="Группа формулы" styleClass="form-label"/>
+                <ComboBox fx:id="groupCombo" maxWidth="Infinity"/>
+            </VBox>
+            <Label fx:id="errorLabel" styleClass="error-label"
+                   visible="false" managed="false" wrapText="true"/>
+        </VBox>
+
+        <!-- Right: material groups hint panel -->
+        <VBox spacing="8" prefWidth="200" minWidth="180">
+            <VBox spacing="3">
+                <Label text="Группы материалов" styleClass="form-label"/>
+                <Label text="Нажмите — вставить в выражение" styleClass="hint-label"/>
+            </VBox>
+            <TextField fx:id="matGroupSearch" promptText="Поиск..." styleClass="search-field"/>
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" prefHeight="200"
+                        hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+                <VBox fx:id="matGroupsBox" spacing="4" style="-fx-padding: 4;"/>
+            </ScrollPane>
+        </VBox>
+    </HBox>
+
+    <HBox styleClass="dialog-footer" spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Отмена" styleClass="btn-secondary" onAction="#handleCancel"/>
+        <Button text="Сохранить" styleClass="btn-primary" onAction="#handleSave"/>
+    </HBox>
+</VBox>

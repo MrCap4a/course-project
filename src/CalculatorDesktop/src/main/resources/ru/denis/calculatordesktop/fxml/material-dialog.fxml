@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ru.denis.calculatordesktop.controller.MaterialDialogController"
+      styleClass="dialog-root" prefWidth="420">
+
+    <VBox styleClass="dialog-header">
+        <Label fx:id="dialogTitle" text="Добавить материал" styleClass="dialog-title"/>
+    </VBox>
+
+    <VBox styleClass="dialog-body" spacing="14">
+        <VBox spacing="6">
+            <HBox spacing="3" alignment="CENTER_LEFT">
+                <Label text="Название" styleClass="form-label"/>
+                <Label text="*" styleClass="required-mark"/>
+            </HBox>
+            <TextField fx:id="nameField" promptText="Введите название материала"/>
+        </VBox>
+        <HBox spacing="12">
+            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                <HBox spacing="3" alignment="CENTER_LEFT">
+                    <Label text="Цена" styleClass="form-label"/>
+                    <Label text="*" styleClass="required-mark"/>
+                </HBox>
+                <TextField fx:id="priceField" promptText="0.00"/>
+            </VBox>
+            <VBox spacing="6" prefWidth="120">
+                <HBox spacing="3" alignment="CENTER_LEFT">
+                    <Label text="Ед. изм." styleClass="form-label"/>
+                    <Label text="*" styleClass="required-mark"/>
+                </HBox>
+                <TextField fx:id="unitsField" promptText="кг, м, шт..."/>
+            </VBox>
+        </HBox>
+        <VBox spacing="6">
+            <Label text="Группа" styleClass="form-label"/>
+            <ComboBox fx:id="groupCombo" maxWidth="Infinity"/>
+        </VBox>
+        <Label fx:id="errorLabel" styleClass="error-label"
+               visible="false" managed="false" wrapText="true"/>
+    </VBox>
+
+    <HBox styleClass="dialog-footer" spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Отмена" styleClass="btn-secondary" onAction="#handleCancel"/>
+        <Button text="Сохранить" styleClass="btn-primary" onAction="#handleSave"/>
+    </HBox>
+</VBox>

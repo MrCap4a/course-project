@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ru.denis.calculatordesktop.controller.MainController">
+
+    <!-- Sidebar -->
+    <left>
+        <VBox styleClass="sidebar" prefWidth="240" minWidth="220">
+            <Label text="Калькулятор" styleClass="sidebar-title"/>
+            <Separator styleClass="sidebar-separator"/>
+
+            <Label text="ОСНОВНОЕ" styleClass="nav-section-label"/>
+            <Button fx:id="btnMaterials" text="  Материалы" styleClass="nav-item"
+                    maxWidth="Infinity" onAction="#showMaterials"/>
+            <Button fx:id="btnFormulas" text="  Формулы" styleClass="nav-item"
+                    maxWidth="Infinity" onAction="#showFormulas"/>
+            <Button fx:id="btnCalculations" text="  Расчёты" styleClass="nav-item"
+                    maxWidth="Infinity" onAction="#showCalculations"/>
+
+            <VBox fx:id="adminSection" visible="false" managed="false">
+                <Separator styleClass="sidebar-separator"/>
+                <Label text="АДМИНИСТРИРОВАНИЕ" styleClass="nav-section-label"/>
+                <Button fx:id="btnUsers" text="  Пользователи" styleClass="nav-item"
+                        maxWidth="Infinity" onAction="#showUsers"/>
+                <Button fx:id="btnRoles" text="  Роли" styleClass="nav-item"
+                        maxWidth="Infinity" onAction="#showRoles"/>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+            <Separator styleClass="sidebar-separator"/>
+
+            <VBox styleClass="user-info-panel" spacing="4">
+                <Label fx:id="userNameLabel" styleClass="user-name-label" text="Пользователь"/>
+                <Label fx:id="userRoleLabel" styleClass="user-role-label" text=""/>
+                <Button text="Выйти" styleClass="logout-btn"
+                        onAction="#handleLogout"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Content -->
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-area"/>
+    </center>
+</BorderPane>

@@ -49,7 +49,7 @@ SELECT 1, id FROM "permissions";
 
 -- -----------------------------------------------------------------------------
 -- Супер-администратор
--- Пароль: admin (bcrypt, $2a$12$... — замените перед деплоем)
+-- Пароль: admin (bcrypt $2a$10$)
 -- -----------------------------------------------------------------------------
 INSERT INTO "user" ("id", "role_id", "login", "password", "name", "surname", "is_super_admin")
 OVERRIDING SYSTEM VALUE
@@ -57,7 +57,7 @@ VALUES (
     1,
     1,
     'admin',
-    '$2a$12$zQh2I0n7f9MkQJMPiTZmOeWVRQBRqoH8Y2bXJAGw9qH1kEzCrX3Di',
+    '$2a$10$KQbr7TqTo4IO1ebWXFhVpOQ.qI0u8OfcIrKn8LB0IoGOjysizntLe',
     'Супер',
     'Администратор',
     TRUE

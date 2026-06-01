@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ru.denis.calculatordesktop.controller.RoleDialogController"
+      styleClass="dialog-root" prefWidth="460">
+
+    <VBox styleClass="dialog-header">
+        <Label fx:id="dialogTitle" text="Добавить роль" styleClass="dialog-title"/>
+    </VBox>
+
+    <VBox styleClass="dialog-body" spacing="14">
+
+        <VBox spacing="6">
+            <HBox spacing="3" alignment="CENTER_LEFT">
+                <Label text="Название роли" styleClass="form-label"/>
+                <Label text="*" styleClass="required-mark"/>
+            </HBox>
+            <TextField fx:id="nameField" promptText="Введите название роли"/>
+        </VBox>
+
+        <VBox spacing="8">
+            <HBox alignment="CENTER_LEFT" spacing="0">
+                <Label text="Права доступа" styleClass="form-label"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Выбрать все" onAction="#handleSelectAll"
+                        style="-fx-background-color:transparent;-fx-text-fill:#3b82f6;-fx-font-size:12px;-fx-padding:2 8;-fx-cursor:hand;-fx-border-width:0;"/>
+                <Label text="|" style="-fx-text-fill:#cbd5e1;-fx-padding:0 2;"/>
+                <Button text="Снять все" onAction="#handleClearAll"
+                        style="-fx-background-color:transparent;-fx-text-fill:#94a3b8;-fx-font-size:12px;-fx-padding:2 8;-fx-cursor:hand;-fx-border-width:0;"/>
+            </HBox>
+
+            <ScrollPane fitToWidth="true" prefHeight="330" styleClass="scroll-pane"
+                        hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                        style="-fx-background-color:transparent;-fx-background:transparent;">
+                <VBox fx:id="permissionsContainer" spacing="10"
+                      style="-fx-background-color:transparent; -fx-padding: 2 2 4 2;"/>
+            </ScrollPane>
+        </VBox>
+
+        <Label fx:id="errorLabel" styleClass="error-label"
+               visible="false" managed="false" wrapText="true"/>
+    </VBox>
+
+    <HBox styleClass="dialog-footer" spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Отмена" styleClass="btn-secondary" onAction="#handleCancel"/>
+        <Button text="Сохранить" styleClass="btn-primary" onAction="#handleSave"/>
+    </HBox>
+</VBox>

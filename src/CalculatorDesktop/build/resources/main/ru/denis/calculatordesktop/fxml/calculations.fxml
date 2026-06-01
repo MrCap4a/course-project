@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ru.denis.calculatordesktop.controller.CalculationsController"
+      spacing="0">
+
+    <!-- Header -->
+    <HBox styleClass="page-header" alignment="CENTER_LEFT" spacing="12">
+        <Label text="Расчёты" styleClass="page-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="groupFilter" promptText="Все группы"
+                  prefWidth="180" onAction="#handleGroupFilter"/>
+        <ComboBox fx:id="formulaFilter" promptText="Все формулы"
+                  prefWidth="200" onAction="#handleFormulaFilter"/>
+        <TextField fx:id="searchField" promptText="Поиск по названию..."
+                   styleClass="search-field" prefWidth="220"
+                   onKeyReleased="#handleSearch"/>
+        <Button text="+ Новый расчёт" styleClass="btn-primary" onAction="#handleAdd"/>
+    </HBox>
+
+    <!-- Split: table top, detail bottom -->
+    <SplitPane orientation="VERTICAL" VBox.vgrow="ALWAYS">
+        <VBox styleClass="page-body">
+            <TableView fx:id="table" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colName"    text="Название"   prefWidth="240"/>
+                    <TableColumn fx:id="colFormula" text="Формула"    prefWidth="200"/>
+                    <TableColumn fx:id="colResult"  text="Результат"  prefWidth="160"/>
+                    <TableColumn fx:id="colActions" text=""           prefWidth="100"/>
+                </columns>
+                <placeholder><Label text="Нет расчётов. Нажмите «Новый расчёт» чтобы создать."/></placeholder>
+            </TableView>
+        </VBox>
+
+        <!-- Detail panel -->
+        <VBox fx:id="detailPanel" styleClass="detail-panel" spacing="12" minHeight="160">
+            <Label text="Выберите расчёт для просмотра деталей"
+                   styleClass="hint-label" alignment="CENTER"/>
+        </VBox>
+    </SplitPane>
+</VBox>

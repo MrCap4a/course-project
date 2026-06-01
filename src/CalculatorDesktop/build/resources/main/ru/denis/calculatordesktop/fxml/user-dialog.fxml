@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ru.denis.calculatordesktop.controller.UserDialogController"
+      styleClass="dialog-root" prefWidth="420">
+
+    <VBox styleClass="dialog-header">
+        <Label fx:id="dialogTitle" text="Добавить пользователя" styleClass="dialog-title"/>
+    </VBox>
+
+    <VBox styleClass="dialog-body" spacing="14">
+        <VBox spacing="6">
+            <HBox spacing="3" alignment="CENTER_LEFT">
+                <Label text="Логин" styleClass="form-label"/>
+                <Label text="*" styleClass="required-mark"/>
+            </HBox>
+            <TextField fx:id="loginField" promptText="Введите логин"/>
+        </VBox>
+        <VBox spacing="6">
+            <HBox spacing="3" alignment="CENTER_LEFT">
+                <Label fx:id="passwordLabel" text="Пароль" styleClass="form-label"/>
+                <Label fx:id="passwordAsterisk" text="*" styleClass="required-mark"/>
+            </HBox>
+            <PasswordField fx:id="passwordField" promptText="Введите пароль"/>
+        </VBox>
+        <HBox spacing="12">
+            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                <HBox spacing="3" alignment="CENTER_LEFT">
+                    <Label text="Имя" styleClass="form-label"/>
+                    <Label text="*" styleClass="required-mark"/>
+                </HBox>
+                <TextField fx:id="nameField" promptText="Имя"/>
+            </VBox>
+            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                <HBox spacing="3" alignment="CENTER_LEFT">
+                    <Label text="Фамилия" styleClass="form-label"/>
+                    <Label text="*" styleClass="required-mark"/>
+                </HBox>
+                <TextField fx:id="surnameField" promptText="Фамилия"/>
+            </VBox>
+        </HBox>
+        <VBox spacing="6">
+            <HBox spacing="3" alignment="CENTER_LEFT">
+                <Label text="Роль" styleClass="form-label"/>
+                <Label text="*" styleClass="required-mark"/>
+            </HBox>
+            <ComboBox fx:id="roleCombo" maxWidth="Infinity"/>
+        </VBox>
+        <Label fx:id="errorLabel" styleClass="error-label"
+               visible="false" managed="false" wrapText="true"/>
+    </VBox>
+
+    <HBox styleClass="dialog-footer" spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Отмена" styleClass="btn-secondary" onAction="#handleCancel"/>
+        <Button text="Сохранить" styleClass="btn-primary" onAction="#handleSave"/>
+    </HBox>
+</VBox>

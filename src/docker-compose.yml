@@ -1,0 +1,43 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: calculator
+      POSTGRES_USER: calculator
+      POSTGRES_PASSWORD: calculator
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./ddl.sql:/docker-entrypoint-initdb.d/01_ddl.sql
+      - ./triggers.sql:/docker-entrypoint-initdb.d/02_triggers.sql
+      - ./seed.sql:/docker-entrypoint-initdb.d/03_seed.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U calculator"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./CalculatorBack
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/calculator
+      SPRING_DATASOURCE_USERNAME: calculator
+      SPRING_DATASOURCE_PASSWORD: calculator
+      SECURITY_JWT_SECRET: ${JWT_SECRET:-change-me-to-a-secret-string-32chars-min}
+      SECURITY_JWT_EXPIRATION: ${JWT_EXPIRATION:-86400}
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build: ./CalculatorWeb
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

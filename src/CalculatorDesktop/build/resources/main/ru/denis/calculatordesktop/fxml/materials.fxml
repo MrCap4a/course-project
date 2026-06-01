@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ru.denis.calculatordesktop.controller.MaterialsController">
+
+    <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+
+        <!-- ── Materials tab ── -->
+        <Tab text="Материалы">
+            <VBox spacing="0">
+                <!-- Header -->
+                <HBox styleClass="page-header" alignment="CENTER_LEFT" spacing="12">
+                    <Label text="Материалы" styleClass="page-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <ComboBox fx:id="groupFilter" promptText="Все группы"
+                              prefWidth="180" onAction="#handleGroupFilter"/>
+                    <TextField fx:id="searchField" promptText="Поиск по названию..."
+                               styleClass="search-field" prefWidth="220"
+                               onKeyReleased="#handleSearch"/>
+                    <Button text="+ Добавить" styleClass="btn-primary" onAction="#handleAdd"/>
+                </HBox>
+
+                <!-- Table -->
+                <VBox styleClass="page-body" VBox.vgrow="ALWAYS">
+                    <TableView fx:id="materialsTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colName"  text="Название"  prefWidth="220"/>
+                            <TableColumn fx:id="colPrice" text="Цена"      prefWidth="130"/>
+                            <TableColumn fx:id="colUnits" text="Ед. изм."  prefWidth="100"/>
+                            <TableColumn fx:id="colGroup" text="Группа"    prefWidth="180"/>
+                            <TableColumn fx:id="colActions" text=""        prefWidth="100"/>
+                        </columns>
+                        <placeholder><Label text="Нет материалов"/></placeholder>
+                    </TableView>
+                </VBox>
+            </VBox>
+        </Tab>
+
+        <!-- ── Groups tab ── -->
+        <Tab text="Группы материалов">
+            <VBox spacing="0">
+                <HBox styleClass="page-header" alignment="CENTER_LEFT" spacing="12">
+                    <Label text="Группы материалов" styleClass="page-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="+ Добавить группу" styleClass="btn-primary"
+                            onAction="#handleAddGroup"/>
+                </HBox>
+                <VBox styleClass="page-body" VBox.vgrow="ALWAYS">
+                    <TableView fx:id="groupsTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colGroupName" text="Название" prefWidth="360"/>
+                            <TableColumn fx:id="colGroupActions" text="" prefWidth="120"/>
+                        </columns>
+                        <placeholder><Label text="Нет групп"/></placeholder>
+                    </TableView>
+                </VBox>
+            </VBox>
+        </Tab>
+
+    </TabPane>
+</VBox>

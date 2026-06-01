@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ru.denis.calculatordesktop.controller.CalculationDialogController"
+      styleClass="dialog-root" prefWidth="560">
+
+    <VBox styleClass="dialog-header">
+        <Label fx:id="dialogTitle" text="Новый расчёт" styleClass="dialog-title"/>
+    </VBox>
+
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" maxHeight="560">
+        <VBox styleClass="dialog-body" spacing="14">
+            <VBox spacing="6">
+                <HBox spacing="3" alignment="CENTER_LEFT">
+                    <Label text="Название расчёта" styleClass="form-label"/>
+                    <Label text="*" styleClass="required-mark"/>
+                </HBox>
+                <TextField fx:id="nameField" promptText="Введите название"/>
+            </VBox>
+            <VBox spacing="6">
+                <HBox spacing="3" alignment="CENTER_LEFT">
+                    <Label text="Формула" styleClass="form-label"/>
+                    <Label text="*" styleClass="required-mark"/>
+                </HBox>
+                <ComboBox fx:id="formulaCombo" maxWidth="Infinity"
+                          onAction="#handleFormulaSelected"/>
+                <Label fx:id="expressionLabel" styleClass="detail-expression"
+                       visible="false" managed="false" wrapText="true"/>
+            </VBox>
+
+            <!-- Dynamic item rows injected here -->
+            <VBox fx:id="itemsContainer" spacing="10"/>
+
+            <Label fx:id="errorLabel" styleClass="error-label"
+                   visible="false" managed="false" wrapText="true"/>
+        </VBox>
+    </ScrollPane>
+
+    <HBox styleClass="dialog-footer" spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Отмена" styleClass="btn-secondary" onAction="#handleCancel"/>
+        <Button fx:id="saveButton" text="Рассчитать и сохранить"
+                styleClass="btn-primary" onAction="#handleSave"/>
+    </HBox>
+</VBox>
