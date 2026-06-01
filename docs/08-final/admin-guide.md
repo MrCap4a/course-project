@@ -39,8 +39,11 @@ cp docs/04-database/triggers.sql src/triggers.sql
 # Секрет для подписи JWT-токенов — минимум 32 символа
 JWT_SECRET=замените-на-случайную-строку-минимум-32-символа
 
-# Время жизни токена в секундах (по умолчанию 86400 = 24 часа)
+# Время жизни access-токена в секундах (по умолчанию 86400 = 24 часа)
 JWT_EXPIRATION=86400
+
+# Время жизни refresh-токена в секундах (по умолчанию 604800 = 7 дней)
+JWT_REFRESH_EXPIRATION=604800
 ```
 
 > **Важно:** замените `JWT_SECRET` перед развёртыванием в продакшене. Значение по умолчанию (`change-me-to-a-secret-string-32chars-min`) небезопасно.
@@ -54,7 +57,9 @@ docker compose up --build -d
 
 После запуска:
 - Веб-клиент: `http://localhost:80`
-- API бэкенда: `http://localhost:8080`
+- API бэкенда: `http://localhost:8080/api/v1`
+- Swagger UI: `http://localhost:8080/api/v1/swagger-ui/index.html`
+- OpenAPI JSON: `http://localhost:8080/api/v1/v3/api-docs`
 - PostgreSQL: `localhost:5432`, БД `calculator`, пользователь `calculator`
 
 ### 1.4. Первый вход

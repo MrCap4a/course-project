@@ -1,6 +1,7 @@
 export interface TokenResponse {
   token: string;
   tokenType: string;
+  refreshToken: string;
 }
 
 export interface PermissionDto {

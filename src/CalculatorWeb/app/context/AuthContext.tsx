@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 import type { CurrentUserDto } from "../api/types";
-import { authApi, usersApi, saveToken, clearToken, getToken } from "../api/client";
+import { authApi, usersApi, saveToken, clearToken, getToken, saveRefreshToken, clearRefreshToken } from "../api/client";
 
 interface AuthContextValue {
   user: CurrentUserDto | null;
@@ -36,6 +36,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = useCallback(async (loginStr: string, password: string) => {
     const res = await authApi.login({ login: loginStr, password });
     saveToken(res.token);
+    saveRefreshToken(res.refreshToken);
     const me = await usersApi.me();
     setUser(me);
   }, []);
@@ -43,6 +44,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const logout = useCallback(async () => {
     try { await authApi.logout(); } catch { /* ignore */ }
     clearToken();
+    clearRefreshToken();
     setUser(null);
   }, []);
 

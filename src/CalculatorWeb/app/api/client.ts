@@ -20,6 +20,7 @@ import type {
 } from "./types";
 
 const TOKEN_KEY = "auth_token";
+const REFRESH_TOKEN_KEY = "auth_refresh_token";
 
 export function getToken(): string | null {
   return localStorage.getItem(TOKEN_KEY);
@@ -33,6 +34,37 @@ export function clearToken(): void {
   localStorage.removeItem(TOKEN_KEY);
 }
 
+export function getRefreshToken(): string | null {
+  return localStorage.getItem(REFRESH_TOKEN_KEY);
+}
+
+export function saveRefreshToken(token: string): void {
+  localStorage.setItem(REFRESH_TOKEN_KEY, token);
+}
+
+export function clearRefreshToken(): void {
+  localStorage.removeItem(REFRESH_TOKEN_KEY);
+}
+
+async function tryRefresh(): Promise<string | null> {
+  const refreshToken = getRefreshToken();
+  if (!refreshToken) return null;
+  try {
+    const res = await fetch("/api/v1/auth/refresh", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ refreshToken }),
+    });
+    if (!res.ok) return null;
+    const data: TokenResponse = await res.json();
+    saveToken(data.token);
+    saveRefreshToken(data.refreshToken);
+    return data.token;
+  } catch {
+    return null;
+  }
+}
+
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const token = getToken();
   const headers: Record<string, string> = {
@@ -41,10 +73,20 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   };
   if (token) headers["Authorization"] = `Bearer ${token}`;
 
-  const res = await fetch(path, { ...options, headers });
+  const res = await fetch("/api/v1" + path, { ...options, headers });
 
   if (res.status === 401) {
+    if (!path.startsWith("/auth/")) {
+      const newToken = await tryRefresh();
+      if (newToken) {
+        headers["Authorization"] = `Bearer ${newToken}`;
+        const retry = await fetch("/api/v1" + path, { ...options, headers });
+        if (retry.status === 204) return undefined as T;
+        if (retry.ok) return retry.json() as Promise<T>;
+      }
+    }
     clearToken();
+    clearRefreshToken();
     window.location.href = "/login";
     throw new Error("Unauthorized");
   }
@@ -62,6 +104,8 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
 export const authApi = {
   login: (data: LoginRequest) =>
     request<TokenResponse>("/auth/login", { method: "POST", body: JSON.stringify(data) }),
+  refresh: (refreshToken: string) =>
+    request<TokenResponse>("/auth/refresh", { method: "POST", body: JSON.stringify({ refreshToken }) }),
   logout: () =>
     request<void>("/auth/logout", { method: "POST" }),
 };

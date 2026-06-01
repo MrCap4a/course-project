@@ -1,3 +1,7 @@
+server:
+  servlet:
+    context-path: /api/v1
+
 spring:
   application:
     name: Calculator
@@ -20,3 +24,4 @@ security:
   jwt:
     secret: super-calculator-jwt-secret-key-change-before-deploy
     expiration: 86400
+    refresh-expiration: 604800

@@ -12,13 +12,19 @@
 | Слой Mediator (сервисы) | ✅ | CRUD-сервисы для всех сущностей с валидацией, паттернами Proxy и Decorator |
 | Слой Entity (JPA) | ✅ | 9 JPA-сущностей: User, UserRole, Permission, Material, MaterialGroup, Formula, FormulaGroup, Calculation, CalculationItem |
 | Слой Foundation (репозитории) | ✅ | Spring Data JPA репозитории для каждой сущности |
-| Аутентификация | ✅ | JWT через Spring Security OAuth2 Resource Server |
+| Аутентификация | ✅ | JWT (access + refresh) через Spring Security OAuth2 Resource Server |
+| OpenAPI / Swagger UI | ✅ | springdoc-openapi 2.8.8; доступен на `/api/v1/swagger-ui/index.html` |
+| CORS | ✅ | Настроен в `SecurityConfig`; разрешены `localhost:5173`, `localhost:4173` |
 | Вычислитель формул | ✅ | `FormulaEvaluator` — парсинг и вычисление выражений с подстановкой `{const}` и `{material}` |
 | Тесты | ✅ | 12 тестовых классов, 157 тестов, 0 failures; покрытие 49% (JaCoCo) |
 
 ## Ключевые технические решения
 
-**Стек:** Java 25, Spring Boot 4.0.6, Spring Data JPA, Spring Security + JWT (OAuth2 Resource Server), PostgreSQL, Gradle 9, JUnit 5 + Mockito, JaCoCo.
+**Стек:** Java 25, Spring Boot 4.0.6, Spring Data JPA, Spring Security + JWT (OAuth2 Resource Server), springdoc-openapi 2.8.8, PostgreSQL, Gradle 9, JUnit 5 + Mockito, JaCoCo.
+
+**Версионирование API** реализовано через `server.servlet.context-path: /api/v1` — все эндпоинты доступны с префиксом `/api/v1/` без изменения кода контроллеров.
+
+**CORS** настроен в `SecurityConfig.corsConfigurationSource()` — разрешены запросы с `localhost:5173` и `localhost:4173` (dev-сервер React).
 
 **Паттерн Proxy** реализован для каждого сервиса (`MaterialServiceProxy`, `UserServiceProxy` и др.) — централизованная проверка прав доступа через `PermissionChecker` без дублирования в основных сервисах.
 

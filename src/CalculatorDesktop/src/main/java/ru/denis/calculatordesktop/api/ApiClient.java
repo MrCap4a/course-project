@@ -22,7 +22,7 @@ public class ApiClient {
     private static final ApiClient INSTANCE = new ApiClient();
     private final HttpClient http;
     private final ObjectMapper mapper;
-    private String baseUrl = "http://localhost:8080";
+    private String baseUrl = "http://localhost:8080/api/v1";
 
     private ApiClient() {
         http = HttpClient.newHttpClient();

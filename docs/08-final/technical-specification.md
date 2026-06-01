@@ -149,10 +149,12 @@ Calculator — веб-приложение, автоматизирующее р�
 ## 6. Требования к безопасности
 
 - Аутентификация по логину и паролю; пароли хранятся в виде BCrypt-хеша (cost 10)
-- Авторизация на основе 17 атомарных прав доступа, объединяемых в роли
-- JWT-токены для stateless-аутентификации
+- Авторизация на основе 20 атомарных прав доступа, объединяемых в роли
+- JWT access token (24 ч) + refresh token (7 дней) для stateless-аутентификации
+- CORS: разрешены запросы с доверенных origins (`localhost:5173`, `localhost:4173`)
 - Суперадмин (`is_super_admin = true`) защищён от удаления и снятия флага триггерами на уровне БД
 - Слой Mediator/Proxy проверяет права до выполнения любой операции
+- OpenAPI-документация доступна по адресу `/api/v1/swagger-ui/index.html` (Swagger UI) и `/api/v1/v3/api-docs` (OpenAPI JSON)
 
 ---
 
@@ -184,6 +186,7 @@ Calculator — веб-приложение, автоматизирующее р�
 | Фреймворк | Spring Boot 4.0.6 |
 | ORM | Spring Data JPA + Hibernate |
 | Безопасность | Spring Security + JWT (OAuth2 Resource Server) |
+| API-документация | springdoc-openapi 2.8.8 (Swagger UI) |
 | СУБД | PostgreSQL 16 |
 | Сборка бэкенда | Gradle 9 |
 | Веб-клиент | React + TypeScript, React Router |
