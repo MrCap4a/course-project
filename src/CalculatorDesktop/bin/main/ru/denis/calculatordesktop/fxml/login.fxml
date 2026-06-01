@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<StackPane xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="ru.denis.calculatordesktop.controller.LoginController"
+           styleClass="login-root">
+    <VBox alignment="CENTER" maxWidth="440">
+        <VBox styleClass="login-card" spacing="16">
+            <padding><Insets top="40" right="48" bottom="40" left="48"/></padding>
+            <Label text="Калькулятор" styleClass="login-title"/>
+            <Label text="Введите данные для входа" styleClass="login-subtitle"/>
+
+            <VBox spacing="6">
+                <HBox spacing="3" alignment="CENTER_LEFT">
+                    <Label text="Логин" styleClass="form-label"/>
+                    <Label text="*" styleClass="required-mark"/>
+                </HBox>
+                <TextField fx:id="loginField" promptText="Введите логин"
+                           onAction="#handleLogin"/>
+            </VBox>
+            <VBox spacing="6">
+                <HBox spacing="3" alignment="CENTER_LEFT">
+                    <Label text="Пароль" styleClass="form-label"/>
+                    <Label text="*" styleClass="required-mark"/>
+                </HBox>
+                <PasswordField fx:id="passwordField" promptText="Введите пароль"
+                               onAction="#handleLogin"/>
+            </VBox>
+
+            <Label fx:id="errorLabel" styleClass="error-label"
+                   visible="false" managed="false" wrapText="true" maxWidth="300"/>
+
+            <VBox spacing="8">
+                <Button fx:id="loginButton" text="Войти" onAction="#handleLogin"
+                        styleClass="btn-primary" maxWidth="Infinity"/>
+                <ProgressBar fx:id="progressBar" maxWidth="Infinity"
+                             visible="false" managed="false" prefHeight="4"/>
+            </VBox>
+        </VBox>
+    </VBox>
+</StackPane>

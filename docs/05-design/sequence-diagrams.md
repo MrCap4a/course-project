@@ -1,6 +1,6 @@
 # Sequence Diagrams
 
-Диаграммы последовательности для ключевых сценариев использования проекта **SuperCalculator** — конфигурируемого калькулятора для автоматизации ценообразования. Архитектура соответствует слоям PCMEF: Presentation → Control → Mediator → Entity → Foundation → Database.
+Диаграммы последовательности для ключевых сценариев использования проекта **Calculator** — конфигурируемого калькулятора для автоматизации ценообразования. Архитектура соответствует слоям PCMEF: Presentation → Control → Mediator → Entity → Foundation → Database.
 
 ---
 

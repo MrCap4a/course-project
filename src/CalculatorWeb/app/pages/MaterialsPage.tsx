@@ -143,11 +143,12 @@ export function MaterialsPage() {
       setGrpSaving(false);
     }
   };
-  const deleteGroup = async (strategy: "DELETE_MATERIALS" | "MOVE_MATERIALS") => {
+  const deleteGroup = async (strategy: "CASCADE" | "DEFAULT" | "MOVE") => {
     if (!deleteGrpId) return;
     const targetId = deleteGrpTarget !== "none" ? parseInt(deleteGrpTarget) : undefined;
+    const resolvedStrategy = strategy === "MOVE" && targetId === undefined ? "DEFAULT" : strategy;
     try {
-      await materialGroupsApi.delete(deleteGrpId, strategy, targetId);
+      await materialGroupsApi.delete(deleteGrpId, resolvedStrategy, targetId);
       toast.success("Группа удалена");
       setDeleteGrpId(null);
       await load();
@@ -395,7 +396,7 @@ export function MaterialsPage() {
           </AlertDialogHeader>
           <div className="space-y-3 py-2">
             <div className="flex flex-col gap-2">
-              <Button variant="outline" className="justify-start" onClick={() => deleteGroup("DELETE_MATERIALS")}>
+              <Button variant="outline" className="justify-start" onClick={() => deleteGroup("CASCADE")}>
                 Удалить все материалы группы
               </Button>
               <div className="space-y-1">
@@ -412,7 +413,7 @@ export function MaterialsPage() {
                       ))}
                     </SelectContent>
                   </Select>
-                  <Button onClick={() => deleteGroup("MOVE_MATERIALS")}>Переместить</Button>
+                  <Button onClick={() => deleteGroup("MOVE")}>Переместить</Button>
                 </div>
               </div>
             </div>

@@ -118,7 +118,7 @@ export const materialGroupsApi = {
     request<MaterialGroupDto>("/material-groups", { method: "POST", body: JSON.stringify(data) }),
   update: (id: number, data: MaterialGroupRequest) =>
     request<MaterialGroupDto>(`/material-groups/${id}`, { method: "PUT", body: JSON.stringify(data) }),
-  delete: (id: number, strategy: "DELETE_MATERIALS" | "MOVE_MATERIALS", targetGroupId?: number) => {
+  delete: (id: number, strategy: "CASCADE" | "DEFAULT" | "MOVE", targetGroupId?: number) => {
     const params = new URLSearchParams({ strategy });
     if (targetGroupId !== undefined) params.set("targetGroupId", String(targetGroupId));
     return request<void>(`/material-groups/${id}?${params.toString()}`, { method: "DELETE" });
