@@ -1,0 +1,654 @@
+2026-06-02 17:57:59,625 INFO o.a.j.u.JMeterUtils: Setting Locale to en_US
+2026-06-02 17:57:59,655 INFO o.a.j.JMeter: Loading user properties from: C:\jmeter\apache-jmeter-5.6.3\bin\user.properties
+2026-06-02 17:57:59,657 INFO o.a.j.JMeter: Loading system properties from: C:\jmeter\apache-jmeter-5.6.3\bin\system.properties
+2026-06-02 17:57:59,667 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2026-06-02 17:57:59,667 INFO o.a.j.JMeter: Version 5.6.3
+2026-06-02 17:57:59,668 INFO o.a.j.JMeter: java.version=25.0.3
+2026-06-02 17:57:59,668 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2026-06-02 17:57:59,668 INFO o.a.j.JMeter: os.name=Windows 11
+2026-06-02 17:57:59,668 INFO o.a.j.JMeter: os.arch=amd64
+2026-06-02 17:57:59,668 INFO o.a.j.JMeter: os.version=10.0
+2026-06-02 17:57:59,668 INFO o.a.j.JMeter: file.encoding=UTF-8
+2026-06-02 17:57:59,668 INFO o.a.j.JMeter: java.awt.headless=true
+2026-06-02 17:57:59,668 INFO o.a.j.JMeter: Max memory     =7465861120
+2026-06-02 17:57:59,668 INFO o.a.j.JMeter: Available Processors =16
+2026-06-02 17:57:59,689 INFO o.a.j.JMeter: Default Locale=English (United States)
+2026-06-02 17:57:59,690 INFO o.a.j.JMeter: JMeter  Locale=English (United States)
+2026-06-02 17:57:59,690 INFO o.a.j.JMeter: JMeterHome=C:\jmeter\apache-jmeter-5.6.3
+2026-06-02 17:57:59,690 INFO o.a.j.JMeter: user.dir  =D:\Documents\Урокаки\Программаня инженерия\SuperCalculator\src
+2026-06-02 17:57:59,691 INFO o.a.j.JMeter: PWD       =D:\Documents\Урокаки\Программаня инженерия\SuperCalculator\src
+2026-06-02 17:58:16,671 INFO o.a.j.JMeter: IP: 169.254.83.107 Name: SkmrhBook FullName: SkmrhBook
+2026-06-02 17:58:16,728 INFO o.a.j.JMeter: Setting property 'jmeter.reportgenerator.outputdir' to:'d:\Documents\Урокаки\Программаня инженерия\SuperCalculator\src\jmeter-report'
+2026-06-02 17:58:16,732 INFO o.a.j.s.FileServer: Default base='D:\Documents\Урокаки\Программаня инженерия\SuperCalculator\src'
+2026-06-02 17:58:16,734 INFO o.a.j.s.FileServer: Set new base='d:\Documents\Урокаки\Программаня инженерия\SuperCalculator\src'
+2026-06-02 17:58:17,146 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2026-06-02 17:58:17,174 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2026-06-02 17:58:17,180 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2026-06-02 17:58:17,185 INFO o.a.j.s.SaveService: Loading file: d:\Documents\Урокаки\Программаня инженерия\SuperCalculator\src\load-test.jmx
+2026-06-02 17:58:17,266 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-06-02 17:58:17,266 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-06-02 17:58:17,266 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-06-02 17:58:17,266 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-06-02 17:58:17,266 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2026-06-02 17:58:17,266 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2026-06-02 17:58:17,362 INFO o.a.j.JMeter: Creating summariser <summary>
+2026-06-02 17:58:17,370 INFO o.a.j.r.d.ReportGenerator: ReportGenerator will use for Parsing the separator: ','
+2026-06-02 17:58:17,370 INFO o.a.j.r.d.ReportGenerator: Will generate report at end of test from  results file: d:\Documents\Урокаки\Программаня инженерия\SuperCalculator\src\load-test-results.jtl
+2026-06-02 17:58:17,370 INFO o.a.j.r.d.ReportGenerator: Reading report generator properties from: C:\jmeter\apache-jmeter-5.6.3\bin\reportgenerator.properties
+2026-06-02 17:58:17,371 INFO o.a.j.r.d.ReportGenerator: Merging with JMeter properties
+2026-06-02 17:58:17,376 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.temp_dir' not found, using default value 'temp' instead.
+2026-06-02 17:58:17,378 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.apdex_per_transaction' not found, using default value 'null' instead.
+2026-06-02 17:58:17,378 INFO o.a.j.r.c.ReportGeneratorConfiguration: apdex_per_transaction is empty, not APDEX per transaction customization
+2026-06-02 17:58:17,379 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.sample_filter' not found, using default value 'null' instead.
+2026-06-02 17:58:17,379 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.report_title' not found, using default value 'null' instead.
+2026-06-02 17:58:17,379 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.start_date' not found, using default value 'null' instead.
+2026-06-02 17:58:17,379 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.end_date' not found, using default value 'null' instead.
+2026-06-02 17:58:17,379 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.date_format' not found, using default value 'null' instead.
+2026-06-02 17:58:17,385 INFO o.a.j.r.c.ReportGeneratorConfiguration: Will use date range start date: null, end date: null
+2026-06-02 17:58:17,391 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.totalTPS.exclude_controllers' not found, using default value 'false' instead.
+2026-06-02 17:58:17,391 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.activeThreadsOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-06-02 17:58:17,392 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.timeVsThreads.exclude_controllers' not found, using default value 'false' instead.
+2026-06-02 17:58:17,392 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimeDistribution.exclude_controllers' not found, using default value 'false' instead.
+2026-06-02 17:58:17,392 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.transactionsPerSecond.exclude_controllers' not found, using default value 'false' instead.
+2026-06-02 17:58:17,392 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentiles.exclude_controllers' not found, using default value 'false' instead.
+2026-06-02 17:58:17,392 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentilesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-06-02 17:58:17,393 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-06-02 17:58:17,393 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.connectTimeOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-06-02 17:58:17,393 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.latenciesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-06-02 17:58:17,394 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.filters_only_sample_series' not found, using default value 'true' instead.
+2026-06-02 17:58:17,394 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.series_filter' not found, using default value '' instead.
+2026-06-02 17:58:17,394 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.show_controllers_only' not found, using default value 'false' instead.
+2026-06-02 17:58:17,395 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.filters_only_sample_series' not found, using default value 'true' instead.
+2026-06-02 17:58:17,395 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.series_filter' not found, using default value '' instead.
+2026-06-02 17:58:17,395 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.show_controllers_only' not found, using default value 'false' instead.
+2026-06-02 17:58:17,428 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2026-06-02 17:58:17,432 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-06-02 17:58:17,432 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-06-02 17:58:17,440 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2026-06-02 17:58:17,440 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2026-06-02 17:58:17,640 INFO o.a.j.JMeter: Running test (1780412297640)
+2026-06-02 17:58:17,641 INFO o.a.j.e.StandardJMeterEngine: Starting setUp thread groups
+2026-06-02 17:58:17,641 INFO o.a.j.e.StandardJMeterEngine: Starting setUp ThreadGroup: 1 : Setup - Login 
+2026-06-02 17:58:17,641 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Setup - Login.
+2026-06-02 17:58:17,642 INFO o.a.j.e.StandardJMeterEngine: Test will stop on error
+2026-06-02 17:58:17,642 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 delayedStart=false
+2026-06-02 17:58:17,649 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2026-06-02 17:58:17,649 INFO o.a.j.e.StandardJMeterEngine: Waiting for all setup thread groups to exit
+2026-06-02 17:58:17,652 INFO o.a.j.t.JMeterThread: Thread started: Setup - Login 1-1
+2026-06-02 17:58:17,687 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = SkmrhBook
+2026-06-02 17:58:17,695 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2026-06-02 17:58:17,696 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2026-06-02 17:58:17,697 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2026-06-02 17:58:17,697 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2026-06-02 17:58:17,697 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2026-06-02 17:58:18,481 INFO o.a.j.u.BeanShellTestElement: Token saved, length=184
+2026-06-02 17:58:18,486 INFO o.a.j.t.JMeterThread: Thread is done: Setup - Login 1-1
+2026-06-02 17:58:18,486 INFO o.a.j.t.JMeterThread: Thread finished: Setup - Login 1-1
+2026-06-02 17:58:18,488 INFO o.a.j.e.StandardJMeterEngine: All Setup Threads have ended
+2026-06-02 17:58:18,543 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Scenario 1 - Read (50 users, 60s)
+2026-06-02 17:58:18,543 INFO o.a.j.e.StandardJMeterEngine: Starting 50 threads for group Scenario 1 - Read (50 users, 60s).
+2026-06-02 17:58:18,543 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-06-02 17:58:18,544 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=50 ramp-up=10 delayedStart=false
+2026-06-02 17:58:18,546 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-1
+2026-06-02 17:58:18,576 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2026-06-02 17:58:18,576 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Scenario 1 - Read (50 users, 60s) to finish before starting next group
+2026-06-02 17:58:18,747 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-2
+2026-06-02 17:58:18,948 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-3
+2026-06-02 17:58:19,145 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-4
+2026-06-02 17:58:19,347 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-5
+2026-06-02 17:58:19,546 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-6
+2026-06-02 17:58:19,747 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-7
+2026-06-02 17:58:19,945 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-8
+2026-06-02 17:58:20,145 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-9
+2026-06-02 17:58:20,346 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-10
+2026-06-02 17:58:20,546 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-11
+2026-06-02 17:58:20,745 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-12
+2026-06-02 17:58:20,946 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-13
+2026-06-02 17:58:21,146 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-14
+2026-06-02 17:58:21,346 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-15
+2026-06-02 17:58:21,546 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-16
+2026-06-02 17:58:21,746 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-17
+2026-06-02 17:58:21,947 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-18
+2026-06-02 17:58:22,145 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-19
+2026-06-02 17:58:22,347 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-20
+2026-06-02 17:58:22,545 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-21
+2026-06-02 17:58:22,746 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-22
+2026-06-02 17:58:22,947 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-23
+2026-06-02 17:58:23,145 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-24
+2026-06-02 17:58:23,345 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-25
+2026-06-02 17:58:23,545 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-26
+2026-06-02 17:58:23,746 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-27
+2026-06-02 17:58:23,946 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-28
+2026-06-02 17:58:24,147 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-29
+2026-06-02 17:58:24,345 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-30
+2026-06-02 17:58:24,545 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-31
+2026-06-02 17:58:24,745 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-32
+2026-06-02 17:58:24,945 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-33
+2026-06-02 17:58:25,145 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-34
+2026-06-02 17:58:25,346 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-35
+2026-06-02 17:58:25,546 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-36
+2026-06-02 17:58:25,745 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-37
+2026-06-02 17:58:25,946 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-38
+2026-06-02 17:58:26,145 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-39
+2026-06-02 17:58:26,345 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-40
+2026-06-02 17:58:26,547 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-41
+2026-06-02 17:58:26,745 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-42
+2026-06-02 17:58:26,944 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-43
+2026-06-02 17:58:27,145 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-44
+2026-06-02 17:58:27,344 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-45
+2026-06-02 17:58:27,546 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-46
+2026-06-02 17:58:27,747 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-47
+2026-06-02 17:58:27,944 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-48
+2026-06-02 17:58:28,145 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-49
+2026-06-02 17:58:28,345 INFO o.a.j.t.JMeterThread: Thread started: Scenario 1 - Read (50 users, 60s) 1-50
+2026-06-02 17:58:30,075 INFO o.a.j.r.Summariser: summary +   1519 in 00:00:12 =  122.2/s Avg:    13 Min:     3 Max:   686 Err:     0 (0.00%) Active: 50 Started: 50 Finished: 0
+2026-06-02 17:59:00,136 INFO o.a.j.r.Summariser: summary +   6650 in 00:00:30 =  221.2/s Avg:    24 Min:     3 Max:    63 Err:     0 (0.00%) Active: 50 Started: 50 Finished: 0
+2026-06-02 17:59:00,138 INFO o.a.j.r.Summariser: summary =   8169 in 00:00:42 =  192.2/s Avg:    22 Min:     3 Max:   686 Err:     0 (0.00%)
+2026-06-02 17:59:18,346 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-2
+2026-06-02 17:59:18,355 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-1
+2026-06-02 17:59:18,356 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-15
+2026-06-02 17:59:18,356 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-4
+2026-06-02 17:59:18,356 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-9
+2026-06-02 17:59:18,358 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-16
+2026-06-02 17:59:18,359 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-6
+2026-06-02 17:59:18,359 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-18
+2026-06-02 17:59:18,360 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-20
+2026-06-02 17:59:18,360 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-7
+2026-06-02 17:59:18,362 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-13
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-21
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-5
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-3
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-31
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-14
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-5
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-42
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-22
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-31
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-42
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-12
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-22
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-36
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-36
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-34
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-12
+2026-06-02 17:59:18,579 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-3
+2026-06-02 17:59:18,579 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-14
+2026-06-02 17:59:18,578 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-21
+2026-06-02 17:59:18,579 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-34
+2026-06-02 17:59:18,580 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-11
+2026-06-02 17:59:18,580 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-11
+2026-06-02 17:59:18,580 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-8
+2026-06-02 17:59:18,580 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-8
+2026-06-02 17:59:18,580 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-10
+2026-06-02 17:59:18,580 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-10
+2026-06-02 17:59:18,582 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-17
+2026-06-02 17:59:18,582 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-28
+2026-06-02 17:59:18,582 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-19
+2026-06-02 17:59:18,582 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-17
+2026-06-02 17:59:18,582 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-19
+2026-06-02 17:59:18,582 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-28
+2026-06-02 17:59:18,583 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-41
+2026-06-02 17:59:18,583 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-23
+2026-06-02 17:59:18,583 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-35
+2026-06-02 17:59:18,583 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-41
+2026-06-02 17:59:18,583 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-35
+2026-06-02 17:59:18,583 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-23
+2026-06-02 17:59:18,584 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-38
+2026-06-02 17:59:18,584 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-38
+2026-06-02 17:59:18,585 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-46
+2026-06-02 17:59:18,585 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-46
+2026-06-02 17:59:18,585 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-40
+2026-06-02 17:59:18,585 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-33
+2026-06-02 17:59:18,585 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-33
+2026-06-02 17:59:18,585 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-40
+2026-06-02 17:59:18,585 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-47
+2026-06-02 17:59:18,585 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-47
+2026-06-02 17:59:18,586 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-26
+2026-06-02 17:59:18,586 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-26
+2026-06-02 17:59:18,586 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-25
+2026-06-02 17:59:18,586 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-24
+2026-06-02 17:59:18,586 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-32
+2026-06-02 17:59:18,586 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-25
+2026-06-02 17:59:18,586 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-24
+2026-06-02 17:59:18,586 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-32
+2026-06-02 17:59:18,589 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-44
+2026-06-02 17:59:18,589 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-45
+2026-06-02 17:59:18,589 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-49
+2026-06-02 17:59:18,589 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-48
+2026-06-02 17:59:18,589 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-27
+2026-06-02 17:59:18,589 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-45
+2026-06-02 17:59:18,589 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-50
+2026-06-02 17:59:18,589 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-29
+2026-06-02 17:59:18,589 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-50
+2026-06-02 17:59:18,589 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-43
+2026-06-02 17:59:18,589 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-37
+2026-06-02 17:59:18,589 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-44
+2026-06-02 17:59:18,590 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-43
+2026-06-02 17:59:18,589 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-39
+2026-06-02 17:59:18,589 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-48
+2026-06-02 17:59:18,589 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-29
+2026-06-02 17:59:18,590 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-49
+2026-06-02 17:59:18,590 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-37
+2026-06-02 17:59:18,590 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-27
+2026-06-02 17:59:18,590 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-39
+2026-06-02 17:59:18,590 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 1 - Read (50 users, 60s) 1-30
+2026-06-02 17:59:18,591 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 1 - Read (50 users, 60s) 1-30
+2026-06-02 17:59:18,591 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 2 : Scenario 2 - Auth Stress (20 users, 30s)
+2026-06-02 17:59:18,591 INFO o.a.j.e.StandardJMeterEngine: Starting 20 threads for group Scenario 2 - Auth Stress (20 users, 30s).
+2026-06-02 17:59:18,591 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-06-02 17:59:18,591 INFO o.a.j.t.ThreadGroup: Starting thread group... number=2 threads=20 ramp-up=5 delayedStart=false
+2026-06-02 17:59:18,592 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-1
+2026-06-02 17:59:18,594 INFO o.a.j.t.ThreadGroup: Started thread group number 2
+2026-06-02 17:59:18,594 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Scenario 2 - Auth Stress (20 users, 30s) to finish before starting next group
+2026-06-02 17:59:18,842 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-2
+2026-06-02 17:59:19,093 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-3
+2026-06-02 17:59:19,343 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-4
+2026-06-02 17:59:19,593 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-5
+2026-06-02 17:59:19,843 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-6
+2026-06-02 17:59:20,093 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-7
+2026-06-02 17:59:20,343 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-8
+2026-06-02 17:59:20,591 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-9
+2026-06-02 17:59:20,842 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-10
+2026-06-02 17:59:21,092 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-11
+2026-06-02 17:59:21,342 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-12
+2026-06-02 17:59:21,593 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-13
+2026-06-02 17:59:21,843 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-14
+2026-06-02 17:59:22,093 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-15
+2026-06-02 17:59:22,342 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-16
+2026-06-02 17:59:22,593 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-17
+2026-06-02 17:59:22,842 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-18
+2026-06-02 17:59:23,091 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-19
+2026-06-02 17:59:23,341 INFO o.a.j.t.JMeterThread: Thread started: Scenario 2 - Auth Stress (20 users, 30s) 2-20
+2026-06-02 17:59:30,018 INFO o.a.j.r.Summariser: summary +   4939 in 00:00:30 =  165.3/s Avg:    54 Min:     3 Max:   463 Err:     0 (0.00%) Active: 20 Started: 70 Finished: 50
+2026-06-02 17:59:30,018 INFO o.a.j.r.Summariser: summary =  13108 in 00:01:12 =  181.1/s Avg:    34 Min:     3 Max:   686 Err:     0 (0.00%)
+2026-06-02 17:59:48,599 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-18
+2026-06-02 17:59:48,599 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-18
+2026-06-02 17:59:48,600 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-9
+2026-06-02 17:59:48,600 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-9
+2026-06-02 17:59:48,670 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-17
+2026-06-02 17:59:48,670 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-17
+2026-06-02 17:59:48,671 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-1
+2026-06-02 17:59:48,671 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-1
+2026-06-02 17:59:48,708 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-13
+2026-06-02 17:59:48,708 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-13
+2026-06-02 17:59:48,709 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-5
+2026-06-02 17:59:48,709 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-5
+2026-06-02 17:59:48,710 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-7
+2026-06-02 17:59:48,710 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-7
+2026-06-02 17:59:48,711 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-12
+2026-06-02 17:59:48,711 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-12
+2026-06-02 17:59:48,711 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-14
+2026-06-02 17:59:48,712 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-14
+2026-06-02 17:59:48,712 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-6
+2026-06-02 17:59:48,712 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-6
+2026-06-02 17:59:48,713 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-3
+2026-06-02 17:59:48,713 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-3
+2026-06-02 17:59:48,716 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-16
+2026-06-02 17:59:48,716 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-16
+2026-06-02 17:59:48,718 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-4
+2026-06-02 17:59:48,718 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-4
+2026-06-02 17:59:48,727 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-15
+2026-06-02 17:59:48,727 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-15
+2026-06-02 17:59:48,737 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-11
+2026-06-02 17:59:48,738 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-11
+2026-06-02 17:59:48,813 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-19
+2026-06-02 17:59:48,813 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-8
+2026-06-02 17:59:48,813 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-10
+2026-06-02 17:59:48,813 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-20
+2026-06-02 17:59:48,813 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-20
+2026-06-02 17:59:48,813 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-10
+2026-06-02 17:59:48,813 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-19
+2026-06-02 17:59:48,813 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: Scenario 2 - Auth Stress (20 users, 30s) 2-2
+2026-06-02 17:59:48,813 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-8
+2026-06-02 17:59:48,813 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 2 - Auth Stress (20 users, 30s) 2-2
+2026-06-02 17:59:48,814 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 3 : Scenario 3 - Rate Limit Burst (100 users)
+2026-06-02 17:59:48,814 INFO o.a.j.e.StandardJMeterEngine: Starting 100 threads for group Scenario 3 - Rate Limit Burst (100 users).
+2026-06-02 17:59:48,814 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-06-02 17:59:48,814 INFO o.a.j.t.ThreadGroup: Starting thread group... number=3 threads=100 ramp-up=1 delayedStart=false
+2026-06-02 17:59:48,815 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-1
+2026-06-02 17:59:48,826 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-2
+2026-06-02 17:59:48,829 INFO o.a.j.t.ThreadGroup: Started thread group number 3
+2026-06-02 17:59:48,829 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2026-06-02 17:59:48,836 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-3
+2026-06-02 17:59:48,841 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-1
+2026-06-02 17:59:48,841 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-1
+2026-06-02 17:59:48,842 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-2
+2026-06-02 17:59:48,842 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-2
+2026-06-02 17:59:48,847 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-4
+2026-06-02 17:59:48,850 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-3
+2026-06-02 17:59:48,850 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-3
+2026-06-02 17:59:48,856 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-5
+2026-06-02 17:59:48,859 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-4
+2026-06-02 17:59:48,860 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-4
+2026-06-02 17:59:48,866 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-6
+2026-06-02 17:59:48,869 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-5
+2026-06-02 17:59:48,869 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-5
+2026-06-02 17:59:48,876 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-7
+2026-06-02 17:59:48,878 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-6
+2026-06-02 17:59:48,878 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-6
+2026-06-02 17:59:48,886 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-8
+2026-06-02 17:59:48,886 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-7
+2026-06-02 17:59:48,886 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-7
+2026-06-02 17:59:48,895 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-9
+2026-06-02 17:59:48,896 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-8
+2026-06-02 17:59:48,896 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-8
+2026-06-02 17:59:48,906 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-10
+2026-06-02 17:59:48,906 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-9
+2026-06-02 17:59:48,906 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-9
+2026-06-02 17:59:48,916 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-11
+2026-06-02 17:59:48,917 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-10
+2026-06-02 17:59:48,917 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-10
+2026-06-02 17:59:48,926 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-12
+2026-06-02 17:59:48,927 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-11
+2026-06-02 17:59:48,927 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-11
+2026-06-02 17:59:48,934 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-13
+2026-06-02 17:59:48,937 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-12
+2026-06-02 17:59:48,937 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-12
+2026-06-02 17:59:48,945 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-14
+2026-06-02 17:59:48,945 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-13
+2026-06-02 17:59:48,945 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-13
+2026-06-02 17:59:48,954 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-14
+2026-06-02 17:59:48,955 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-14
+2026-06-02 17:59:48,955 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-15
+2026-06-02 17:59:48,966 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-15
+2026-06-02 17:59:48,966 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-15
+2026-06-02 17:59:48,967 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-16
+2026-06-02 17:59:48,977 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-17
+2026-06-02 17:59:48,978 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-16
+2026-06-02 17:59:48,978 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-16
+2026-06-02 17:59:48,987 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-18
+2026-06-02 17:59:48,989 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-17
+2026-06-02 17:59:48,989 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-17
+2026-06-02 17:59:48,996 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-19
+2026-06-02 17:59:48,999 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-18
+2026-06-02 17:59:48,999 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-18
+2026-06-02 17:59:49,006 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-20
+2026-06-02 17:59:49,008 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-19
+2026-06-02 17:59:49,008 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-19
+2026-06-02 17:59:49,016 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-21
+2026-06-02 17:59:49,016 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-20
+2026-06-02 17:59:49,016 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-20
+2026-06-02 17:59:49,026 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-22
+2026-06-02 17:59:49,028 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-21
+2026-06-02 17:59:49,028 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-21
+2026-06-02 17:59:49,036 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-23
+2026-06-02 17:59:49,036 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-22
+2026-06-02 17:59:49,036 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-22
+2026-06-02 17:59:49,046 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-24
+2026-06-02 17:59:49,047 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-23
+2026-06-02 17:59:49,047 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-23
+2026-06-02 17:59:49,056 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-25
+2026-06-02 17:59:49,056 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-24
+2026-06-02 17:59:49,057 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-24
+2026-06-02 17:59:49,066 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-26
+2026-06-02 17:59:49,067 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-25
+2026-06-02 17:59:49,067 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-25
+2026-06-02 17:59:49,075 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-27
+2026-06-02 17:59:49,078 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-26
+2026-06-02 17:59:49,078 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-26
+2026-06-02 17:59:49,085 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-27
+2026-06-02 17:59:49,085 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-27
+2026-06-02 17:59:49,086 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-28
+2026-06-02 17:59:49,096 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-28
+2026-06-02 17:59:49,096 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-28
+2026-06-02 17:59:49,096 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-29
+2026-06-02 17:59:49,105 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-30
+2026-06-02 17:59:49,105 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-29
+2026-06-02 17:59:49,106 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-29
+2026-06-02 17:59:49,115 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-30
+2026-06-02 17:59:49,115 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-30
+2026-06-02 17:59:49,115 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-31
+2026-06-02 17:59:49,125 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-32
+2026-06-02 17:59:49,125 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-31
+2026-06-02 17:59:49,126 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-31
+2026-06-02 17:59:49,135 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-33
+2026-06-02 17:59:49,145 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-34
+2026-06-02 17:59:49,155 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-35
+2026-06-02 17:59:49,161 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-32
+2026-06-02 17:59:49,161 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-32
+2026-06-02 17:59:49,163 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-33
+2026-06-02 17:59:49,163 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-33
+2026-06-02 17:59:49,163 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-34
+2026-06-02 17:59:49,163 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-34
+2026-06-02 17:59:49,166 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-36
+2026-06-02 17:59:49,169 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-35
+2026-06-02 17:59:49,169 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-35
+2026-06-02 17:59:49,175 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-37
+2026-06-02 17:59:49,182 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-36
+2026-06-02 17:59:49,182 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-36
+2026-06-02 17:59:49,186 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-38
+2026-06-02 17:59:49,190 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-37
+2026-06-02 17:59:49,190 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-37
+2026-06-02 17:59:49,195 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-38
+2026-06-02 17:59:49,195 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-38
+2026-06-02 17:59:49,196 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-39
+2026-06-02 17:59:49,205 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-39
+2026-06-02 17:59:49,205 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-39
+2026-06-02 17:59:49,205 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-40
+2026-06-02 17:59:49,214 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-40
+2026-06-02 17:59:49,214 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-40
+2026-06-02 17:59:49,215 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-41
+2026-06-02 17:59:49,224 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-41
+2026-06-02 17:59:49,224 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-41
+2026-06-02 17:59:49,226 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-42
+2026-06-02 17:59:49,236 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-43
+2026-06-02 17:59:49,237 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-42
+2026-06-02 17:59:49,237 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-42
+2026-06-02 17:59:49,245 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-44
+2026-06-02 17:59:49,250 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-43
+2026-06-02 17:59:49,250 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-43
+2026-06-02 17:59:49,255 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-44
+2026-06-02 17:59:49,255 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-44
+2026-06-02 17:59:49,255 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-45
+2026-06-02 17:59:49,265 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-45
+2026-06-02 17:59:49,265 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-45
+2026-06-02 17:59:49,266 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-46
+2026-06-02 17:59:49,275 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-47
+2026-06-02 17:59:49,276 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-46
+2026-06-02 17:59:49,276 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-46
+2026-06-02 17:59:49,285 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-48
+2026-06-02 17:59:49,285 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-47
+2026-06-02 17:59:49,285 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-47
+2026-06-02 17:59:49,295 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-48
+2026-06-02 17:59:49,295 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-48
+2026-06-02 17:59:49,296 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-49
+2026-06-02 17:59:49,305 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-50
+2026-06-02 17:59:49,306 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-49
+2026-06-02 17:59:49,306 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-49
+2026-06-02 17:59:49,317 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-51
+2026-06-02 17:59:49,317 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-50
+2026-06-02 17:59:49,317 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-50
+2026-06-02 17:59:49,326 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-52
+2026-06-02 17:59:49,327 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-51
+2026-06-02 17:59:49,327 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-51
+2026-06-02 17:59:49,336 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-52
+2026-06-02 17:59:49,336 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-52
+2026-06-02 17:59:49,337 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-53
+2026-06-02 17:59:49,347 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-54
+2026-06-02 17:59:49,347 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-53
+2026-06-02 17:59:49,347 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-53
+2026-06-02 17:59:49,356 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-55
+2026-06-02 17:59:49,357 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-54
+2026-06-02 17:59:49,357 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-54
+2026-06-02 17:59:49,365 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-56
+2026-06-02 17:59:49,366 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-55
+2026-06-02 17:59:49,366 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-55
+2026-06-02 17:59:49,375 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-57
+2026-06-02 17:59:49,376 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-56
+2026-06-02 17:59:49,376 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-56
+2026-06-02 17:59:49,384 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-57
+2026-06-02 17:59:49,384 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-57
+2026-06-02 17:59:49,385 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-58
+2026-06-02 17:59:49,395 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-59
+2026-06-02 17:59:49,396 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-58
+2026-06-02 17:59:49,396 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-58
+2026-06-02 17:59:49,404 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-59
+2026-06-02 17:59:49,404 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-59
+2026-06-02 17:59:49,407 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-60
+2026-06-02 17:59:49,416 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-60
+2026-06-02 17:59:49,416 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-60
+2026-06-02 17:59:49,417 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-61
+2026-06-02 17:59:49,427 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-62
+2026-06-02 17:59:49,427 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-61
+2026-06-02 17:59:49,427 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-61
+2026-06-02 17:59:49,435 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-63
+2026-06-02 17:59:49,438 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-62
+2026-06-02 17:59:49,439 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-62
+2026-06-02 17:59:49,445 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-64
+2026-06-02 17:59:49,455 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-65
+2026-06-02 17:59:49,458 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-63
+2026-06-02 17:59:49,458 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-63
+2026-06-02 17:59:49,465 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-66
+2026-06-02 17:59:49,475 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-67
+2026-06-02 17:59:49,485 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-68
+2026-06-02 17:59:49,486 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-67
+2026-06-02 17:59:49,486 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-67
+2026-06-02 17:59:49,487 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-64
+2026-06-02 17:59:49,487 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-64
+2026-06-02 17:59:49,487 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-66
+2026-06-02 17:59:49,487 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-66
+2026-06-02 17:59:49,487 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-65
+2026-06-02 17:59:49,487 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-65
+2026-06-02 17:59:49,496 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-68
+2026-06-02 17:59:49,496 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-68
+2026-06-02 17:59:49,496 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-69
+2026-06-02 17:59:49,506 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-69
+2026-06-02 17:59:49,506 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-69
+2026-06-02 17:59:49,506 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-70
+2026-06-02 17:59:49,515 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-71
+2026-06-02 17:59:49,518 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-70
+2026-06-02 17:59:49,518 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-70
+2026-06-02 17:59:49,525 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-71
+2026-06-02 17:59:49,525 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-71
+2026-06-02 17:59:49,527 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-72
+2026-06-02 17:59:49,535 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-73
+2026-06-02 17:59:49,537 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-72
+2026-06-02 17:59:49,537 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-72
+2026-06-02 17:59:49,545 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-74
+2026-06-02 17:59:49,545 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-73
+2026-06-02 17:59:49,545 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-73
+2026-06-02 17:59:49,554 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-74
+2026-06-02 17:59:49,554 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-74
+2026-06-02 17:59:49,555 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-75
+2026-06-02 17:59:49,563 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-75
+2026-06-02 17:59:49,563 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-75
+2026-06-02 17:59:49,565 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-76
+2026-06-02 17:59:49,575 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-76
+2026-06-02 17:59:49,575 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-76
+2026-06-02 17:59:49,576 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-77
+2026-06-02 17:59:49,585 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-77
+2026-06-02 17:59:49,585 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-77
+2026-06-02 17:59:49,586 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-78
+2026-06-02 17:59:49,595 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-78
+2026-06-02 17:59:49,595 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-78
+2026-06-02 17:59:49,596 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-79
+2026-06-02 17:59:49,604 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-79
+2026-06-02 17:59:49,604 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-79
+2026-06-02 17:59:49,606 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-80
+2026-06-02 17:59:49,616 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-80
+2026-06-02 17:59:49,616 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-80
+2026-06-02 17:59:49,617 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-81
+2026-06-02 17:59:49,626 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-82
+2026-06-02 17:59:49,626 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-81
+2026-06-02 17:59:49,626 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-81
+2026-06-02 17:59:49,635 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-83
+2026-06-02 17:59:49,635 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-82
+2026-06-02 17:59:49,635 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-82
+2026-06-02 17:59:49,644 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-83
+2026-06-02 17:59:49,644 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-83
+2026-06-02 17:59:49,645 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-84
+2026-06-02 17:59:49,654 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-84
+2026-06-02 17:59:49,654 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-84
+2026-06-02 17:59:49,655 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-85
+2026-06-02 17:59:49,665 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-86
+2026-06-02 17:59:49,667 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-85
+2026-06-02 17:59:49,667 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-85
+2026-06-02 17:59:49,675 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-86
+2026-06-02 17:59:49,675 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-86
+2026-06-02 17:59:49,676 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-87
+2026-06-02 17:59:49,685 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-87
+2026-06-02 17:59:49,685 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-87
+2026-06-02 17:59:49,686 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-88
+2026-06-02 17:59:49,695 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-89
+2026-06-02 17:59:49,696 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-88
+2026-06-02 17:59:49,696 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-88
+2026-06-02 17:59:49,705 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-90
+2026-06-02 17:59:49,707 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-89
+2026-06-02 17:59:49,707 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-89
+2026-06-02 17:59:49,715 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-90
+2026-06-02 17:59:49,715 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-90
+2026-06-02 17:59:49,717 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-91
+2026-06-02 17:59:49,726 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-92
+2026-06-02 17:59:49,727 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-91
+2026-06-02 17:59:49,727 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-91
+2026-06-02 17:59:49,735 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-92
+2026-06-02 17:59:49,735 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-92
+2026-06-02 17:59:49,735 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-93
+2026-06-02 17:59:49,745 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-93
+2026-06-02 17:59:49,745 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-93
+2026-06-02 17:59:49,746 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-94
+2026-06-02 17:59:49,755 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-95
+2026-06-02 17:59:49,756 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-94
+2026-06-02 17:59:49,756 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-94
+2026-06-02 17:59:49,765 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-96
+2026-06-02 17:59:49,766 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-95
+2026-06-02 17:59:49,766 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-95
+2026-06-02 17:59:49,774 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-96
+2026-06-02 17:59:49,774 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-96
+2026-06-02 17:59:49,775 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-97
+2026-06-02 17:59:49,784 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-97
+2026-06-02 17:59:49,785 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-97
+2026-06-02 17:59:49,786 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-98
+2026-06-02 17:59:49,794 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-98
+2026-06-02 17:59:49,795 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-98
+2026-06-02 17:59:49,796 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-99
+2026-06-02 17:59:49,805 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-99
+2026-06-02 17:59:49,805 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-99
+2026-06-02 17:59:49,806 INFO o.a.j.t.JMeterThread: Thread started: Scenario 3 - Rate Limit Burst (100 users) 3-100
+2026-06-02 17:59:49,815 INFO o.a.j.t.JMeterThread: Thread is done: Scenario 3 - Rate Limit Burst (100 users) 3-100
+2026-06-02 17:59:49,815 INFO o.a.j.t.JMeterThread: Thread finished: Scenario 3 - Rate Limit Burst (100 users) 3-100
+2026-06-02 17:59:49,815 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2026-06-02 17:59:49,816 INFO o.a.j.r.Summariser: summary +   1510 in 00:00:20 =   76.3/s Avg:   250 Min:     8 Max:   425 Err:     0 (0.00%) Active: 0 Started: 170 Finished: 170
+2026-06-02 17:59:49,817 INFO o.a.j.r.Summariser: summary =  14618 in 00:01:32 =  158.6/s Avg:    56 Min:     3 Max:   686 Err:     0 (0.00%)
+2026-06-02 17:59:49,817 INFO o.a.j.JMeter: Generating Dashboard
+2026-06-02 17:59:49,817 INFO o.a.j.r.d.ReportGenerator: Flushing result collector before report Generation
+2026-06-02 17:59:49,859 INFO o.a.j.r.p.NormalizerSampleConsumer: Using format, 'ms', to parse timeStamp field
+2026-06-02 17:59:50,368 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): beginDate produced 0 samples
+2026-06-02 17:59:50,368 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): endDate produced 0 samples
+2026-06-02 17:59:50,396 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ApdexSummaryConsumer#stopProducing(): apdexSummary produced 0 samples
+2026-06-02 17:59:50,396 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.RequestsSummaryConsumer#stopProducing(): requestsSummary produced 0 samples
+2026-06-02 17:59:50,411 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.StatisticsSummaryConsumer#stopProducing(): statisticsSummary produced 0 samples
+2026-06-02 17:59:50,413 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.Top5ErrorsBySamplerConsumer#stopProducing(): top5ErrorsBySampler produced 0 samples
+2026-06-02 17:59:50,413 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ErrorsSummaryConsumer#stopProducing(): errorsSummary produced 0 samples
+2026-06-02 17:59:50,413 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.HitsPerSecondGraphConsumer#stopProducing(): hitsPerSecond produced 0 samples
+2026-06-02 17:59:50,587 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyVSRequestGraphConsumer#stopProducing(): latencyVsRequest produced 0 samples
+2026-06-02 17:59:50,589 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.SyntheticResponseTimeDistributionGraphConsumer#stopProducing(): syntheticResponseTimeDistribution produced 0 samples
+2026-06-02 17:59:50,589 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.BytesThroughputGraphConsumer#stopProducing(): bytesThroughputOverTime produced 0 samples
+2026-06-02 17:59:50,589 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.CodesPerSecondGraphConsumer#stopProducing(): codesPerSecond produced 0 samples
+2026-06-02 17:59:50,696 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeVSRequestGraphConsumer#stopProducing(): responseTimeVsRequest produced 0 samples
+2026-06-02 17:59:50,698 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): startIntervalControlerFilter produced 102326 samples
+2026-06-02 17:59:50,698 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TotalTPSGraphConsumer#stopProducing(): totalTPS produced 0 samples
+2026-06-02 17:59:50,698 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ActiveThreadsGraphConsumer#stopProducing(): activeThreadsOverTime produced 0 samples
+2026-06-02 17:59:50,698 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TimeVSThreadGraphConsumer#stopProducing(): timeVsThreads produced 0 samples
+2026-06-02 17:59:50,700 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeDistributionGraphConsumer#stopProducing(): responseTimeDistribution produced 0 samples
+2026-06-02 17:59:50,701 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TransactionsPerSecondGraphConsumer#stopProducing(): transactionsPerSecond produced 0 samples
+2026-06-02 17:59:50,701 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesGraphConsumer#stopProducing(): responseTimePercentiles produced 0 samples
+2026-06-02 17:59:50,704 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesOverTimeGraphConsumer#stopProducing(): responseTimePercentilesOverTime produced 0 samples
+2026-06-02 17:59:50,706 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeOverTimeGraphConsumer#stopProducing(): responseTimesOverTime produced 0 samples
+2026-06-02 17:59:50,706 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ConnectTimeOverTimeGraphConsumer#stopProducing(): connectTimeOverTime produced 0 samples
+2026-06-02 17:59:50,706 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyOverTimeGraphConsumer#stopProducing(): latenciesOverTime produced 0 samples
+2026-06-02 17:59:50,706 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): nameFilter produced 219270 samples
+2026-06-02 17:59:50,706 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): dateRangeFilter produced 43854 samples
+2026-06-02 17:59:50,706 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.NormalizerSampleConsumer#stopProducing(): normalizer produced 14618 samples
+2026-06-02 17:59:50,706 INFO o.a.j.r.p.CsvFileSampleSource: produce(): 14618 samples produced in 816ms on channel 0
+2026-06-02 17:59:50,706 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'json' of className:'org.apache.jmeter.report.dashboard.JsonExporter'
+2026-06-02 17:59:50,833 INFO o.a.j.r.d.JsonExporter: Found data for consumer statisticsSummary in context
+2026-06-02 17:59:50,833 INFO o.a.j.r.d.JsonExporter: Creating statistics for overall
+2026-06-02 17:59:50,834 INFO o.a.j.r.d.JsonExporter: Creating statistics for other transactions
+2026-06-02 17:59:50,834 INFO o.a.j.r.d.JsonExporter: Checking output folder
+2026-06-02 17:59:50,835 INFO o.a.j.r.d.JsonExporter: Writing statistics JSON to d:\Documents\Урокаки\Программаня инженерия\SuperCalculator\src\jmeter-report\statistics.json
+2026-06-02 17:59:50,887 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'html' of className:'org.apache.jmeter.report.dashboard.HtmlTemplateExporter'
+2026-06-02 17:59:50,891 INFO o.a.j.r.d.HtmlTemplateExporter: Will generate dashboard in folder: d:\Documents\Урокаки\Программаня инженерия\SuperCalculator\src\jmeter-report
+2026-06-02 17:59:51,066 INFO o.a.j.r.d.HtmlTemplateExporter: Report will be generated in: d:\Documents\Урокаки\Программаня инженерия\SuperCalculator\src\jmeter-report, creating folder structure
+2026-06-02 17:59:51,069 INFO o.a.j.r.d.TemplateVisitor: Copying folder from 'C:\jmeter\apache-jmeter-5.6.3\bin\report-template' to 'd:\Documents\Урокаки\Программаня инженерия\SuperCalculator\src\jmeter-report', got message: d:\Documents\Урокаки\Программаня инженерия\SuperCalculator\src\jmeter-report, found non empty folder with following content [d:\Documents\Урокаки\Программаня инженерия\SuperCalculator\src\jmeter-report\statistics.json], will be ignored
+2026-06-02 17:59:51,437 INFO o.a.j.JMeter: Dashboard generated
