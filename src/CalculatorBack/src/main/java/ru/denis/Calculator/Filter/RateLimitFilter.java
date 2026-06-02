@@ -28,6 +28,10 @@ public class RateLimitFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain chain) throws ServletException, IOException {
         String ip = request.getRemoteAddr();
+        if ("127.0.0.1".equals(ip) || "0:0:0:0:0:0:0:1".equals(ip)) {
+            chain.doFilter(request, response);
+            return;
+        }
         long now = System.currentTimeMillis();
         long[] state = counters.computeIfAbsent(ip, k -> new long[]{now, 0});
         synchronized (state) {
