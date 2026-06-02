@@ -23,7 +23,9 @@ public class PermissionChecker {
         User user = userRepository.findByLoginWithPermissions(login)
                 .orElseThrow(() -> new RuntimeException("Authenticated user not found: " + login));
 
-        if (user.isSuperAdmin()) return;
+        if (user.isSuperAdmin()) {
+            return;
+        }
 
         if (user.getRole() == null) {
             throw new AccessDeniedException("User has no role assigned");

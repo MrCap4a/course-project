@@ -108,7 +108,9 @@ public class DataInitializer implements ApplicationRunner {
 
     private void seedAdminUser(UserRole superAdminRole) {
         boolean exists = userRepository.findByLoginWithPermissions(ADMIN_LOGIN).isPresent();
-        if (exists) return;
+        if (exists) {
+            return;
+        }
 
         User admin = new User();
         admin.setLogin(ADMIN_LOGIN);

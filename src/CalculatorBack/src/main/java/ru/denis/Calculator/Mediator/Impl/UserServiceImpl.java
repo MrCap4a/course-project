@@ -71,7 +71,9 @@ public class UserServiceImpl implements IUserService {
     }
 
     private UserRole resolveRole(Integer roleId) {
-        if (roleId == null) return null;
+        if (roleId == null) {
+            return null;
+        }
         return userRoleRepository.findById(roleId)
                 .orElseThrow(() -> new RuntimeException("Role not found: " + roleId));
     }

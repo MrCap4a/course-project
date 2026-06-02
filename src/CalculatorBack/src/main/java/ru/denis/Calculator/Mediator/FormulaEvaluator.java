@@ -27,7 +27,9 @@ public class FormulaEvaluator {
         int index = 0;
 
         while (matcher.find()) {
-            if (index >= sortedItems.size()) return Optional.empty();
+            if (index >= sortedItems.size()) {
+                return Optional.empty();
+            }
 
             CalculationItem item = sortedItems.get(index++);
             String placeholder = matcher.group(1);
@@ -36,7 +38,9 @@ public class FormulaEvaluator {
             if ("const".equalsIgnoreCase(placeholder)) {
                 value = item.getQuantity();
             } else {
-                if (item.getMaterial() == null) return Optional.empty();
+                if (item.getMaterial() == null) {
+                    return Optional.empty();
+                }
                 value = item.getMaterial().getPrice().multiply(item.getQuantity());
             }
 
@@ -90,9 +94,15 @@ public class FormulaEvaluator {
             BigDecimal result = parseTerm();
             while (pos < input.length()) {
                 char op = input.charAt(pos);
-                if (op == '+') { pos++; result = result.add(parseTerm()); }
-                else if (op == '-') { pos++; result = result.subtract(parseTerm()); }
-                else break;
+                if (op == '+') {
+                    pos++;
+                    result = result.add(parseTerm());
+                } else if (op == '-') {
+                    pos++;
+                    result = result.subtract(parseTerm());
+                } else {
+                    break;
+                }
             }
             return result;
         }
@@ -107,7 +117,9 @@ public class FormulaEvaluator {
                 } else if (op == '/') {
                     pos++;
                     result = result.divide(parseFactor(), 10, RoundingMode.HALF_UP);
-                } else break;
+                } else {
+                    break;
+                }
             }
             return result;
         }
@@ -116,7 +128,9 @@ public class FormulaEvaluator {
             if (pos < input.length() && input.charAt(pos) == '(') {
                 pos++;
                 BigDecimal result = parseExpr();
-                if (pos < input.length() && input.charAt(pos) == ')') pos++;
+                if (pos < input.length() && input.charAt(pos) == ')') {
+                    pos++;
+                }
                 return result;
             }
             return parseNumber();
@@ -124,7 +138,9 @@ public class FormulaEvaluator {
 
         private BigDecimal parseNumber() {
             int start = pos;
-            if (pos < input.length() && input.charAt(pos) == '-') pos++;
+            if (pos < input.length() && input.charAt(pos) == '-') {
+                pos++;
+            }
             while (pos < input.length() && (Character.isDigit(input.charAt(pos)) || input.charAt(pos) == '.')) {
                 pos++;
             }

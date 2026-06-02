@@ -19,13 +19,13 @@ HTML-отчёт генерируется в: `build/reports/checkstyle/main.html
 
 | Параметр | Значение |
 |---|---|
-| Дата | 2026-06-01 |
+| Дата | 2026-06-02 |
 | Версия Checkstyle | 10.21.4 |
 | Статус сборки | ✅ BUILD SUCCESSFUL |
 | Файлов проанализировано | 47 |
-| Файлов с замечаниями | 26 |
-| Всего замечаний | 69 |
-| Уровень severity | WARNING (сборка не падает) |
+| Файлов с замечаниями | 0 |
+| Всего замечаний | 0 |
+| Уровень severity | — |
 | Errors | 0 |
 
 ---
@@ -52,50 +52,20 @@ HTML-отчёт генерируется в: `build/reports/checkstyle/main.html
 
 ---
 
-## Замечания по категориям
+## Исправленные замечания
 
-### FileTabCharacter — 15 замечаний
-**Файл:** `CalculatorApplication.java`
+До исправлений в коде было **69 замечаний** в 26 файлах (запуск 2026-06-01). После исправлений — **0 замечаний**.
 
-Все строки класса используют табуляцию вместо пробелов (настройка IDE по умолчанию). Затрагивает только один файл — входная точка приложения.
-
-### NewlineAtEndOfFile — 8 замечаний
-**Файлы:** `Calculation.java`, `CalculationItem.java`, `Formula.java`, `FormulaGroup.java`, `MaterialGroup.java`, `Permission.java`, `User.java`, `UserRole.java`
-
-Entity-файлы не заканчиваются переводом строки. Не влияет на компиляцию, устраняется настройкой редактора (`*.editorconfig`).
-
-### EmptyLineSeparator — 28 замечаний
-**Файлы:** `ICalculationService.java`, `IFormulaGroupService.java`, `IFormulaService.java`, `IMaterialGroupService.java`, `IMaterialService.java`, `IUserRoleService.java`, `IUserService.java`
-
-Все интерфейсы Mediator/Interfaces объявляют методы без пустой строки между ними. Стилистическое замечание, не затрагивает логику.
-
-### AvoidStarImport — 6 замечаний
-**Файлы:** `CalculationController.java`, `FormulaController.java`, `MaterialController.java`, `UserController.java`, `AuditLog.java`, `UserRole.java`
-
-Wildcard-импорты `org.springframework.web.bind.annotation.*` и `jakarta.persistence.*`. Распространённая практика в Spring-контроллерах.
-
-### NeedBraces — 9 замечаний
-**Файлы:** `DataInitializer.java`, `FormulaEvaluator.java`, `UserServiceImpl.java`, `PermissionChecker.java`
-
-Однострочные `if`/`else` без фигурных скобок. Потенциально ухудшает читаемость при дальнейших изменениях.
-
-### Прочие — 3 замечания
-- `LineLength` — 1: `SecurityConfig.java` (строка 39, 121 символ)
-- `OneStatementPerLine` — 2: `FormulaEvaluator.java` (строки 93–94)
-- `Regexp` (System.out) — 3: `CalculatorApplication.java` (отладочный вывод при инициализации)
-
----
-
-## Приоритизация исправлений
-
-| Приоритет | Правило | Причина |
+| Правило | Кол-во | Что было сделано |
 |---|---|---|
-| Высокий | `Regexp` (System.out) | Отладочный вывод попадает в production-логи — заменить на `log.info()` |
-| Средний | `NeedBraces` | Снижает риск логических ошибок при изменении кода |
-| Средний | `AvoidStarImport` | Ухудшает читаемость зависимостей, усложняет рефакторинг |
-| Низкий | `FileTabCharacter` | Настройка `.editorconfig` решает проблему автоматически |
-| Низкий | `NewlineAtEndOfFile` | Автоматически фиксируется в `.editorconfig` |
-| Низкий | `EmptyLineSeparator` | Косметика, не влияет на поведение |
+| `FileTabCharacter` | 15 | `CalculatorApplication.java` — заменены табуляции на пробелы |
+| `NewlineAtEndOfFile` | 8 | Entity-файлы — добавлен перевод строки в конце |
+| `EmptyLineSeparator` | 28 | Все интерфейсы `Mediator/Interfaces` — добавлены пустые строки между методами |
+| `AvoidStarImport` | 6 | `CalculationController`, `UserController`, `AuditLog`, `UserRole` — wildcard-импорты раскрыты явно |
+| `NeedBraces` | 9 | `DataInitializer`, `FormulaEvaluator`, `UserServiceImpl`, `PermissionChecker` — добавлены фигурные скобки |
+| `LineLength` | 1 | `SecurityConfig` — длинная строка `.requestMatchers(...)` разбита на несколько строк |
+| `OneStatementPerLine` | 2 | `FormulaEvaluator` — операторы разнесены по отдельным строкам |
+| `Regexp` (System.out) | 3 | `CalculatorApplication` — `System.out.println` заменён на `LOG.info(...)` (SLF4J) |
 
 ---
 
@@ -111,4 +81,4 @@ checkstyle {
 }
 ```
 
-Флаг `isIgnoreFailures = true` установлен намеренно: все замечания являются стилистическими (WARNING), ни одного ERROR. Это позволяет отслеживать качество кода без блокировки CI.
+Флаг `isIgnoreFailures = true` установлен намеренно: все замечания являлись стилистическими (WARNING), ни одного ERROR. После исправлений замечаний не осталось.
