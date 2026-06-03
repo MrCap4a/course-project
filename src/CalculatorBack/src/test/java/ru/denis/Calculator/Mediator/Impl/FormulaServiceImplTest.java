@@ -5,6 +5,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import ru.denis.Calculator.Dto.FormulaDto;
 import ru.denis.Calculator.Dto.Request.FormulaRequest;
 import ru.denis.Calculator.Entity.Formula;
@@ -18,6 +21,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -33,20 +37,21 @@ class FormulaServiceImplTest {
     @Test
     void getAllFormulas_returnsMappedList() {
         FormulaGroup g = group(1, "G1");
-        when(formulaRepository.findAll()).thenReturn(List.of(formula(1, "F1", "{const}*2", g)));
+        when(formulaRepository.findAll(any(Pageable.class)))
+                .thenReturn(new PageImpl<>(List.of(formula(1, "F1", "{const}*2", g))));
 
-        List<FormulaDto> result = service.getAllFormulas();
+        Page<FormulaDto> result = service.getAllFormulas(null, Pageable.unpaged());
 
-        assertThat(result).hasSize(1);
-        assertThat(result.get(0).name()).isEqualTo("F1");
-        assertThat(result.get(0).expression()).isEqualTo("{const}*2");
+        assertThat(result.getContent()).hasSize(1);
+        assertThat(result.getContent().get(0).name()).isEqualTo("F1");
+        assertThat(result.getContent().get(0).expression()).isEqualTo("{const}*2");
     }
 
     @Test
     void getAllFormulas_emptyRepository_returnsEmptyList() {
-        when(formulaRepository.findAll()).thenReturn(List.of());
+        when(formulaRepository.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(List.of()));
 
-        assertThat(service.getAllFormulas()).isEmpty();
+        assertThat(service.getAllFormulas(null, Pageable.unpaged()).getContent()).isEmpty();
     }
 
     // ── getFormulaById ───────────────────────────────────────────────────────

@@ -8,6 +8,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import ru.denis.Calculator.Dto.FormulaDto;
 import ru.denis.Calculator.Dto.FormulaGroupDto;
 import ru.denis.Calculator.Mediator.Interfaces.IFormulaGroupService;
@@ -18,6 +21,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -36,6 +40,7 @@ class FormulaControllerTest {
     void setUp() {
         mockMvc = MockMvcBuilders
                 .standaloneSetup(new FormulaController(formulaService, formulaGroupService))
+                .setCustomArgumentResolvers(new org.springframework.data.web.PageableHandlerMethodArgumentResolver())
                 .build();
     }
 
@@ -43,25 +48,27 @@ class FormulaControllerTest {
 
     @Test
     void getAllFormulas_returns200WithList() throws Exception {
-        when(formulaService.getAllFormulas())
-                .thenReturn(List.of(new FormulaDto(1, "Area", "{const}*{const}", 1, "Geometry")));
+        var items = List.of(new FormulaDto(1, "Area", "{const}*{const}", 1, "Geometry"));
+        when(formulaService.getAllFormulas(isNull(), any(Pageable.class)))
+                .thenReturn(new PageImpl<>(items, PageRequest.of(0, 20), items.size()));
 
         mockMvc.perform(get("/formulas"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].id").value(1))
-                .andExpect(jsonPath("$[0].name").value("Area"))
-                .andExpect(jsonPath("$[0].expression").value("{const}*{const}"))
-                .andExpect(jsonPath("$[0].groupId").value(1))
-                .andExpect(jsonPath("$[0].groupName").value("Geometry"));
+                .andExpect(jsonPath("$.content[0].id").value(1))
+                .andExpect(jsonPath("$.content[0].name").value("Area"))
+                .andExpect(jsonPath("$.content[0].expression").value("{const}*{const}"))
+                .andExpect(jsonPath("$.content[0].groupId").value(1))
+                .andExpect(jsonPath("$.content[0].groupName").value("Geometry"));
     }
 
     @Test
     void getAllFormulas_empty_returnsEmptyList() throws Exception {
-        when(formulaService.getAllFormulas()).thenReturn(List.of());
+        when(formulaService.getAllFormulas(isNull(), any(Pageable.class)))
+                .thenReturn(new PageImpl<>(List.of(), PageRequest.of(0, 20), 0));
 
         mockMvc.perform(get("/formulas"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$").isEmpty());
+                .andExpect(jsonPath("$.content").isEmpty());
     }
 
     // ── POST /formulas ────────────────────────────────────────────────────────

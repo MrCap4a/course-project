@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -23,13 +24,14 @@ class AuthControllerTest {
 
     @Mock AuthenticationManager authenticationManager;
     @Mock JwtService jwtService;
+    @Mock JwtDecoder jwtDecoder;
 
     MockMvc mockMvc;
 
     @BeforeEach
     void setUp() {
         mockMvc = MockMvcBuilders
-                .standaloneSetup(new AuthController(authenticationManager, jwtService))
+                .standaloneSetup(new AuthController(authenticationManager, jwtService, jwtDecoder))
                 .build();
     }
 

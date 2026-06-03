@@ -144,3 +144,24 @@ export interface CalculationRequest {
   formulaId: number;
   items: CalculationItemRequest[];
 }
+
+export interface SqlResultDto {
+  columns: string[];
+  rows: Record<string, string | null>[];
+  rowCount: number;
+}
+
+export interface SqlColumnInfo {
+  name: string;
+  type: string;
+  nullable: boolean;
+}
+
+export interface SqlTableInfo {
+  name: string;
+  columns: SqlColumnInfo[];
+}
+
+export interface SqlSchemaDto {
+  tables: SqlTableInfo[];
+}

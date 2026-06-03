@@ -135,7 +135,7 @@ class MaterialGroupServiceImplTest {
         Material m = material(1, g);
         when(materialGroupRepository.findById(1)).thenReturn(Optional.of(g));
         when(materialRepository.findByGroup(g)).thenReturn(List.of(m));
-        when(materialGroupRepository.findByName("Без группы")).thenReturn(Optional.of(defaultGroup));
+        when(materialGroupRepository.findByNameIgnoreCase("Без группы")).thenReturn(Optional.of(defaultGroup));
 
         service.deleteMaterialGroup(1, DeleteGroupStrategy.DEFAULT, null);
 
@@ -151,7 +151,7 @@ class MaterialGroupServiceImplTest {
         Material m = material(1, g);
         when(materialGroupRepository.findById(1)).thenReturn(Optional.of(g));
         when(materialRepository.findByGroup(g)).thenReturn(List.of(m));
-        when(materialGroupRepository.findByName("Без группы")).thenReturn(Optional.empty());
+        when(materialGroupRepository.findByNameIgnoreCase("Без группы")).thenReturn(Optional.empty());
         when(materialGroupRepository.save(any())).thenReturn(newDefault);
 
         service.deleteMaterialGroup(1, DeleteGroupStrategy.DEFAULT, null);

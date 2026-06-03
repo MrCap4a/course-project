@@ -38,7 +38,7 @@ class CalculationControllerTest {
     }
 
     private CalculationDto sampleDto(int id, String name) {
-        return new CalculationDto(id, name, 1, "Area", "{const}*2", List.of(), new BigDecimal("50"));
+        return new CalculationDto(id, name, 1, "Area", "{const}*2", 1, "Geometry", List.of(), new BigDecimal("50"));
     }
 
     // ── GET /calculations ─────────────────────────────────────────────────────

@@ -18,6 +18,8 @@ import type {
   FormulaGroupRequest,
   CalculationRequest,
   SpringPage,
+  SqlResultDto,
+  SqlSchemaDto,
 } from "./types";
 
 const TOKEN_KEY = "auth_token";
@@ -195,6 +197,13 @@ export const formulaGroupsApi = {
     request<FormulaGroupDto>(`/formula-groups/${id}`, { method: "PUT", body: JSON.stringify(data) }),
   delete: (id: number) =>
     request<void>(`/formula-groups/${id}`, { method: "DELETE" }),
+};
+
+// SQL Terminal
+export const sqlApi = {
+  execute: (query: string) =>
+    request<SqlResultDto>("/sql/execute", { method: "POST", body: JSON.stringify({ query }) }),
+  schema: () => request<SqlSchemaDto>("/sql/schema"),
 };
 
 // Calculations

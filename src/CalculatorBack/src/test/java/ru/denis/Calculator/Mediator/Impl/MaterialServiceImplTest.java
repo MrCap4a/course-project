@@ -5,6 +5,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import ru.denis.Calculator.Dto.MaterialDto;
 import ru.denis.Calculator.Dto.Request.MaterialRequest;
 import ru.denis.Calculator.Entity.Material;
@@ -19,6 +22,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -34,57 +38,59 @@ class MaterialServiceImplTest {
     @Test
     void getAllMaterials_noFilters_returnsFindAll() {
         MaterialGroup g = group(1, "G1");
-        when(materialRepository.findAll()).thenReturn(List.of(material(1, "Steel", new BigDecimal("10"), "kg", g)));
+        when(materialRepository.findAll(any(Pageable.class)))
+                .thenReturn(new PageImpl<>(List.of(material(1, "Steel", new BigDecimal("10"), "kg", g))));
 
-        List<MaterialDto> result = service.getAllMaterials(null, null);
+        Page<MaterialDto> result = service.getAllMaterials(null, null, Pageable.unpaged());
 
-        assertThat(result).hasSize(1);
-        assertThat(result.get(0).name()).isEqualTo("Steel");
-        verify(materialRepository).findAll();
+        assertThat(result.getContent()).hasSize(1);
+        assertThat(result.getContent().get(0).name()).isEqualTo("Steel");
+        verify(materialRepository).findAll(any(Pageable.class));
     }
 
     @Test
     void getAllMaterials_groupOnly_findsByGroup() {
         MaterialGroup g = group(1, "G1");
         when(materialGroupRepository.findById(1)).thenReturn(Optional.of(g));
-        when(materialRepository.findByGroup(g)).thenReturn(List.of(material(1, "Steel", new BigDecimal("10"), "kg", g)));
+        when(materialRepository.findByGroup(eq(g), any(Pageable.class)))
+                .thenReturn(new PageImpl<>(List.of(material(1, "Steel", new BigDecimal("10"), "kg", g))));
 
-        List<MaterialDto> result = service.getAllMaterials(1, null);
+        Page<MaterialDto> result = service.getAllMaterials(1, null, Pageable.unpaged());
 
-        assertThat(result).hasSize(1);
-        verify(materialRepository).findByGroup(g);
+        assertThat(result.getContent()).hasSize(1);
+        verify(materialRepository).findByGroup(eq(g), any(Pageable.class));
     }
 
     @Test
     void getAllMaterials_searchOnly_findsByName() {
         MaterialGroup g = group(1, "G1");
-        when(materialRepository.findByNameContainingIgnoreCase("ste"))
-                .thenReturn(List.of(material(1, "Steel", new BigDecimal("10"), "kg", g)));
+        when(materialRepository.findByNameContainingIgnoreCase(eq("ste"), any(Pageable.class)))
+                .thenReturn(new PageImpl<>(List.of(material(1, "Steel", new BigDecimal("10"), "kg", g))));
 
-        List<MaterialDto> result = service.getAllMaterials(null, "ste");
+        Page<MaterialDto> result = service.getAllMaterials(null, "ste", Pageable.unpaged());
 
-        assertThat(result).hasSize(1);
-        verify(materialRepository).findByNameContainingIgnoreCase("ste");
+        assertThat(result.getContent()).hasSize(1);
+        verify(materialRepository).findByNameContainingIgnoreCase(eq("ste"), any(Pageable.class));
     }
 
     @Test
     void getAllMaterials_groupAndSearch_findsByGroupAndName() {
         MaterialGroup g = group(1, "G1");
         when(materialGroupRepository.findById(1)).thenReturn(Optional.of(g));
-        when(materialRepository.findByGroupAndNameContainingIgnoreCase(g, "ste"))
-                .thenReturn(List.of(material(1, "Steel", new BigDecimal("10"), "kg", g)));
+        when(materialRepository.findByGroupAndNameContainingIgnoreCase(eq(g), eq("ste"), any(Pageable.class)))
+                .thenReturn(new PageImpl<>(List.of(material(1, "Steel", new BigDecimal("10"), "kg", g))));
 
-        List<MaterialDto> result = service.getAllMaterials(1, "ste");
+        Page<MaterialDto> result = service.getAllMaterials(1, "ste", Pageable.unpaged());
 
-        assertThat(result).hasSize(1);
-        verify(materialRepository).findByGroupAndNameContainingIgnoreCase(g, "ste");
+        assertThat(result.getContent()).hasSize(1);
+        verify(materialRepository).findByGroupAndNameContainingIgnoreCase(eq(g), eq("ste"), any(Pageable.class));
     }
 
     @Test
     void getAllMaterials_groupNotFound_throws() {
         when(materialGroupRepository.findById(99)).thenReturn(Optional.empty());
 
-        assertThatThrownBy(() -> service.getAllMaterials(99, "x"))
+        assertThatThrownBy(() -> service.getAllMaterials(99, "x", Pageable.unpaged()))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessageContaining("MaterialGroup not found: 99");
     }
@@ -92,12 +98,13 @@ class MaterialServiceImplTest {
     @Test
     void getAllMaterials_blankSearch_treatedAsNoSearch() {
         MaterialGroup g = group(1, "G1");
-        when(materialRepository.findAll()).thenReturn(List.of(material(1, "Steel", new BigDecimal("10"), "kg", g)));
+        when(materialRepository.findAll(any(Pageable.class)))
+                .thenReturn(new PageImpl<>(List.of(material(1, "Steel", new BigDecimal("10"), "kg", g))));
 
-        List<MaterialDto> result = service.getAllMaterials(null, "   ");
+        Page<MaterialDto> result = service.getAllMaterials(null, "   ", Pageable.unpaged());
 
-        assertThat(result).hasSize(1);
-        verify(materialRepository).findAll();
+        assertThat(result.getContent()).hasSize(1);
+        verify(materialRepository).findAll(any(Pageable.class));
     }
 
     // ── getMaterialById ───────────────────────────────────────────────────────

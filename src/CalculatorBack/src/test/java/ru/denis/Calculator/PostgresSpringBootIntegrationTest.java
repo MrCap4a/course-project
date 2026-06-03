@@ -23,6 +23,8 @@ import ru.denis.Calculator.Foundation.MaterialRepository;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Testcontainers
@@ -76,7 +78,7 @@ class PostgresSpringBootIntegrationTest {
         List<Material> byGroup = materialRepository.findByGroup(group);
         assertThat(byGroup).singleElement().extracting(Material::getName).isEqualTo("Test board");
 
-        List<Material> byName = materialRepository.findByNameContainingIgnoreCase("board");
+        List<Material> byName = materialRepository.findByNameContainingIgnoreCase("board", Pageable.unpaged()).getContent();
         assertThat(byName).singleElement().extracting(Material::getPrice).isEqualTo(new BigDecimal("12.50"));
     }
 
@@ -100,7 +102,7 @@ class PostgresSpringBootIntegrationTest {
         second.setGroup(group);
         materialRepository.save(second);
 
-        List<Material> matching = materialRepository.findByGroupAndNameContainingIgnoreCase(group, "white");
+        List<Material> matching = materialRepository.findByGroupAndNameContainingIgnoreCase(group, "white", Pageable.unpaged()).getContent();
         assertThat(matching).hasSize(1);
         assertThat(matching.get(0).getName()).isEqualTo("White Board");
     }

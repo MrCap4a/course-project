@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -20,6 +23,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -38,6 +42,7 @@ class MaterialControllerTest {
     void setUp() {
         mockMvc = MockMvcBuilders
                 .standaloneSetup(new MaterialController(materialService, materialGroupService))
+                .setCustomArgumentResolvers(new org.springframework.data.web.PageableHandlerMethodArgumentResolver())
                 .build();
     }
 
@@ -45,52 +50,53 @@ class MaterialControllerTest {
 
     @Test
     void getAllMaterials_noFilters_returns200WithList() throws Exception {
-        when(materialService.getAllMaterials(null, null))
-                .thenReturn(List.of(new MaterialDto(1, "Steel", new BigDecimal("10"), "kg", 1, "G1")));
+        var items = List.of(new MaterialDto(1, "Steel", new BigDecimal("10"), "kg", 1, "G1"));
+        when(materialService.getAllMaterials(isNull(), isNull(), any(Pageable.class)))
+                .thenReturn(new PageImpl<>(items, PageRequest.of(0, 20), items.size()));
 
         mockMvc.perform(get("/materials"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].id").value(1))
-                .andExpect(jsonPath("$[0].name").value("Steel"))
-                .andExpect(jsonPath("$[0].price").value(10))
-                .andExpect(jsonPath("$[0].units").value("kg"))
-                .andExpect(jsonPath("$[0].groupId").value(1))
-                .andExpect(jsonPath("$[0].groupName").value("G1"));
+                .andExpect(jsonPath("$.content[0].id").value(1))
+                .andExpect(jsonPath("$.content[0].name").value("Steel"))
+                .andExpect(jsonPath("$.content[0].price").value(10))
+                .andExpect(jsonPath("$.content[0].units").value("kg"))
+                .andExpect(jsonPath("$.content[0].groupId").value(1))
+                .andExpect(jsonPath("$.content[0].groupName").value("G1"));
     }
 
     @Test
     void getAllMaterials_withGroupFilter_passesParamsToService() throws Exception {
-        when(materialService.getAllMaterials(2, null)).thenReturn(List.of());
+        when(materialService.getAllMaterials(eq(2), isNull(), any(Pageable.class))).thenReturn(new PageImpl<>(List.of(), PageRequest.of(0, 20), 0));
 
         mockMvc.perform(get("/materials").param("groupId", "2"))
                 .andExpect(status().isOk());
 
-        verify(materialService).getAllMaterials(2, null);
+        verify(materialService).getAllMaterials(eq(2), isNull(), any(Pageable.class));
     }
 
     @Test
     void getAllMaterials_withSearchFilter_passesParamsToService() throws Exception {
-        when(materialService.getAllMaterials(null, "ste")).thenReturn(List.of());
+        when(materialService.getAllMaterials(isNull(), eq("ste"), any(Pageable.class))).thenReturn(new PageImpl<>(List.of(), PageRequest.of(0, 20), 0));
 
         mockMvc.perform(get("/materials").param("search", "ste"))
                 .andExpect(status().isOk());
 
-        verify(materialService).getAllMaterials(null, "ste");
+        verify(materialService).getAllMaterials(isNull(), eq("ste"), any(Pageable.class));
     }
 
     @Test
     void getAllMaterials_withBothFilters_passesParamsToService() throws Exception {
-        when(materialService.getAllMaterials(1, "steel")).thenReturn(List.of());
+        when(materialService.getAllMaterials(eq(1), eq("steel"), any(Pageable.class))).thenReturn(new PageImpl<>(List.of(), PageRequest.of(0, 20), 0));
 
         mockMvc.perform(get("/materials").param("groupId", "1").param("search", "steel"))
                 .andExpect(status().isOk());
 
-        verify(materialService).getAllMaterials(1, "steel");
+        verify(materialService).getAllMaterials(eq(1), eq("steel"), any(Pageable.class));
     }
 
     @Test
     void getAllMaterials_serviceThrows_propagatesException() {
-        when(materialService.getAllMaterials(null, null))
+        when(materialService.getAllMaterials(isNull(), isNull(), any(Pageable.class)))
                 .thenThrow(new RuntimeException("unexpected error"));
 
         assertThatThrownBy(() -> mockMvc.perform(get("/materials")))

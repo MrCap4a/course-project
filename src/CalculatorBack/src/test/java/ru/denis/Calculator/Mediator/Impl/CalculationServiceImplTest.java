@@ -132,12 +132,10 @@ class CalculationServiceImplTest {
     void editCalculation_success_deletesOldItemsAndSavesNew() {
         Formula f = formula(1, "F1", "100");
         Calculation existing = calculation(1, "Old", f, List.of());
-        Calculation saved = calculation(1, "New", f, List.of());
         when(calculationRepository.findById(1)).thenReturn(Optional.of(existing));
         when(formulaRepository.findById(1)).thenReturn(Optional.of(f));
         when(calculationItemRepository.findByCalculation(existing)).thenReturn(List.of());
         when(calculationItemRepository.saveAll(any())).thenReturn(List.of());
-        when(calculationRepository.save(existing)).thenReturn(saved);
 
         CalculationDto dto = service.editCalculation(1, new CalculationRequest("New", 1, List.of()));
 

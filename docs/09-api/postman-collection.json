@@ -1,0 +1,535 @@
+{
+  "info": {
+    "name": "SuperCalculator API",
+    "description": "Коллекция запросов к REST API системы конфигурируемого калькулятора ценообразования. Базовый URL: http://localhost:8080/api/v1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "accessToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "refreshToken",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "pm.collectionVariables.set('accessToken', json.accessToken);",
+                  "pm.collectionVariables.set('refreshToken', json.refreshToken);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin123\"\n}"
+            },
+            "description": "Аутентификация пользователя. Возвращает access + refresh токены."
+          }
+        },
+        {
+          "name": "Refresh Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "pm.collectionVariables.set('accessToken', json.accessToken);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/auth/refresh",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}"
+            },
+            "description": "Обновление access-токена по refresh-токену."
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": "{{baseUrl}}/auth/logout",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}"
+            },
+            "description": "Завершение сессии, инвалидация refresh-токена."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/users/me",
+            "description": "Получить профиль текущего авторизованного пользователя."
+          }
+        },
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/users",
+            "description": "Получить список всех пользователей. Доступно: ADMIN."
+          }
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": "{{baseUrl}}/users",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"user1\",\n  \"password\": \"password123\",\n  \"roleId\": 1\n}"
+            },
+            "description": "Создать нового пользователя. Доступно: ADMIN."
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": "{{baseUrl}}/users/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"user1_updated\",\n  \"roleId\": 2\n}"
+            },
+            "description": "Обновить пользователя по ID. Доступно: ADMIN."
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/users/1",
+            "description": "Удалить пользователя по ID. Доступно: ADMIN."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Roles",
+      "item": [
+        {
+          "name": "Get All Roles",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/roles",
+            "description": "Получить список всех ролей."
+          }
+        },
+        {
+          "name": "Create Role",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": "{{baseUrl}}/roles",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"MANAGER\",\n  \"permissionIds\": [1, 2, 3]\n}"
+            },
+            "description": "Создать новую роль. Доступно: ADMIN."
+          }
+        },
+        {
+          "name": "Update Role",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": "{{baseUrl}}/roles/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"MANAGER\",\n  \"permissionIds\": [1, 2, 3, 4]\n}"
+            },
+            "description": "Обновить роль по ID. Доступно: ADMIN."
+          }
+        },
+        {
+          "name": "Delete Role",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/roles/1",
+            "description": "Удалить роль по ID. Доступно: ADMIN."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Permissions",
+      "item": [
+        {
+          "name": "Get All Permissions",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/permissions",
+            "description": "Получить список всех разрешений."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Materials",
+      "item": [
+        {
+          "name": "Get All Materials",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/materials?groupId=1&search=металл",
+              "host": ["{{baseUrl}}"],
+              "path": ["materials"],
+              "query": [
+                { "key": "groupId", "value": "1", "description": "Фильтр по группе (опционально)" },
+                { "key": "search", "value": "металл", "description": "Поиск по названию (опционально)" }
+              ]
+            },
+            "description": "Получить список материалов. Поддерживает фильтрацию по groupId и поиск по search."
+          }
+        },
+        {
+          "name": "Create Material",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": "{{baseUrl}}/materials",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Сталь листовая\",\n  \"unit\": \"кг\",\n  \"price\": 75.50,\n  \"groupId\": 1\n}"
+            },
+            "description": "Создать новый материал."
+          }
+        },
+        {
+          "name": "Update Material",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": "{{baseUrl}}/materials/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Сталь листовая 2мм\",\n  \"unit\": \"кг\",\n  \"price\": 80.00,\n  \"groupId\": 1\n}"
+            },
+            "description": "Обновить материал по ID."
+          }
+        },
+        {
+          "name": "Delete Material",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/materials/1",
+            "description": "Удалить материал по ID."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Material Groups",
+      "item": [
+        {
+          "name": "Get All Material Groups",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/material-groups",
+            "description": "Получить список групп материалов."
+          }
+        },
+        {
+          "name": "Create Material Group",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": "{{baseUrl}}/material-groups",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Металлы\"\n}"
+            },
+            "description": "Создать новую группу материалов."
+          }
+        },
+        {
+          "name": "Update Material Group",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": "{{baseUrl}}/material-groups/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Металлы и сплавы\"\n}"
+            },
+            "description": "Обновить группу материалов по ID."
+          }
+        },
+        {
+          "name": "Delete Material Group",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/material-groups/1?strategy=DEFAULT",
+              "host": ["{{baseUrl}}"],
+              "path": ["material-groups", "1"],
+              "query": [
+                { "key": "strategy", "value": "DEFAULT", "description": "CASCADE | DEFAULT | MOVE" }
+              ]
+            },
+            "description": "Удалить группу материалов по ID. Стратегия обработки дочерних материалов: CASCADE (удалить), DEFAULT (перенести в корень), MOVE (перенести в другую группу)."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Formulas",
+      "item": [
+        {
+          "name": "Get All Formulas",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/formulas",
+            "description": "Получить список формул."
+          }
+        },
+        {
+          "name": "Create Formula",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": "{{baseUrl}}/formulas",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Стоимость металлоконструкции\",\n  \"expression\": \"{сталь} * {количество} + {покраска}\",\n  \"groupId\": 1\n}"
+            },
+            "description": "Создать новую формулу с плейсхолдерами."
+          }
+        },
+        {
+          "name": "Update Formula",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": "{{baseUrl}}/formulas/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Стоимость металлоконструкции v2\",\n  \"expression\": \"{сталь} * {количество} * 1.2 + {покраска}\",\n  \"groupId\": 1\n}"
+            },
+            "description": "Обновить формулу по ID."
+          }
+        },
+        {
+          "name": "Delete Formula",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/formulas/1",
+            "description": "Удалить формулу по ID."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Formula Groups",
+      "item": [
+        {
+          "name": "Get All Formula Groups",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/formula-groups",
+            "description": "Получить список групп формул."
+          }
+        },
+        {
+          "name": "Create Formula Group",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": "{{baseUrl}}/formula-groups",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Металлоконструкции\"\n}"
+            },
+            "description": "Создать новую группу формул."
+          }
+        },
+        {
+          "name": "Update Formula Group",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": "{{baseUrl}}/formula-groups/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Металлоконструкции и сварка\"\n}"
+            },
+            "description": "Обновить группу формул по ID."
+          }
+        },
+        {
+          "name": "Delete Formula Group",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/formula-groups/1",
+            "description": "Удалить группу формул по ID."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Calculations",
+      "item": [
+        {
+          "name": "Get All Calculations",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/calculations",
+            "description": "Получить список расчётов текущего пользователя."
+          }
+        },
+        {
+          "name": "Get Calculation by ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/calculations/1",
+            "description": "Получить расчёт по ID. Итоговая стоимость пересчитывается по текущим ценам материалов."
+          }
+        },
+        {
+          "name": "Create Calculation",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": "{{baseUrl}}/calculations",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Расчёт заказа №123\",\n  \"formulaId\": 1,\n  \"values\": {\n    \"количество\": 10\n  }\n}"
+            },
+            "description": "Создать новый расчёт на основе формулы. Плейсхолдеры автоматически привязываются к материалам из справочника."
+          }
+        },
+        {
+          "name": "Update Calculation",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": "{{baseUrl}}/calculations/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Расчёт заказа №123 (обновлён)\",\n  \"values\": {\n    \"количество\": 15\n  }\n}"
+            },
+            "description": "Обновить параметры расчёта по ID."
+          }
+        },
+        {
+          "name": "Delete Calculation",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/calculations/1",
+            "description": "Удалить расчёт по ID."
+          }
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{accessToken}}", "type": "string" }]
+  }
+}

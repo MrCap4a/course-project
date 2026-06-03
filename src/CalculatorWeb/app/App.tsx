@@ -8,6 +8,7 @@ import { FormulasPage } from "./pages/FormulasPage";
 import { MaterialsPage } from "./pages/MaterialsPage";
 import { RolesPage } from "./pages/RolesPage";
 import { UsersPage } from "./pages/UsersPage";
+import { SqlTerminalPage } from "./pages/SqlTerminalPage";
 
 function RequireAuth() {
   const { user, loading } = useAuth();
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
           { path: "materials", element: <MaterialsPage /> },
           { path: "roles", element: <RolesPage /> },
           { path: "users", element: <UsersPage /> },
+          { path: "sql", element: <SqlTerminalPage /> },
         ],
       },
     ],

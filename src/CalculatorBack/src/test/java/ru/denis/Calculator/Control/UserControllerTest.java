@@ -13,6 +13,7 @@ import ru.denis.Calculator.Dto.UserDto;
 import ru.denis.Calculator.Dto.UserRoleDto;
 import ru.denis.Calculator.Entity.Permission;
 import ru.denis.Calculator.Foundation.PermissionRepository;
+import ru.denis.Calculator.Foundation.UserRepository;
 import ru.denis.Calculator.Mediator.Interfaces.IUserRoleService;
 import ru.denis.Calculator.Mediator.Interfaces.IUserService;
 
@@ -33,13 +34,14 @@ class UserControllerTest {
     @Mock IUserService userService;
     @Mock IUserRoleService userRoleService;
     @Mock PermissionRepository permissionRepository;
+    @Mock UserRepository userRepository;
 
     MockMvc mockMvc;
 
     @BeforeEach
     void setUp() {
         mockMvc = MockMvcBuilders
-                .standaloneSetup(new UserController(userService, userRoleService, permissionRepository))
+                .standaloneSetup(new UserController(userService, userRoleService, permissionRepository, userRepository))
                 .build();
     }
 

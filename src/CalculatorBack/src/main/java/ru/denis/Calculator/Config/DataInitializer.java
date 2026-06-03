@@ -27,7 +27,8 @@ public class DataInitializer implements ApplicationRunner {
             "formulas.view",  "formulas.create",  "formulas.edit",  "formulas.delete",
             "calculations.view", "calculations.create", "calculations.edit", "calculations.delete",
             "roles.view",  "roles.create",  "roles.edit",  "roles.delete",
-            "users.view",  "users.create",  "users.edit",  "users.delete"
+            "users.view",  "users.create",  "users.edit",  "users.delete",
+            "sql.execute"
     );
 
     private static final String SUPER_ADMIN_ROLE  = "Супер-администратор";
@@ -94,11 +95,15 @@ public class DataInitializer implements ApplicationRunner {
     }
 
     private UserRole seedSuperAdminRole() {
+        List<Permission> all = permissionRepository.findAll();
         return userRoleRepository.findAll().stream()
                 .filter(r -> SUPER_ADMIN_ROLE.equals(r.getName()))
                 .findFirst()
+                .map(role -> {
+                    role.setPermissions(all);
+                    return userRoleRepository.save(role);
+                })
                 .orElseGet(() -> {
-                    List<Permission> all = permissionRepository.findAll();
                     UserRole role = new UserRole();
                     role.setName(SUPER_ADMIN_ROLE);
                     role.setPermissions(all);

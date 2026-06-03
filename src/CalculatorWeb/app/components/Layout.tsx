@@ -7,6 +7,7 @@ import {
   ShieldCheck,
   Users,
   ChevronRight,
+  Terminal,
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { cn } from "../lib/utils";
@@ -20,6 +21,7 @@ const navItems = [
   { to: "/materials", label: "Материалы", icon: Package, perm: "materials.view" },
   { to: "/roles", label: "Роли", icon: ShieldCheck, perm: "roles.view" },
   { to: "/users", label: "Пользователи", icon: Users, perm: "users.view" },
+  { to: "/sql", label: "SQL Терминал", icon: Terminal, perm: "sql.execute" },
 ];
 
 export function Layout() {
