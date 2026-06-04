@@ -102,14 +102,17 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set lowercase owner
+        run: echo "OWNER=$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
       - name: Build (and push on master)
         uses: docker/build-push-action@v5
         with:
           context: src/CalculatorBack
           push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
           tags: |
-            ghcr.io/${{ github.repository_owner }}/supercalculator-backend:latest
-            ghcr.io/${{ github.repository_owner }}/supercalculator-backend:${{ github.sha }}
+            ghcr.io/${{ env.OWNER }}/supercalculator-backend:latest
+            ghcr.io/${{ env.OWNER }}/supercalculator-backend:${{ github.sha }}
 
   # ── Desktop: compile JavaFX client ──────────────────────────────────────────
   desktop-build:
