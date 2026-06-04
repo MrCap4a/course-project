@@ -29,7 +29,7 @@ public class CalculationItem {
     @Column(nullable = false)
     private Short position; // Соответствует SMALLINT
 
-    @Column(nullable = false, columnDefinition = "NUMERIC CHECK (quantity >= 0)")
+    @Column(nullable = false)
     private BigDecimal quantity;
 
     @ManyToOne(fetch = FetchType.LAZY)
