@@ -25,23 +25,13 @@ class UserRoleServiceProxyTest {
     @Mock private PermissionChecker checker;
     @InjectMocks private UserRoleServiceProxy proxy;
 
-<<<<<<< Updated upstream
-    private UserRoleDto dto() {
-        return new UserRoleDto(1, "Admin", List.of());
-    }
-=======
     private UserRoleDto dto() { return new UserRoleDto(1, "Admin", List.of()); }
->>>>>>> Stashed changes
 
     @Test
     void getAllRoles_requiresViewPermission() {
         when(delegate.getAllRoles()).thenReturn(List.of());
         proxy.getAllRoles();
         verify(checker).require("roles.view");
-<<<<<<< Updated upstream
-        verify(delegate).getAllRoles();
-=======
->>>>>>> Stashed changes
     }
 
     @Test
@@ -55,10 +45,6 @@ class UserRoleServiceProxyTest {
         when(delegate.getRoleById(1)).thenReturn(dto());
         proxy.getRoleById(1);
         verify(checker).require("roles.view");
-<<<<<<< Updated upstream
-        verify(delegate).getRoleById(1);
-=======
->>>>>>> Stashed changes
     }
 
     @Test
@@ -67,10 +53,6 @@ class UserRoleServiceProxyTest {
         when(delegate.createRole(req)).thenReturn(dto());
         proxy.createRole(req);
         verify(checker).require("roles.create");
-<<<<<<< Updated upstream
-        verify(delegate).createRole(req);
-=======
->>>>>>> Stashed changes
     }
 
     @Test
@@ -79,10 +61,6 @@ class UserRoleServiceProxyTest {
         when(delegate.editRole(1, req)).thenReturn(dto());
         proxy.editRole(1, req);
         verify(checker).require("roles.edit");
-<<<<<<< Updated upstream
-        verify(delegate).editRole(1, req);
-=======
->>>>>>> Stashed changes
     }
 
     @Test

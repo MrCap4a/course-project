@@ -28,13 +28,6 @@ class MaterialServiceProxyTest {
     @Mock private PermissionChecker checker;
     @InjectMocks private MaterialServiceProxy proxy;
 
-<<<<<<< Updated upstream
-    private MaterialDto dto() {
-        return new MaterialDto(1, "Steel", new BigDecimal("100"), "kg", 1, "Metals");
-    }
-
-=======
->>>>>>> Stashed changes
     @Test
     @SuppressWarnings("unchecked")
     void getAllMaterials_requiresViewPermission() {
@@ -42,10 +35,6 @@ class MaterialServiceProxyTest {
         when(delegate.getAllMaterials(null, null, Pageable.unpaged())).thenReturn(page);
         proxy.getAllMaterials(null, null, Pageable.unpaged());
         verify(checker).require("materials.view");
-<<<<<<< Updated upstream
-        verify(delegate).getAllMaterials(null, null, Pageable.unpaged());
-=======
->>>>>>> Stashed changes
     }
 
     @Test
@@ -57,51 +46,28 @@ class MaterialServiceProxyTest {
 
     @Test
     void getMaterialById_requiresViewPermission() {
-<<<<<<< Updated upstream
-        when(delegate.getMaterialById(1)).thenReturn(dto());
-        proxy.getMaterialById(1);
-        verify(checker).require("materials.view");
-        verify(delegate).getMaterialById(1);
-=======
         when(delegate.getMaterialById(1)).thenReturn(
                 new MaterialDto(1, "Steel", BigDecimal.TEN, "kg", 1, "Metals"));
         proxy.getMaterialById(1);
         verify(checker).require("materials.view");
->>>>>>> Stashed changes
     }
 
     @Test
     void createMaterial_requiresCreatePermission() {
-<<<<<<< Updated upstream
-        MaterialRequest req = new MaterialRequest("Steel", new BigDecimal("100"), "kg", 1);
-        when(delegate.createMaterial(req)).thenReturn(dto());
-        proxy.createMaterial(req);
-        verify(checker).require("materials.create");
-        verify(delegate).createMaterial(req);
-=======
         MaterialRequest req = new MaterialRequest("Steel", BigDecimal.TEN, "kg", 1);
         when(delegate.createMaterial(req)).thenReturn(
                 new MaterialDto(1, "Steel", BigDecimal.TEN, "kg", 1, "Metals"));
         proxy.createMaterial(req);
         verify(checker).require("materials.create");
->>>>>>> Stashed changes
     }
 
     @Test
     void editMaterial_requiresEditPermission() {
-<<<<<<< Updated upstream
-        MaterialRequest req = new MaterialRequest("Steel2", new BigDecimal("200"), "kg", 1);
-        when(delegate.editMaterial(1, req)).thenReturn(dto());
-        proxy.editMaterial(1, req);
-        verify(checker).require("materials.edit");
-        verify(delegate).editMaterial(1, req);
-=======
         MaterialRequest req = new MaterialRequest("Steel2", BigDecimal.TEN, "kg", 1);
         when(delegate.editMaterial(1, req)).thenReturn(
                 new MaterialDto(1, "Steel2", BigDecimal.TEN, "kg", 1, "Metals"));
         proxy.editMaterial(1, req);
         verify(checker).require("materials.edit");
->>>>>>> Stashed changes
     }
 
     @Test

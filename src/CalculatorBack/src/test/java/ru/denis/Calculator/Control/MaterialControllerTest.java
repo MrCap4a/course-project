@@ -8,11 +8,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-<<<<<<< Updated upstream
-=======
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
->>>>>>> Stashed changes
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -47,11 +44,7 @@ class MaterialControllerTest {
     void setUp() {
         mockMvc = MockMvcBuilders
                 .standaloneSetup(new MaterialController(materialService, materialGroupService))
-<<<<<<< Updated upstream
-                .setCustomArgumentResolvers(new org.springframework.data.web.PageableHandlerMethodArgumentResolver())
-=======
                 .setCustomArgumentResolvers(new PageableHandlerMethodArgumentResolver())
->>>>>>> Stashed changes
                 .build();
     }
 
@@ -61,11 +54,7 @@ class MaterialControllerTest {
     void getAllMaterials_noFilters_returns200WithList() throws Exception {
         var items = List.of(new MaterialDto(1, "Steel", new BigDecimal("10"), "kg", 1, "G1"));
         when(materialService.getAllMaterials(isNull(), isNull(), any(Pageable.class)))
-<<<<<<< Updated upstream
-                .thenReturn(new PageImpl<>(items, PageRequest.of(0, 20), items.size()));
-=======
                 .thenReturn(new PageImpl<>(items, PageRequest.of(0, 20, Sort.by("name")), 1));
->>>>>>> Stashed changes
 
         mockMvc.perform(get("/materials"))
                 .andExpect(status().isOk())
@@ -79,12 +68,8 @@ class MaterialControllerTest {
 
     @Test
     void getAllMaterials_withGroupFilter_passesParamsToService() throws Exception {
-<<<<<<< Updated upstream
-        when(materialService.getAllMaterials(eq(2), isNull(), any(Pageable.class))).thenReturn(new PageImpl<>(List.of(), PageRequest.of(0, 20), 0));
-=======
         when(materialService.getAllMaterials(eq(2), isNull(), any(Pageable.class)))
                 .thenReturn(new PageImpl<>(List.of(), PageRequest.of(0, 20), 0));
->>>>>>> Stashed changes
 
         mockMvc.perform(get("/materials").param("groupId", "2"))
                 .andExpect(status().isOk());
@@ -94,12 +79,8 @@ class MaterialControllerTest {
 
     @Test
     void getAllMaterials_withSearchFilter_passesParamsToService() throws Exception {
-<<<<<<< Updated upstream
-        when(materialService.getAllMaterials(isNull(), eq("ste"), any(Pageable.class))).thenReturn(new PageImpl<>(List.of(), PageRequest.of(0, 20), 0));
-=======
         when(materialService.getAllMaterials(isNull(), eq("ste"), any(Pageable.class)))
                 .thenReturn(new PageImpl<>(List.of(), PageRequest.of(0, 20), 0));
->>>>>>> Stashed changes
 
         mockMvc.perform(get("/materials").param("search", "ste"))
                 .andExpect(status().isOk());
@@ -109,12 +90,8 @@ class MaterialControllerTest {
 
     @Test
     void getAllMaterials_withBothFilters_passesParamsToService() throws Exception {
-<<<<<<< Updated upstream
-        when(materialService.getAllMaterials(eq(1), eq("steel"), any(Pageable.class))).thenReturn(new PageImpl<>(List.of(), PageRequest.of(0, 20), 0));
-=======
         when(materialService.getAllMaterials(eq(1), eq("steel"), any(Pageable.class)))
                 .thenReturn(new PageImpl<>(List.of(), PageRequest.of(0, 20), 0));
->>>>>>> Stashed changes
 
         mockMvc.perform(get("/materials").param("groupId", "1").param("search", "steel"))
                 .andExpect(status().isOk());

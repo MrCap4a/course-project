@@ -7,10 +7,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import static org.assertj.core.api.Assertions.assertThat;
-<<<<<<< Updated upstream
-=======
 import static org.mockito.ArgumentMatchers.any;
->>>>>>> Stashed changes
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -20,30 +17,14 @@ class RateLimitFilterTest {
     RateLimitFilter filter;
 
     @BeforeEach
-<<<<<<< Updated upstream
-    void setUp() {
-        filter = new RateLimitFilter();
-    }
-
-    // ── localhost bypass ──────────────────────────────────────────────────────
-=======
     void setUp() { filter = new RateLimitFilter(); }
->>>>>>> Stashed changes
 
     @Test
     void localhostIPv4_bypassesRateLimit() throws Exception {
         FilterChain chain = mock(FilterChain.class);
-<<<<<<< Updated upstream
-        MockHttpServletRequest req = request("127.0.0.1");
-        MockHttpServletResponse resp = new MockHttpServletResponse();
-
-        filter.doFilter(req, resp, chain);
-
-=======
         MockHttpServletRequest req = req("127.0.0.1");
         MockHttpServletResponse resp = new MockHttpServletResponse();
         filter.doFilter(req, resp, chain);
->>>>>>> Stashed changes
         verify(chain).doFilter(req, resp);
         assertThat(resp.getStatus()).isNotEqualTo(429);
     }
@@ -51,17 +32,9 @@ class RateLimitFilterTest {
     @Test
     void localhostIPv6_bypassesRateLimit() throws Exception {
         FilterChain chain = mock(FilterChain.class);
-<<<<<<< Updated upstream
-        MockHttpServletRequest req = request("0:0:0:0:0:0:0:1");
-        MockHttpServletResponse resp = new MockHttpServletResponse();
-
-        filter.doFilter(req, resp, chain);
-
-=======
         MockHttpServletRequest req = req("0:0:0:0:0:0:0:1");
         MockHttpServletResponse resp = new MockHttpServletResponse();
         filter.doFilter(req, resp, chain);
->>>>>>> Stashed changes
         verify(chain).doFilter(req, resp);
         assertThat(resp.getStatus()).isNotEqualTo(429);
     }
@@ -70,30 +43,6 @@ class RateLimitFilterTest {
     void localhostIPv4_manyRequests_allPass() throws Exception {
         FilterChain chain = mock(FilterChain.class);
         for (int i = 0; i < 200; i++) {
-<<<<<<< Updated upstream
-            MockHttpServletRequest req = request("127.0.0.1");
-            MockHttpServletResponse resp = new MockHttpServletResponse();
-            filter.doFilter(req, resp, chain);
-            assertThat(resp.getStatus()).isNotEqualTo(429);
-        }
-        verify(chain, times(200)).doFilter(
-                org.mockito.ArgumentMatchers.any(),
-                org.mockito.ArgumentMatchers.any()
-        );
-    }
-
-    // ── rate limiting ─────────────────────────────────────────────────────────
-
-    @Test
-    void externalIp_under60Requests_allPass() throws Exception {
-        FilterChain chain = mock(FilterChain.class);
-        String ip = "10.0.0.1";
-
-        for (int i = 0; i < 60; i++) {
-            MockHttpServletRequest req = request(ip);
-            MockHttpServletResponse resp = new MockHttpServletResponse();
-            filter.doFilter(req, resp, chain);
-=======
             MockHttpServletResponse resp = new MockHttpServletResponse();
             filter.doFilter(req("127.0.0.1"), resp, chain);
             assertThat(resp.getStatus()).isNotEqualTo(429);
@@ -107,7 +56,6 @@ class RateLimitFilterTest {
         for (int i = 0; i < 60; i++) {
             MockHttpServletResponse resp = new MockHttpServletResponse();
             filter.doFilter(req("10.0.0.1"), resp, chain);
->>>>>>> Stashed changes
             assertThat(resp.getStatus()).as("request %d should pass", i + 1).isNotEqualTo(429);
         }
     }
@@ -115,24 +63,11 @@ class RateLimitFilterTest {
     @Test
     void externalIp_61stRequest_gets429() throws Exception {
         FilterChain chain = mock(FilterChain.class);
-<<<<<<< Updated upstream
-        String ip = "10.0.0.2";
-
-        for (int i = 0; i < 60; i++) {
-            filter.doFilter(request(ip), new MockHttpServletResponse(), chain);
-        }
-
-        MockHttpServletRequest req = request(ip);
-        MockHttpServletResponse resp = new MockHttpServletResponse();
-        filter.doFilter(req, resp, chain);
-
-=======
         for (int i = 0; i < 60; i++) {
             filter.doFilter(req("10.0.0.2"), new MockHttpServletResponse(), chain);
         }
         MockHttpServletResponse resp = new MockHttpServletResponse();
         filter.doFilter(req("10.0.0.2"), resp, chain);
->>>>>>> Stashed changes
         assertThat(resp.getStatus()).isEqualTo(429);
         assertThat(resp.getContentAsString()).contains("Too Many Requests");
     }
@@ -140,51 +75,17 @@ class RateLimitFilterTest {
     @Test
     void differentIps_haveIndependentCounters() throws Exception {
         FilterChain chain = mock(FilterChain.class);
-<<<<<<< Updated upstream
-        String ip1 = "10.0.1.1";
-        String ip2 = "10.0.1.2";
-
-        for (int i = 0; i < 60; i++) {
-            filter.doFilter(request(ip1), new MockHttpServletResponse(), chain);
-        }
-
-        MockHttpServletRequest req = request(ip2);
-        MockHttpServletResponse resp = new MockHttpServletResponse();
-        filter.doFilter(req, resp, chain);
-
-=======
         for (int i = 0; i < 60; i++) {
             filter.doFilter(req("10.0.1.1"), new MockHttpServletResponse(), chain);
         }
         MockHttpServletResponse resp = new MockHttpServletResponse();
         filter.doFilter(req("10.0.1.2"), resp, chain);
->>>>>>> Stashed changes
         assertThat(resp.getStatus()).isNotEqualTo(429);
     }
 
     @Test
     void rateLimited_response_hasJsonContentType() throws Exception {
         FilterChain chain = mock(FilterChain.class);
-<<<<<<< Updated upstream
-        String ip = "10.0.0.3";
-
-        for (int i = 0; i < 60; i++) {
-            filter.doFilter(request(ip), new MockHttpServletResponse(), chain);
-        }
-
-        MockHttpServletResponse resp = new MockHttpServletResponse();
-        filter.doFilter(request(ip), resp, chain);
-
-        assertThat(resp.getContentType()).contains("application/json");
-    }
-
-    // ── helpers ───────────────────────────────────────────────────────────────
-
-    private MockHttpServletRequest request(String remoteAddr) {
-        MockHttpServletRequest req = new MockHttpServletRequest();
-        req.setRemoteAddr(remoteAddr);
-        return req;
-=======
         for (int i = 0; i < 60; i++) {
             filter.doFilter(req("10.0.0.3"), new MockHttpServletResponse(), chain);
         }
@@ -197,6 +98,5 @@ class RateLimitFilterTest {
         MockHttpServletRequest r = new MockHttpServletRequest();
         r.setRemoteAddr(ip);
         return r;
->>>>>>> Stashed changes
     }
 }

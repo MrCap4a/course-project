@@ -44,28 +44,6 @@ class SqlServiceImplTest {
     }
 
     @Test
-<<<<<<< Updated upstream
-    void executeQuery_selectWithLeadingWhitespace_isAccepted() {
-        when(jdbcTemplate.queryForList("SELECT 1")).thenReturn(List.of());
-
-        SqlResultDto result = service.executeQuery("  SELECT 1");
-
-        assertThat(result.columns()).isEmpty();
-        assertThat(result.rowCount()).isEqualTo(0);
-    }
-
-    @Test
-    void executeQuery_caseInsensitiveSelect_isAccepted() {
-        when(jdbcTemplate.queryForList("select * from material")).thenReturn(List.of());
-
-        SqlResultDto result = service.executeQuery("select * from material");
-
-        assertThat(result.rowCount()).isEqualTo(0);
-    }
-
-    @Test
-    void executeQuery_nonSelectQuery_throwsIllegalArgument() {
-=======
     void executeQuery_leadingWhitespace_isAccepted() {
         when(jdbcTemplate.queryForList("SELECT 1")).thenReturn(List.of());
         assertThat(service.executeQuery("  SELECT 1").rowCount()).isEqualTo(0);
@@ -79,7 +57,6 @@ class SqlServiceImplTest {
 
     @Test
     void executeQuery_insertQuery_throwsIllegalArgument() {
->>>>>>> Stashed changes
         assertThatThrownBy(() -> service.executeQuery("INSERT INTO material VALUES (1)"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("SELECT");
@@ -100,24 +77,14 @@ class SqlServiceImplTest {
     @Test
     void executeQuery_emptyResult_returnsEmptyDto() {
         when(jdbcTemplate.queryForList("SELECT * FROM formula")).thenReturn(List.of());
-<<<<<<< Updated upstream
-
         SqlResultDto result = service.executeQuery("SELECT * FROM formula");
-
-=======
-        SqlResultDto result = service.executeQuery("SELECT * FROM formula");
->>>>>>> Stashed changes
         assertThat(result.columns()).isEmpty();
         assertThat(result.rows()).isEmpty();
         assertThat(result.rowCount()).isEqualTo(0);
     }
 
     @Test
-<<<<<<< Updated upstream
-    void executeQuery_nullValue_isPreservedAsNull() {
-=======
     void executeQuery_nullValue_preservedAsNull() {
->>>>>>> Stashed changes
         Map<String, Object> row = new LinkedHashMap<>();
         row.put("id", 1);
         row.put("description", null);
@@ -132,15 +99,9 @@ class SqlServiceImplTest {
     void executeQuery_over1000Rows_capsAt1000() {
         List<Map<String, Object>> bigList = new ArrayList<>();
         for (int i = 0; i < 1500; i++) {
-<<<<<<< Updated upstream
-            Map<String, Object> row = new LinkedHashMap<>();
-            row.put("id", i);
-            bigList.add(row);
-=======
             Map<String, Object> r = new LinkedHashMap<>();
             r.put("id", i);
             bigList.add(r);
->>>>>>> Stashed changes
         }
         when(jdbcTemplate.queryForList(anyString())).thenReturn(bigList);
 
@@ -150,19 +111,6 @@ class SqlServiceImplTest {
         assertThat(result.rows()).hasSize(1000);
     }
 
-<<<<<<< Updated upstream
-    // ── getSchema ─────────────────────────────────────────────────────────────
-
-    @Test
-    void getSchema_groupsColumnsByTable() {
-        List<Map<String, Object>> schemaRows = List.of(
-                schemaRow("material", "id", "integer", "NO"),
-                schemaRow("material", "name", "character varying", "NO"),
-                schemaRow("formula", "id", "integer", "NO"),
-                schemaRow("formula", "expression", "text", "YES")
-        );
-        when(jdbcTemplate.queryForList(anyString())).thenReturn(schemaRows);
-=======
     // ── getSchema – tables ────────────────────────────────────────────────────
 
     @Test
@@ -174,7 +122,6 @@ class SqlServiceImplTest {
                         schemaRow("formula", "id", "integer", "NO")
                 ))
                 .thenReturn(List.of());
->>>>>>> Stashed changes
 
         SqlSchemaDto schema = service.getSchema();
 
@@ -182,33 +129,10 @@ class SqlServiceImplTest {
         assertThat(schema.tables().get(0).name()).isEqualTo("material");
         assertThat(schema.tables().get(0).columns()).hasSize(2);
         assertThat(schema.tables().get(1).name()).isEqualTo("formula");
-<<<<<<< Updated upstream
-        assertThat(schema.tables().get(1).columns()).hasSize(2);
-=======
->>>>>>> Stashed changes
     }
 
     @Test
     void getSchema_nullableFlag_correctlyMapped() {
-<<<<<<< Updated upstream
-        List<Map<String, Object>> schemaRows = List.of(
-                schemaRow("material", "name", "character varying", "NO"),
-                schemaRow("material", "description", "text", "YES")
-        );
-        when(jdbcTemplate.queryForList(anyString())).thenReturn(schemaRows);
-
-        SqlSchemaDto schema = service.getSchema();
-
-        SqlSchemaDto.ColumnInfo nameCol = schema.tables().get(0).columns().get(0);
-        SqlSchemaDto.ColumnInfo descCol = schema.tables().get(0).columns().get(1);
-        assertThat(nameCol.nullable()).isFalse();
-        assertThat(descCol.nullable()).isTrue();
-    }
-
-    @Test
-    void getSchema_emptyDatabase_returnsNoTables() {
-        when(jdbcTemplate.queryForList(anyString())).thenReturn(List.of());
-=======
         when(jdbcTemplate.queryForList(anyString()))
                 .thenReturn(List.of(
                         schemaRow("material", "name", "character varying", "NO"),
@@ -269,15 +193,11 @@ class SqlServiceImplTest {
         when(jdbcTemplate.queryForList(anyString()))
                 .thenReturn(List.of())
                 .thenReturn(List.of());
->>>>>>> Stashed changes
 
         SqlSchemaDto schema = service.getSchema();
 
         assertThat(schema.tables()).isEmpty();
-<<<<<<< Updated upstream
-=======
         assertThat(schema.foreignKeys()).isEmpty();
->>>>>>> Stashed changes
     }
 
     // ── helpers ───────────────────────────────────────────────────────────────
@@ -290,8 +210,6 @@ class SqlServiceImplTest {
         row.put("is_nullable", nullable);
         return row;
     }
-<<<<<<< Updated upstream
-=======
 
     private Map<String, Object> fkRow(String fromTable, String fromCol, String toTable, String toCol) {
         Map<String, Object> row = new LinkedHashMap<>();
@@ -301,5 +219,4 @@ class SqlServiceImplTest {
         row.put("to_column", toCol);
         return row;
     }
->>>>>>> Stashed changes
 }

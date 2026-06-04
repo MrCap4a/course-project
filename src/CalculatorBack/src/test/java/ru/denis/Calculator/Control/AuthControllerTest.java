@@ -24,11 +24,7 @@ class AuthControllerTest {
 
     @Mock AuthenticationManager authenticationManager;
     @Mock JwtService jwtService;
-<<<<<<< Updated upstream
-    @Mock JwtDecoder jwtDecoder;
-=======
     @Mock org.springframework.security.oauth2.jwt.JwtDecoder jwtDecoder;
->>>>>>> Stashed changes
 
     MockMvc mockMvc;
 

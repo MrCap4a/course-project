@@ -5,10 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.denis.Calculator.Dto.SqlResultDto;
 import ru.denis.Calculator.Dto.SqlSchemaDto;
 import ru.denis.Calculator.Dto.SqlSchemaDto.ColumnInfo;
-<<<<<<< Updated upstream
-=======
 import ru.denis.Calculator.Dto.SqlSchemaDto.ForeignKey;
->>>>>>> Stashed changes
 import ru.denis.Calculator.Dto.SqlSchemaDto.TableInfo;
 
 import java.util.ArrayList;
@@ -56,15 +53,12 @@ public class SqlServiceImpl {
     }
 
     public SqlSchemaDto getSchema() {
-<<<<<<< Updated upstream
-=======
         List<TableInfo> tables = loadTables();
         List<ForeignKey> foreignKeys = loadForeignKeys();
         return new SqlSchemaDto(tables, foreignKeys);
     }
 
     private List<TableInfo> loadTables() {
->>>>>>> Stashed changes
         String sql = """
                 SELECT table_name, column_name, data_type, is_nullable
                 FROM information_schema.columns
@@ -84,13 +78,6 @@ public class SqlServiceImpl {
                     .add(new ColumnInfo(column, type, nullable));
         }
 
-<<<<<<< Updated upstream
-        List<TableInfo> tables = tableMap.entrySet().stream()
-                .map(e -> new TableInfo(e.getKey(), e.getValue()))
-                .toList();
-
-        return new SqlSchemaDto(tables);
-=======
         return tableMap.entrySet().stream()
                 .map(e -> new TableInfo(e.getKey(), e.getValue()))
                 .toList();
@@ -122,6 +109,5 @@ public class SqlServiceImpl {
                         (String) row.get("to_column")
                 ))
                 .toList();
->>>>>>> Stashed changes
     }
 }

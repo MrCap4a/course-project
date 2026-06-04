@@ -1,0 +1,16 @@
+# Tell GitHub Linguist to exclude generated/vendored content from language stats
+
+# Frontend dependencies — not our code
+src/CalculatorWeb/node_modules/**  linguist-vendored
+
+# Frontend build output
+src/CalculatorWeb/dist/**          linguist-generated
+
+# Gradle/build reports
+src/CalculatorBack/build/**        linguist-generated
+src/CalculatorDesktop/build/**     linguist-generated
+
+# JMeter test results and reports
+src/jmeter-report/**               linguist-generated
+src/load-test-results.jtl          linguist-generated
+src/jmeter.log                     linguist-generated

@@ -43,11 +43,7 @@ class FormulaServiceImplTest {
         when(formulaRepository.findAll(any(Pageable.class)))
                 .thenReturn(new PageImpl<>(List.of(formula(1, "F1", "{const}*2", g))));
 
-<<<<<<< Updated upstream
-        Page<FormulaDto> result = service.getAllFormulas(null, Pageable.unpaged());
-=======
         var result = service.getAllFormulas(null, Pageable.unpaged());
->>>>>>> Stashed changes
 
         assertThat(result.getContent()).hasSize(1);
         assertThat(result.getContent().get(0).name()).isEqualTo("F1");
@@ -55,11 +51,6 @@ class FormulaServiceImplTest {
     }
 
     @Test
-<<<<<<< Updated upstream
-    void getAllFormulas_emptyRepository_returnsEmptyList() {
-        when(formulaRepository.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(List.of()));
-
-=======
     void getAllFormulas_withGroupFilter_findsInGroup() {
         FormulaGroup g = group(1, "G1");
         when(formulaGroupRepository.findById(1)).thenReturn(Optional.of(g));
@@ -75,7 +66,6 @@ class FormulaServiceImplTest {
     void getAllFormulas_emptyRepository_returnsEmptyPage() {
         when(formulaRepository.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(List.of()));
 
->>>>>>> Stashed changes
         assertThat(service.getAllFormulas(null, Pageable.unpaged()).getContent()).isEmpty();
     }
 
