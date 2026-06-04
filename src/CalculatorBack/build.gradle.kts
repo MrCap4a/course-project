@@ -47,6 +47,8 @@ checkstyle {
 // temp dir so the test worker classloader can find them.
 val asciiTestOutput = file("${System.getProperty("java.io.tmpdir")}/calculator-test-out/test")
 val asciiMainOutput = file("${System.getProperty("java.io.tmpdir")}/calculator-test-out/main")
+val asciiTestResources = file("${System.getProperty("java.io.tmpdir")}/calculator-test-out/test-resources")
+val asciiMainResources = file("${System.getProperty("java.io.tmpdir")}/calculator-test-out/main-resources")
 
 val syncTestClassesToAsciiPath by tasks.registering(Sync::class) {
 	dependsOn(tasks.compileTestJava)
@@ -60,11 +62,25 @@ val syncMainClassesToAsciiPath by tasks.registering(Sync::class) {
 	into(asciiMainOutput)
 }
 
+val syncTestResourcesToAsciiPath by tasks.registering(Sync::class) {
+	dependsOn(tasks.processTestResources)
+	from(sourceSets.test.get().output.resourcesDir)
+	into(asciiTestResources)
+}
+
+val syncMainResourcesToAsciiPath by tasks.registering(Sync::class) {
+	dependsOn(tasks.processResources)
+	from(sourceSets.main.get().output.resourcesDir)
+	into(asciiMainResources)
+}
+
 tasks.withType<Test> {
-	dependsOn(syncTestClassesToAsciiPath, syncMainClassesToAsciiPath)
+	dependsOn(syncTestClassesToAsciiPath, syncMainClassesToAsciiPath,
+		syncTestResourcesToAsciiPath, syncMainResourcesToAsciiPath)
 	testClassesDirs = files(asciiTestOutput)
-	classpath = files(asciiTestOutput, asciiMainOutput) +
-		(classpath - sourceSets.test.get().output.classesDirs - sourceSets.main.get().output.classesDirs)
+	classpath = files(asciiTestOutput, asciiMainOutput, asciiTestResources, asciiMainResources) +
+		(classpath - sourceSets.test.get().output.classesDirs - sourceSets.main.get().output.classesDirs
+			- files(sourceSets.test.get().output.resourcesDir) - files(sourceSets.main.get().output.resourcesDir))
 	useJUnitPlatform()
 	finalizedBy(tasks.jacocoTestReport)
 }

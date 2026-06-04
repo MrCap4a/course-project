@@ -7,9 +7,16 @@ spring:
       hibernate:
         format_sql: true
         globally_quoted_identifiers: true
+        globally_quoted_identifiers_skip_column_definitions: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
     driver-class-name: org.postgresql.Driver
+
+security:
+  jwt:
+    secret: test-jwt-secret-key-for-integration-tests-only
+    expiration: 86400
+    refresh-expiration: 604800
 
 logging:
   level:
