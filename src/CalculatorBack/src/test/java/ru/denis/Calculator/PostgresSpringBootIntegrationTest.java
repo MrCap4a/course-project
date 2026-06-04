@@ -20,6 +20,8 @@ import ru.denis.Calculator.Entity.MaterialGroup;
 import ru.denis.Calculator.Foundation.MaterialGroupRepository;
 import ru.denis.Calculator.Foundation.MaterialRepository;
 
+import org.springframework.data.domain.Pageable;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -102,7 +104,12 @@ class PostgresSpringBootIntegrationTest {
         second.setGroup(group);
         materialRepository.save(second);
 
+<<<<<<< Updated upstream
         List<Material> matching = materialRepository.findByGroupAndNameContainingIgnoreCase(group, "white", Pageable.unpaged()).getContent();
+=======
+        List<Material> matching = materialRepository
+                .findByGroupAndNameContainingIgnoreCase(group, "white", Pageable.unpaged()).getContent();
+>>>>>>> Stashed changes
         assertThat(matching).hasSize(1);
         assertThat(matching.get(0).getName()).isEqualTo("White Board");
     }

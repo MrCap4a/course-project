@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ru.denis.calculatordesktop.controller.SqlTerminalController"
+      spacing="0" styleClass="content-root">
+
+    <!-- Toolbar -->
+    <HBox styleClass="toolbar" spacing="8" alignment="CENTER_LEFT">
+        <padding><Insets top="10" right="16" bottom="10" left="16"/></padding>
+        <Label text="SQL Терминал" styleClass="page-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="btnSchema" text="Схема БД" styleClass="btn-secondary"
+                onAction="#handleSchema"/>
+        <Button fx:id="btnRun" text="▶  Выполнить" styleClass="btn-primary"
+                onAction="#handleRun"/>
+    </HBox>
+
+    <!-- Query editor -->
+    <VBox spacing="4" styleClass="editor-section">
+        <padding><Insets top="12" right="16" bottom="4" left="16"/></padding>
+        <Label text="SQL запрос" styleClass="section-label"/>
+        <TextArea fx:id="queryArea" styleClass="sql-editor"
+                  prefRowCount="7" wrapText="true"
+                  style="-fx-font-family: 'Consolas', 'Courier New', monospace; -fx-font-size: 13;"/>
+    </VBox>
+
+    <!-- Error box -->
+    <VBox fx:id="errorBox" styleClass="error-box">
+        <padding><Insets top="8" right="16" bottom="8" left="16"/></padding>
+        <Label fx:id="errorLabel" styleClass="error-label" wrapText="true"/>
+    </VBox>
+
+    <!-- Status -->
+    <HBox>
+        <padding><Insets top="4" right="16" bottom="4" left="16"/></padding>
+        <Label fx:id="statusLabel" styleClass="status-label"/>
+    </HBox>
+
+    <!-- Results table -->
+    <VBox VBox.vgrow="ALWAYS" spacing="4">
+        <padding><Insets top="4" right="16" bottom="16" left="16"/></padding>
+        <Label text="Результаты" styleClass="section-label"/>
+        <TableView fx:id="resultTable" VBox.vgrow="ALWAYS" styleClass="result-table">
+            <placeholder>
+                <Label text="Напишите SELECT-запрос и нажмите «Выполнить»"
+                       style="-fx-text-fill: #9ca3af;"/>
+            </placeholder>
+        </TableView>
+    </VBox>
+</VBox>

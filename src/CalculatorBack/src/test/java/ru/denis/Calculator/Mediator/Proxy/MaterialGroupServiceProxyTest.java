@@ -26,16 +26,22 @@ class MaterialGroupServiceProxyTest {
     @Mock private PermissionChecker checker;
     @InjectMocks private MaterialGroupServiceProxy proxy;
 
+<<<<<<< Updated upstream
     private MaterialGroupDto dto() {
         return new MaterialGroupDto(1, "Metals");
     }
 
+=======
+>>>>>>> Stashed changes
     @Test
     void getAllMaterialGroups_requiresViewPermission() {
         when(delegate.getAllMaterialGroups()).thenReturn(List.of());
         proxy.getAllMaterialGroups();
         verify(checker).require("materials.view");
+<<<<<<< Updated upstream
         verify(delegate).getAllMaterialGroups();
+=======
+>>>>>>> Stashed changes
     }
 
     @Test
@@ -46,28 +52,46 @@ class MaterialGroupServiceProxyTest {
 
     @Test
     void getMaterialGroupById_requiresViewPermission() {
+<<<<<<< Updated upstream
         when(delegate.getMaterialGroupById(1)).thenReturn(dto());
         proxy.getMaterialGroupById(1);
         verify(checker).require("materials.view");
         verify(delegate).getMaterialGroupById(1);
+=======
+        when(delegate.getMaterialGroupById(1)).thenReturn(new MaterialGroupDto(1, "Metals"));
+        proxy.getMaterialGroupById(1);
+        verify(checker).require("materials.view");
+>>>>>>> Stashed changes
     }
 
     @Test
     void createMaterialGroup_requiresCreatePermission() {
         MaterialGroupRequest req = new MaterialGroupRequest("Metals");
+<<<<<<< Updated upstream
         when(delegate.createMaterialGroup(req)).thenReturn(dto());
         proxy.createMaterialGroup(req);
         verify(checker).require("materials.create");
         verify(delegate).createMaterialGroup(req);
+=======
+        when(delegate.createMaterialGroup(req)).thenReturn(new MaterialGroupDto(1, "Metals"));
+        proxy.createMaterialGroup(req);
+        verify(checker).require("materials.create");
+>>>>>>> Stashed changes
     }
 
     @Test
     void editMaterialGroup_requiresEditPermission() {
         MaterialGroupRequest req = new MaterialGroupRequest("Alloys");
+<<<<<<< Updated upstream
         when(delegate.editMaterialGroup(1, req)).thenReturn(dto());
         proxy.editMaterialGroup(1, req);
         verify(checker).require("materials.edit");
         verify(delegate).editMaterialGroup(1, req);
+=======
+        when(delegate.editMaterialGroup(1, req)).thenReturn(new MaterialGroupDto(1, "Alloys"));
+        proxy.editMaterialGroup(1, req);
+        verify(checker).require("materials.edit");
+>>>>>>> Stashed changes
     }
 
     @Test

@@ -28,4 +28,11 @@ public class SessionManager {
     public boolean isSuperAdmin() {
         return currentUser != null && currentUser.superAdmin();
     }
+
+    public boolean hasPermission(String permissionName) {
+        if (isSuperAdmin()) return true;
+        if (currentUser == null || currentUser.role() == null) return false;
+        return currentUser.role().permissions().stream()
+                .anyMatch(p -> permissionName.equals(p.name()));
+    }
 }

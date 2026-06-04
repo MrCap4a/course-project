@@ -24,7 +24,11 @@ class AuthControllerTest {
 
     @Mock AuthenticationManager authenticationManager;
     @Mock JwtService jwtService;
+<<<<<<< Updated upstream
     @Mock JwtDecoder jwtDecoder;
+=======
+    @Mock org.springframework.security.oauth2.jwt.JwtDecoder jwtDecoder;
+>>>>>>> Stashed changes
 
     MockMvc mockMvc;
 
@@ -42,6 +46,7 @@ class AuthControllerTest {
         when(authenticationManager.authenticate(any()))
                 .thenReturn(new UsernamePasswordAuthenticationToken("alice", null));
         when(jwtService.generateToken("alice")).thenReturn("mocked.jwt.token");
+        when(jwtService.generateRefreshToken("alice")).thenReturn("mocked.refresh.token");
 
         mockMvc.perform(post("/auth/login")
                         .contentType(MediaType.APPLICATION_JSON)

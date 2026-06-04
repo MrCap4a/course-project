@@ -249,6 +249,18 @@ public class ApiClient {
     }
 
     // =========================================================================
+    // SQL Terminal
+    // =========================================================================
+
+    public SqlResultDto executeSql(String query) throws ApiException {
+        return post("/sql/execute", Map.of("query", query), new TypeReference<>() {});
+    }
+
+    public SqlSchemaDto getSqlSchema() throws ApiException {
+        return get("/sql/schema", new TypeReference<>() {});
+    }
+
+    // =========================================================================
     // HTTP internals
     // =========================================================================
 

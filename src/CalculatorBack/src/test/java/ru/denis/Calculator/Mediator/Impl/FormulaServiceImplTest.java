@@ -15,6 +15,9 @@ import ru.denis.Calculator.Entity.FormulaGroup;
 import ru.denis.Calculator.Foundation.FormulaGroupRepository;
 import ru.denis.Calculator.Foundation.FormulaRepository;
 
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -35,12 +38,16 @@ class FormulaServiceImplTest {
     // ── getAllFormulas ────────────────────────────────────────────────────────
 
     @Test
-    void getAllFormulas_returnsMappedList() {
+    void getAllFormulas_noGroupFilter_returnsAllFormulas() {
         FormulaGroup g = group(1, "G1");
         when(formulaRepository.findAll(any(Pageable.class)))
                 .thenReturn(new PageImpl<>(List.of(formula(1, "F1", "{const}*2", g))));
 
+<<<<<<< Updated upstream
         Page<FormulaDto> result = service.getAllFormulas(null, Pageable.unpaged());
+=======
+        var result = service.getAllFormulas(null, Pageable.unpaged());
+>>>>>>> Stashed changes
 
         assertThat(result.getContent()).hasSize(1);
         assertThat(result.getContent().get(0).name()).isEqualTo("F1");
@@ -48,9 +55,27 @@ class FormulaServiceImplTest {
     }
 
     @Test
+<<<<<<< Updated upstream
     void getAllFormulas_emptyRepository_returnsEmptyList() {
         when(formulaRepository.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(List.of()));
 
+=======
+    void getAllFormulas_withGroupFilter_findsInGroup() {
+        FormulaGroup g = group(1, "G1");
+        when(formulaGroupRepository.findById(1)).thenReturn(Optional.of(g));
+        when(formulaRepository.findByGroup(eq(g), any(Pageable.class)))
+                .thenReturn(new PageImpl<>(List.of(formula(1, "F1", "{const}*2", g))));
+
+        var result = service.getAllFormulas(1, Pageable.unpaged());
+
+        assertThat(result.getContent()).hasSize(1);
+    }
+
+    @Test
+    void getAllFormulas_emptyRepository_returnsEmptyPage() {
+        when(formulaRepository.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(List.of()));
+
+>>>>>>> Stashed changes
         assertThat(service.getAllFormulas(null, Pageable.unpaged()).getContent()).isEmpty();
     }
 

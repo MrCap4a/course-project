@@ -15,6 +15,9 @@ import ru.denis.Calculator.Entity.MaterialGroup;
 import ru.denis.Calculator.Foundation.MaterialGroupRepository;
 import ru.denis.Calculator.Foundation.MaterialRepository;
 
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -41,7 +44,11 @@ class MaterialServiceImplTest {
         when(materialRepository.findAll(any(Pageable.class)))
                 .thenReturn(new PageImpl<>(List.of(material(1, "Steel", new BigDecimal("10"), "kg", g))));
 
+<<<<<<< Updated upstream
         Page<MaterialDto> result = service.getAllMaterials(null, null, Pageable.unpaged());
+=======
+        var result = service.getAllMaterials(null, null, Pageable.unpaged());
+>>>>>>> Stashed changes
 
         assertThat(result.getContent()).hasSize(1);
         assertThat(result.getContent().get(0).name()).isEqualTo("Steel");
@@ -55,7 +62,11 @@ class MaterialServiceImplTest {
         when(materialRepository.findByGroup(eq(g), any(Pageable.class)))
                 .thenReturn(new PageImpl<>(List.of(material(1, "Steel", new BigDecimal("10"), "kg", g))));
 
+<<<<<<< Updated upstream
         Page<MaterialDto> result = service.getAllMaterials(1, null, Pageable.unpaged());
+=======
+        var result = service.getAllMaterials(1, null, Pageable.unpaged());
+>>>>>>> Stashed changes
 
         assertThat(result.getContent()).hasSize(1);
         verify(materialRepository).findByGroup(eq(g), any(Pageable.class));
@@ -67,7 +78,11 @@ class MaterialServiceImplTest {
         when(materialRepository.findByNameContainingIgnoreCase(eq("ste"), any(Pageable.class)))
                 .thenReturn(new PageImpl<>(List.of(material(1, "Steel", new BigDecimal("10"), "kg", g))));
 
+<<<<<<< Updated upstream
         Page<MaterialDto> result = service.getAllMaterials(null, "ste", Pageable.unpaged());
+=======
+        var result = service.getAllMaterials(null, "ste", Pageable.unpaged());
+>>>>>>> Stashed changes
 
         assertThat(result.getContent()).hasSize(1);
         verify(materialRepository).findByNameContainingIgnoreCase(eq("ste"), any(Pageable.class));
@@ -80,7 +95,11 @@ class MaterialServiceImplTest {
         when(materialRepository.findByGroupAndNameContainingIgnoreCase(eq(g), eq("ste"), any(Pageable.class)))
                 .thenReturn(new PageImpl<>(List.of(material(1, "Steel", new BigDecimal("10"), "kg", g))));
 
+<<<<<<< Updated upstream
         Page<MaterialDto> result = service.getAllMaterials(1, "ste", Pageable.unpaged());
+=======
+        var result = service.getAllMaterials(1, "ste", Pageable.unpaged());
+>>>>>>> Stashed changes
 
         assertThat(result.getContent()).hasSize(1);
         verify(materialRepository).findByGroupAndNameContainingIgnoreCase(eq(g), eq("ste"), any(Pageable.class));
@@ -101,7 +120,11 @@ class MaterialServiceImplTest {
         when(materialRepository.findAll(any(Pageable.class)))
                 .thenReturn(new PageImpl<>(List.of(material(1, "Steel", new BigDecimal("10"), "kg", g))));
 
+<<<<<<< Updated upstream
         Page<MaterialDto> result = service.getAllMaterials(null, "   ", Pageable.unpaged());
+=======
+        var result = service.getAllMaterials(null, "   ", Pageable.unpaged());
+>>>>>>> Stashed changes
 
         assertThat(result.getContent()).hasSize(1);
         verify(materialRepository).findAll(any(Pageable.class));

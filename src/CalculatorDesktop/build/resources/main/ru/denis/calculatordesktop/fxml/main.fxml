@@ -28,6 +28,13 @@
                         maxWidth="Infinity" onAction="#showRoles"/>
             </VBox>
 
+            <VBox fx:id="sqlSection" visible="false" managed="false">
+                <Separator styleClass="sidebar-separator"/>
+                <Label text="ИНСТРУМЕНТЫ" styleClass="nav-section-label"/>
+                <Button fx:id="btnSql" text="  SQL Терминал" styleClass="nav-item"
+                        maxWidth="Infinity" onAction="#showSqlTerminal"/>
+            </VBox>
+
             <Region VBox.vgrow="ALWAYS"/>
             <Separator styleClass="sidebar-separator"/>
 

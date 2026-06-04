@@ -34,7 +34,10 @@ class UserServiceProxyTest {
         when(delegate.getAllUsers()).thenReturn(List.of());
         proxy.getAllUsers();
         verify(checker).require("users.view");
+<<<<<<< Updated upstream
         verify(delegate).getAllUsers();
+=======
+>>>>>>> Stashed changes
     }
 
     @Test
@@ -48,7 +51,10 @@ class UserServiceProxyTest {
         when(delegate.getUserById(1)).thenReturn(dto());
         proxy.getUserById(1);
         verify(checker).require("users.view");
+<<<<<<< Updated upstream
         verify(delegate).getUserById(1);
+=======
+>>>>>>> Stashed changes
     }
 
     @Test
@@ -57,7 +63,10 @@ class UserServiceProxyTest {
         when(delegate.createUser(req)).thenReturn(dto());
         proxy.createUser(req);
         verify(checker).require("users.create");
+<<<<<<< Updated upstream
         verify(delegate).createUser(req);
+=======
+>>>>>>> Stashed changes
     }
 
     @Test
@@ -66,7 +75,10 @@ class UserServiceProxyTest {
         when(delegate.editUser(1, req)).thenReturn(dto());
         proxy.editUser(1, req);
         verify(checker).require("users.edit");
+<<<<<<< Updated upstream
         verify(delegate).editUser(1, req);
+=======
+>>>>>>> Stashed changes
     }
 
     @Test

@@ -5,6 +5,10 @@ import org.springframework.stereotype.Service;
 import ru.denis.Calculator.Dto.SqlResultDto;
 import ru.denis.Calculator.Dto.SqlSchemaDto;
 import ru.denis.Calculator.Dto.SqlSchemaDto.ColumnInfo;
+<<<<<<< Updated upstream
+=======
+import ru.denis.Calculator.Dto.SqlSchemaDto.ForeignKey;
+>>>>>>> Stashed changes
 import ru.denis.Calculator.Dto.SqlSchemaDto.TableInfo;
 
 import java.util.ArrayList;
@@ -52,6 +56,15 @@ public class SqlServiceImpl {
     }
 
     public SqlSchemaDto getSchema() {
+<<<<<<< Updated upstream
+=======
+        List<TableInfo> tables = loadTables();
+        List<ForeignKey> foreignKeys = loadForeignKeys();
+        return new SqlSchemaDto(tables, foreignKeys);
+    }
+
+    private List<TableInfo> loadTables() {
+>>>>>>> Stashed changes
         String sql = """
                 SELECT table_name, column_name, data_type, is_nullable
                 FROM information_schema.columns
@@ -71,10 +84,44 @@ public class SqlServiceImpl {
                     .add(new ColumnInfo(column, type, nullable));
         }
 
+<<<<<<< Updated upstream
         List<TableInfo> tables = tableMap.entrySet().stream()
                 .map(e -> new TableInfo(e.getKey(), e.getValue()))
                 .toList();
 
         return new SqlSchemaDto(tables);
+=======
+        return tableMap.entrySet().stream()
+                .map(e -> new TableInfo(e.getKey(), e.getValue()))
+                .toList();
+    }
+
+    private List<ForeignKey> loadForeignKeys() {
+        String sql = """
+                SELECT
+                    kcu.table_name   AS from_table,
+                    kcu.column_name  AS from_column,
+                    ccu.table_name   AS to_table,
+                    ccu.column_name  AS to_column
+                FROM information_schema.table_constraints AS tc
+                JOIN information_schema.key_column_usage AS kcu
+                    ON tc.constraint_name = kcu.constraint_name
+                    AND tc.table_schema   = kcu.table_schema
+                JOIN information_schema.constraint_column_usage AS ccu
+                    ON ccu.constraint_name = tc.constraint_name
+                    AND ccu.table_schema   = tc.table_schema
+                WHERE tc.constraint_type = 'FOREIGN KEY'
+                  AND tc.table_schema    = 'public'
+                """;
+
+        return jdbcTemplate.queryForList(sql).stream()
+                .map(row -> new ForeignKey(
+                        (String) row.get("from_table"),
+                        (String) row.get("from_column"),
+                        (String) row.get("to_table"),
+                        (String) row.get("to_column")
+                ))
+                .toList();
+>>>>>>> Stashed changes
     }
 }

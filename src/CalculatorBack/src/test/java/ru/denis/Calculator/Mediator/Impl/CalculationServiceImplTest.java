@@ -135,7 +135,10 @@ class CalculationServiceImplTest {
         when(calculationRepository.findById(1)).thenReturn(Optional.of(existing));
         when(formulaRepository.findById(1)).thenReturn(Optional.of(f));
         when(calculationItemRepository.findByCalculation(existing)).thenReturn(List.of());
+<<<<<<< Updated upstream
         when(calculationItemRepository.saveAll(any())).thenReturn(List.of());
+=======
+>>>>>>> Stashed changes
 
         CalculationDto dto = service.editCalculation(1, new CalculationRequest("New", 1, List.of()));
 

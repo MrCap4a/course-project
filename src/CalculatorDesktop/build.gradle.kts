@@ -22,12 +22,38 @@ repositories {
 
 javafx {
     version = "21.0.2"
-    modules = listOf("javafx.controls", "javafx.fxml")
+    modules = listOf("javafx.controls", "javafx.fxml", "javafx.web")
 }
 
 dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.17.2")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
+    testImplementation("org.assertj:assertj-core:3.25.3")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+val asciiTestOut = file("${System.getProperty("java.io.tmpdir")}/calculator-desktop-test-out/test")
+val asciiMainOut = file("${System.getProperty("java.io.tmpdir")}/calculator-desktop-test-out/main")
+
+val syncDesktopTestClasses by tasks.registering(Sync::class) {
+    dependsOn(tasks.compileTestJava)
+    from(sourceSets.test.get().output.classesDirs)
+    into(asciiTestOut)
+}
+
+val syncDesktopMainClasses by tasks.registering(Sync::class) {
+    dependsOn(tasks.compileJava)
+    from(sourceSets.main.get().output.classesDirs)
+    into(asciiMainOut)
+}
+
+tasks.withType<Test> {
+    dependsOn(syncDesktopTestClasses, syncDesktopMainClasses)
+    testClassesDirs = files(asciiTestOut)
+    classpath = files(asciiTestOut, asciiMainOut) +
+        (classpath - sourceSets.test.get().output.classesDirs - sourceSets.main.get().output.classesDirs)
+    useJUnitPlatform()
 }
 
 // ── Single-file portable exe via 7-Zip SFX ───────────────────────────────────
@@ -123,7 +149,7 @@ tasks.register<Exec>("packageApp") {
         "--main-class",   "ru.denis.calculatordesktop.CalculatorApp",
         "--module-path",  libDir.absolutePath,
         "--add-modules",  "javafx.controls,javafx.fxml,javafx.graphics,javafx.base," +
-                          "java.net.http,java.logging",
+                          "javafx.web,java.net.http,java.logging",
         "--dest",         outDir.absolutePath,
         "--java-options", "-Dfile.encoding=UTF-8"
     )

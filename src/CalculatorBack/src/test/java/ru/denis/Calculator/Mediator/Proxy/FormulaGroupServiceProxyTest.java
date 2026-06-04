@@ -25,16 +25,22 @@ class FormulaGroupServiceProxyTest {
     @Mock private PermissionChecker checker;
     @InjectMocks private FormulaGroupServiceProxy proxy;
 
+<<<<<<< Updated upstream
     private FormulaGroupDto dto() {
         return new FormulaGroupDto(1, "Geometry");
     }
 
+=======
+>>>>>>> Stashed changes
     @Test
     void getAllFormulaGroups_requiresViewPermission() {
         when(delegate.getAllFormulaGroups()).thenReturn(List.of());
         proxy.getAllFormulaGroups();
         verify(checker).require("formulas.view");
+<<<<<<< Updated upstream
         verify(delegate).getAllFormulaGroups();
+=======
+>>>>>>> Stashed changes
     }
 
     @Test
@@ -45,28 +51,46 @@ class FormulaGroupServiceProxyTest {
 
     @Test
     void getFormulaGroupById_requiresViewPermission() {
+<<<<<<< Updated upstream
         when(delegate.getFormulaGroupById(1)).thenReturn(dto());
         proxy.getFormulaGroupById(1);
         verify(checker).require("formulas.view");
         verify(delegate).getFormulaGroupById(1);
+=======
+        when(delegate.getFormulaGroupById(1)).thenReturn(new FormulaGroupDto(1, "Geometry"));
+        proxy.getFormulaGroupById(1);
+        verify(checker).require("formulas.view");
+>>>>>>> Stashed changes
     }
 
     @Test
     void createFormulaGroup_requiresCreatePermission() {
         FormulaGroupRequest req = new FormulaGroupRequest("Geometry");
+<<<<<<< Updated upstream
         when(delegate.createFormulaGroup(req)).thenReturn(dto());
         proxy.createFormulaGroup(req);
         verify(checker).require("formulas.create");
         verify(delegate).createFormulaGroup(req);
+=======
+        when(delegate.createFormulaGroup(req)).thenReturn(new FormulaGroupDto(1, "Geometry"));
+        proxy.createFormulaGroup(req);
+        verify(checker).require("formulas.create");
+>>>>>>> Stashed changes
     }
 
     @Test
     void editFormulaGroup_requiresEditPermission() {
         FormulaGroupRequest req = new FormulaGroupRequest("New");
+<<<<<<< Updated upstream
         when(delegate.editFormulaGroup(1, req)).thenReturn(dto());
         proxy.editFormulaGroup(1, req);
         verify(checker).require("formulas.edit");
         verify(delegate).editFormulaGroup(1, req);
+=======
+        when(delegate.editFormulaGroup(1, req)).thenReturn(new FormulaGroupDto(1, "New"));
+        proxy.editFormulaGroup(1, req);
+        verify(checker).require("formulas.edit");
+>>>>>>> Stashed changes
     }
 
     @Test

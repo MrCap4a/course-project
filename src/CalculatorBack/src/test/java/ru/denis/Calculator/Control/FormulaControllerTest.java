@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -40,7 +44,11 @@ class FormulaControllerTest {
     void setUp() {
         mockMvc = MockMvcBuilders
                 .standaloneSetup(new FormulaController(formulaService, formulaGroupService))
+<<<<<<< Updated upstream
                 .setCustomArgumentResolvers(new org.springframework.data.web.PageableHandlerMethodArgumentResolver())
+=======
+                .setCustomArgumentResolvers(new PageableHandlerMethodArgumentResolver())
+>>>>>>> Stashed changes
                 .build();
     }
 
@@ -50,7 +58,11 @@ class FormulaControllerTest {
     void getAllFormulas_returns200WithList() throws Exception {
         var items = List.of(new FormulaDto(1, "Area", "{const}*{const}", 1, "Geometry"));
         when(formulaService.getAllFormulas(isNull(), any(Pageable.class)))
+<<<<<<< Updated upstream
                 .thenReturn(new PageImpl<>(items, PageRequest.of(0, 20), items.size()));
+=======
+                .thenReturn(new PageImpl<>(items, PageRequest.of(0, 20), 1));
+>>>>>>> Stashed changes
 
         mockMvc.perform(get("/formulas"))
                 .andExpect(status().isOk())

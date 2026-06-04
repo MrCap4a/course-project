@@ -34,7 +34,11 @@ class UserControllerTest {
     @Mock IUserService userService;
     @Mock IUserRoleService userRoleService;
     @Mock PermissionRepository permissionRepository;
+<<<<<<< Updated upstream
     @Mock UserRepository userRepository;
+=======
+    @Mock ru.denis.Calculator.Foundation.UserRepository userRepository;
+>>>>>>> Stashed changes
 
     MockMvc mockMvc;
 

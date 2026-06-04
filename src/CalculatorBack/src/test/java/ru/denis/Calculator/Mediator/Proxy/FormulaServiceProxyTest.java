@@ -26,10 +26,13 @@ class FormulaServiceProxyTest {
     @Mock private PermissionChecker checker;
     @InjectMocks private FormulaServiceProxy proxy;
 
+<<<<<<< Updated upstream
     private FormulaDto dto() {
         return new FormulaDto(1, "Area", "{const}*2", 1, "Geometry");
     }
 
+=======
+>>>>>>> Stashed changes
     @Test
     @SuppressWarnings("unchecked")
     void getAllFormulas_requiresViewPermission() {
@@ -37,7 +40,10 @@ class FormulaServiceProxyTest {
         when(delegate.getAllFormulas(null, Pageable.unpaged())).thenReturn(page);
         proxy.getAllFormulas(null, Pageable.unpaged());
         verify(checker).require("formulas.view");
+<<<<<<< Updated upstream
         verify(delegate).getAllFormulas(null, Pageable.unpaged());
+=======
+>>>>>>> Stashed changes
     }
 
     @Test
@@ -49,28 +55,46 @@ class FormulaServiceProxyTest {
 
     @Test
     void getFormulaById_requiresViewPermission() {
+<<<<<<< Updated upstream
         when(delegate.getFormulaById(1)).thenReturn(dto());
         proxy.getFormulaById(1);
         verify(checker).require("formulas.view");
         verify(delegate).getFormulaById(1);
+=======
+        when(delegate.getFormulaById(1)).thenReturn(new FormulaDto(1, "Area", "{const}*2", 1, "G"));
+        proxy.getFormulaById(1);
+        verify(checker).require("formulas.view");
+>>>>>>> Stashed changes
     }
 
     @Test
     void createFormula_requiresCreatePermission() {
         FormulaRequest req = new FormulaRequest("Area", "{const}*2", 1);
+<<<<<<< Updated upstream
         when(delegate.createFormula(req)).thenReturn(dto());
         proxy.createFormula(req);
         verify(checker).require("formulas.create");
         verify(delegate).createFormula(req);
+=======
+        when(delegate.createFormula(req)).thenReturn(new FormulaDto(1, "Area", "{const}*2", 1, "G"));
+        proxy.createFormula(req);
+        verify(checker).require("formulas.create");
+>>>>>>> Stashed changes
     }
 
     @Test
     void editFormula_requiresEditPermission() {
         FormulaRequest req = new FormulaRequest("Area2", "{const}*3", 1);
+<<<<<<< Updated upstream
         when(delegate.editFormula(1, req)).thenReturn(dto());
         proxy.editFormula(1, req);
         verify(checker).require("formulas.edit");
         verify(delegate).editFormula(1, req);
+=======
+        when(delegate.editFormula(1, req)).thenReturn(new FormulaDto(1, "Area2", "{const}*3", 1, "G"));
+        proxy.editFormula(1, req);
+        verify(checker).require("formulas.edit");
+>>>>>>> Stashed changes
     }
 
     @Test

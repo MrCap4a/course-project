@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.denis.calculatordesktop.session.SessionManagerTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-06-03T20:44:12.212Z" hostname="SKMRHBOOK" time="0.127">
+  <properties/>
+  <testcase name="isSuperAdmin_superAdmin_returnsTrue()" classname="ru.denis.calculatordesktop.session.SessionManagerTest" time="0.082"/>
+  <testcase name="hasPermission_userWithoutPermission_returnsFalse()" classname="ru.denis.calculatordesktop.session.SessionManagerTest" time="0.003"/>
+  <testcase name="isSuperAdmin_noUser_returnsFalse()" classname="ru.denis.calculatordesktop.session.SessionManagerTest" time="0.001"/>
+  <testcase name="hasPermission_userWithNoRole_returnsFalse()" classname="ru.denis.calculatordesktop.session.SessionManagerTest" time="0.001"/>
+  <testcase name="hasPermission_superAdmin_alwaysTrue()" classname="ru.denis.calculatordesktop.session.SessionManagerTest" time="0.001"/>
+  <testcase name="hasPermission_userWithEmptyPermissions_returnsFalse()" classname="ru.denis.calculatordesktop.session.SessionManagerTest" time="0.001"/>
+  <testcase name="clear_resetsTokenAndUser()" classname="ru.denis.calculatordesktop.session.SessionManagerTest" time="0.004"/>
+  <testcase name="hasPermission_userWithMatchingPermission_returnsTrue()" classname="ru.denis.calculatordesktop.session.SessionManagerTest" time="0.001"/>
+  <testcase name="hasPermission_noUser_returnsFalse()" classname="ru.denis.calculatordesktop.session.SessionManagerTest" time="0.001"/>
+  <testcase name="isSuperAdmin_regularUser_returnsFalse()" classname="ru.denis.calculatordesktop.session.SessionManagerTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

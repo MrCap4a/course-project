@@ -49,7 +49,10 @@ class CalculationServiceProxyTest {
         when(delegate.getCalculationById(1)).thenReturn(dto());
         proxy.getCalculationById(1);
         verify(checker).require("calculations.view");
+<<<<<<< Updated upstream
         verify(delegate).getCalculationById(1);
+=======
+>>>>>>> Stashed changes
     }
 
     @Test
@@ -58,7 +61,10 @@ class CalculationServiceProxyTest {
         when(delegate.createCalculation(req)).thenReturn(dto());
         proxy.createCalculation(req);
         verify(checker).require("calculations.create");
+<<<<<<< Updated upstream
         verify(delegate).createCalculation(req);
+=======
+>>>>>>> Stashed changes
     }
 
     @Test
@@ -67,7 +73,10 @@ class CalculationServiceProxyTest {
         when(delegate.editCalculation(1, req)).thenReturn(dto());
         proxy.editCalculation(1, req);
         verify(checker).require("calculations.edit");
+<<<<<<< Updated upstream
         verify(delegate).editCalculation(1, req);
+=======
+>>>>>>> Stashed changes
     }
 
     @Test

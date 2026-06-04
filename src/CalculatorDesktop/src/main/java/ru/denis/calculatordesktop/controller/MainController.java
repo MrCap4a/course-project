@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     @FXML private VBox adminSection;
+    @FXML private VBox sqlSection;
     @FXML private Label userNameLabel;
     @FXML private Label userRoleLabel;
     @FXML private StackPane contentArea;
@@ -26,6 +27,7 @@ public class MainController implements Initializable {
     @FXML private Button btnCalculations;
     @FXML private Button btnUsers;
     @FXML private Button btnRoles;
+    @FXML private Button btnSql;
 
     private Button activeNav;
 
@@ -40,14 +42,19 @@ public class MainController implements Initializable {
             adminSection.setVisible(true);
             adminSection.setManaged(true);
         }
+        if (SessionManager.getInstance().hasPermission("sql.execute")) {
+            sqlSection.setVisible(true);
+            sqlSection.setManaged(true);
+        }
         showMaterials();
     }
 
-    @FXML private void showMaterials()     { navigate("materials.fxml",    btnMaterials); }
-    @FXML private void showFormulas()      { navigate("formulas.fxml",     btnFormulas); }
-    @FXML private void showCalculations()  { navigate("calculations.fxml", btnCalculations); }
-    @FXML private void showUsers()         { navigate("users.fxml",        btnUsers); }
-    @FXML private void showRoles()         { navigate("roles.fxml",        btnRoles); }
+    @FXML private void showMaterials()     { navigate("materials.fxml",     btnMaterials); }
+    @FXML private void showFormulas()      { navigate("formulas.fxml",      btnFormulas); }
+    @FXML private void showCalculations()  { navigate("calculations.fxml",  btnCalculations); }
+    @FXML private void showUsers()         { navigate("users.fxml",         btnUsers); }
+    @FXML private void showRoles()         { navigate("roles.fxml",         btnRoles); }
+    @FXML private void showSqlTerminal()   { navigate("sql-terminal.fxml",  btnSql); }
 
     @FXML
     private void handleLogout() {

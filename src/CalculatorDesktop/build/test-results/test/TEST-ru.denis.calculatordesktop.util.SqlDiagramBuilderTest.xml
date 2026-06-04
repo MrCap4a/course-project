@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.denis.calculatordesktop.util.SqlDiagramBuilderTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-06-03T20:44:12.342Z" hostname="SKMRHBOOK" time="0.026">
+  <properties/>
+  <testcase name="buildErDiagram_includesForeignKeyRelation()" classname="ru.denis.calculatordesktop.util.SqlDiagramBuilderTest" time="0.005"/>
+  <testcase name="buildErDiagram_startsWithErDiagram()" classname="ru.denis.calculatordesktop.util.SqlDiagramBuilderTest" time="0.0"/>
+  <testcase name="buildErDiagram_multipleTables_allIncluded()" classname="ru.denis.calculatordesktop.util.SqlDiagramBuilderTest" time="0.002"/>
+  <testcase name="buildErDiagram_typeSpacesReplacedWithUnderscore()" classname="ru.denis.calculatordesktop.util.SqlDiagramBuilderTest" time="0.001"/>
+  <testcase name="buildErDiagram_includesTableName()" classname="ru.denis.calculatordesktop.util.SqlDiagramBuilderTest" time="0.001"/>
+  <testcase name="buildErDiagram_includesColumnWithType()" classname="ru.denis.calculatordesktop.util.SqlDiagramBuilderTest" time="0.001"/>
+  <testcase name="buildErDiagram_emptySchema_returnsOnlyHeader()" classname="ru.denis.calculatordesktop.util.SqlDiagramBuilderTest" time="0.001"/>
+  <testcase name="buildErDiagram_nullableColumnMarkedNullable()" classname="ru.denis.calculatordesktop.util.SqlDiagramBuilderTest" time="0.001"/>
+  <testcase name="escapeForHtml_noSpecialChars_unchanged()" classname="ru.denis.calculatordesktop.util.SqlDiagramBuilderTest" time="0.0"/>
+  <testcase name="buildErDiagram_duplicateForeignKeysBetweenSameTables_appearsOnce()" classname="ru.denis.calculatordesktop.util.SqlDiagramBuilderTest" time="0.004"/>
+  <testcase name="escapeForHtml_escapesAmpersand()" classname="ru.denis.calculatordesktop.util.SqlDiagramBuilderTest" time="0.0"/>
+  <testcase name="escapeForHtml_escapesLessThan()" classname="ru.denis.calculatordesktop.util.SqlDiagramBuilderTest" time="0.0"/>
+  <testcase name="escapeForHtml_escapesGreaterThan()" classname="ru.denis.calculatordesktop.util.SqlDiagramBuilderTest" time="0.001"/>
+  <testcase name="escapeForHtml_multipleSpecialChars_allEscaped()" classname="ru.denis.calculatordesktop.util.SqlDiagramBuilderTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
