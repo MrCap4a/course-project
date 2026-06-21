@@ -9,7 +9,9 @@ import ru.denis.Calculator.Dto.Request.MaterialRequest;
 import ru.denis.Calculator.Entity.Material;
 import ru.denis.Calculator.Entity.MaterialGroup;
 import ru.denis.Calculator.Foundation.MaterialGroupRepository;
+import ru.denis.Calculator.Foundation.MaterialIdentityMap;
 import ru.denis.Calculator.Foundation.MaterialRepository;
+import ru.denis.Calculator.Mapper.MaterialMapper;
 import ru.denis.Calculator.Mediator.Interfaces.IMaterialService;
 
 @Service
@@ -17,11 +19,17 @@ public class MaterialServiceImpl implements IMaterialService {
 
     private final MaterialRepository materialRepository;
     private final MaterialGroupRepository materialGroupRepository;
+    private final MaterialMapper materialMapper;
+    private final MaterialIdentityMap identityMap;
 
     public MaterialServiceImpl(MaterialRepository materialRepository,
-                               MaterialGroupRepository materialGroupRepository) {
+                               MaterialGroupRepository materialGroupRepository,
+                               MaterialMapper materialMapper,
+                               MaterialIdentityMap identityMap) {
         this.materialRepository = materialRepository;
         this.materialGroupRepository = materialGroupRepository;
+        this.materialMapper = materialMapper;
+        this.identityMap = identityMap;
     }
 
     @Override
@@ -32,32 +40,37 @@ public class MaterialServiceImpl implements IMaterialService {
         if (hasGroup && hasSearch) {
             MaterialGroup group = requireGroup(groupId);
             return materialRepository.findByGroupAndNameContainingIgnoreCase(group, search, pageable)
-                    .map(this::toDto);
+                    .map(materialMapper::toDto);
         } else if (hasGroup) {
             MaterialGroup group = requireGroup(groupId);
-            return materialRepository.findByGroup(group, pageable).map(this::toDto);
+            return materialRepository.findByGroup(group, pageable).map(materialMapper::toDto);
         } else if (hasSearch) {
-            return materialRepository.findByNameContainingIgnoreCase(search, pageable).map(this::toDto);
+            return materialRepository.findByNameContainingIgnoreCase(search, pageable).map(materialMapper::toDto);
         } else {
-            return materialRepository.findAll(pageable).map(this::toDto);
+            return materialRepository.findAll(pageable).map(materialMapper::toDto);
         }
     }
 
     @Override
     public MaterialDto getMaterialById(Integer id) {
-        return toDto(materialRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Material not found: " + id)));
+        // Identity Map: сначала смотрим в кэш текущего запроса
+        return identityMap.get(id)
+                .map(materialMapper::toDto)
+                .orElseGet(() -> {
+                    Material material = materialRepository.findById(id)
+                            .orElseThrow(() -> new RuntimeException("Material not found: " + id));
+                    identityMap.put(id, material);   // кладём в кэш для повторного использования
+                    return materialMapper.toDto(material);
+                });
     }
 
     @Override
     public MaterialDto createMaterial(MaterialRequest request) {
         MaterialGroup group = resolveGroup(request.groupId());
-        Material material = new Material();
-        material.setName(request.name());
-        material.setPrice(request.price());
-        material.setUnits(request.units());
-        material.setGroup(group);
-        return toDto(materialRepository.save(material));
+        Material material = materialMapper.toEntity(request, group);
+        Material saved = materialRepository.save(material);
+        identityMap.put(saved.getId(), saved);
+        return materialMapper.toDto(saved);
     }
 
     @Override
@@ -65,11 +78,10 @@ public class MaterialServiceImpl implements IMaterialService {
         Material material = materialRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Material not found: " + id));
         MaterialGroup group = resolveGroup(request.groupId());
-        material.setName(request.name());
-        material.setPrice(request.price());
-        material.setUnits(request.units());
-        material.setGroup(group);
-        return toDto(materialRepository.save(material));
+        materialMapper.applyRequest(material, request, group);
+        Material saved = materialRepository.save(material);
+        identityMap.put(saved.getId(), saved);   // обновляем кэш
+        return materialMapper.toDto(saved);
     }
 
     @Override
@@ -77,6 +89,7 @@ public class MaterialServiceImpl implements IMaterialService {
         materialRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Material not found: " + id));
         materialRepository.deleteById(id);
+        identityMap.evict(id);   // удаляем из кэша
     }
 
     private MaterialGroup requireGroup(Integer groupId) {
@@ -94,16 +107,5 @@ public class MaterialServiceImpl implements IMaterialService {
                     def.setName(DataInitializer.DEFAULT_GROUP_NAME);
                     return materialGroupRepository.save(def);
                 });
-    }
-
-    private MaterialDto toDto(Material material) {
-        return new MaterialDto(
-                material.getId(),
-                material.getName(),
-                material.getPrice(),
-                material.getUnits(),
-                material.getGroup().getId(),
-                material.getGroup().getName()
-        );
     }
 }

@@ -47,10 +47,8 @@
 | Файл | Описание |
 |---|---|
 | [code-structure.md](code-structure.md) | Структура пакетов и маппинг на слои PCMEF |
-| [tests.md](tests.md) | Описание тестов, охват, инструкция по запуску |
 | [static-analysis.md](static-analysis.md) | Отчёт статического анализа кода |
 | [cicd.md](cicd.md) | Описание CI/CD pipeline (GitHub Actions) |
-| [images/](images/) | Скриншоты отчёта JaCoCo, результатов тестов и статанализа |
 
 ## Статический анализ
 

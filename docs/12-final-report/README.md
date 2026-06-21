@@ -9,8 +9,8 @@
 | Файл | Описание |
 |---|---|
 | [technical-specification.md](technical-specification.md) | Техническое задание на разработку системы |
-| [user-guide.md](user-guide.md) | Руководство пользователя |
-| [admin-guide.md](admin-guide.md) | Руководство администратора (развёртывание, сборка клиентов) |
+| [user-guide.md](../11-user-guide/user-guide.md) | Руководство пользователя |
+| [admin-guide.md](../10-deployment/admin-guide.md) | Руководство администратора (развёртывание, сборка клиентов) |
 | [wbs.md](wbs.md) | WBS — иерархическая структура работ |
 | [gantt.md](gantt.md) | Диаграмма Ганта (Mermaid) |
 | [cocomo.md](cocomo.md) | Оценка трудозатрат по модели COCOMO |
