@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -13,7 +14,9 @@ import ru.denis.Calculator.Dto.Request.MaterialRequest;
 import ru.denis.Calculator.Entity.Material;
 import ru.denis.Calculator.Entity.MaterialGroup;
 import ru.denis.Calculator.Foundation.MaterialGroupRepository;
+import ru.denis.Calculator.Foundation.MaterialIdentityMap;
 import ru.denis.Calculator.Foundation.MaterialRepository;
+import ru.denis.Calculator.Mapper.MaterialMapper;
 
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -34,6 +37,8 @@ class MaterialServiceImplTest {
 
     @Mock private MaterialRepository materialRepository;
     @Mock private MaterialGroupRepository materialGroupRepository;
+    @Spy private MaterialMapper materialMapper = new MaterialMapper();
+    @Spy private MaterialIdentityMap identityMap = new MaterialIdentityMap();
     @InjectMocks private MaterialServiceImpl service;
 
     // ── getAllMaterials ───────────────────────────────────────────────────────

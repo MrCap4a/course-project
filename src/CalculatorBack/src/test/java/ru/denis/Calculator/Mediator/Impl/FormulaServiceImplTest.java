@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -14,6 +15,7 @@ import ru.denis.Calculator.Entity.Formula;
 import ru.denis.Calculator.Entity.FormulaGroup;
 import ru.denis.Calculator.Foundation.FormulaGroupRepository;
 import ru.denis.Calculator.Foundation.FormulaRepository;
+import ru.denis.Calculator.Mapper.FormulaMapper;
 
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -33,6 +35,7 @@ class FormulaServiceImplTest {
 
     @Mock private FormulaRepository formulaRepository;
     @Mock private FormulaGroupRepository formulaGroupRepository;
+    @Spy private FormulaMapper formulaMapper = new FormulaMapper();
     @InjectMocks private FormulaServiceImpl service;
 
     // ── getAllFormulas ────────────────────────────────────────────────────────
