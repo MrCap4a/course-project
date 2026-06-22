@@ -162,10 +162,6 @@ export interface SqlTableInfo {
   columns: SqlColumnInfo[];
 }
 
-<<<<<<< Updated upstream
-export interface SqlSchemaDto {
-  tables: SqlTableInfo[];
-=======
 export interface SqlForeignKey {
   fromTable: string;
   fromColumn: string;
@@ -176,5 +172,4 @@ export interface SqlForeignKey {
 export interface SqlSchemaDto {
   tables: SqlTableInfo[];
   foreignKeys: SqlForeignKey[];
->>>>>>> Stashed changes
 }
